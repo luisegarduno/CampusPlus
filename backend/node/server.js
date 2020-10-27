@@ -70,3 +70,97 @@ app.listen(config.port, config.host, (e) => {
   }
   logger.info(`${config.name} running on ${config.host}:${config.port}`);
 });
+//GET
+// /api/getit
+
+//GET
+// /api/getit
+
+
+//GET
+// /api/getit
+router.get('/assignment/:assignmentID', function (req, res) {
+	con.query(`SELECT * FROM assignment where assingmentID = ${req.params.assignmentID}`, function (err, result, fields) {
+		if (err) throw err;
+		res.end(JSON.stringify(result)); // Result in JSON format
+	});
+});
+
+//GET
+// /api/username
+router.get('/user/:username', function (req, res) {
+	con.query(`SELECT * FROM user WHERE username = ${req.params.username}`, function (err, result, fields) {
+		if (err) throw err;
+		res.end(JSON.stringify(result)); // Result in JSON format
+	});
+});
+
+// POST
+// /api/postit	
+router.post('/user', async (req, res) => {
+	var username = req.param('username');
+	var password = req.param('password');//set up table to have an auto increment primary key
+	con.query("INSERT INTO user (username, password) VALUES( ?, ?)",
+		[username, password], function (err, result, fields) {
+			if (err) throw err;
+			res.end(JSON.stringify(result)); // Result in JSON format
+		});
+});
+
+
+// POST
+// /api/postit	
+router.post('/assignment', async (req, res) => {
+	var classID = req.param('classID');
+	var description = req.param('description');
+	var dueDate = req.param('dueDate');
+	var assignmentType = req.param('assignmentType');
+	
+
+	con.query("INSERT INTO assignment (classID, description, dueDate, assignmentType) VALUES(?, ?, ?, ?)",
+		[classID, description, dueDate, assignmentType], function (err, result, fields) {
+			if (err) throw err;
+			res.end(JSON.stringify(result)); // Result in JSON format
+		});
+});
+
+
+// /api/put
+router.put('/user/:username', async (req, res) => {
+
+	var password = req.body.password;
+
+	con.query(`UPDATE user SET password = ? WHERE username = ${req.params.username}`, password, function (err, result, fields) {
+		if (err) throw err;
+		res.end(JSON.stringify(result)); // Result in JSON format
+	});
+});
+
+
+// /api/put
+router.put('/office/:officeCode', async (req, res) => {
+	var ci = req.body.city;
+	con.query("UPDATE offices SET city = ? WHERE officeCode = ?", [ci, req.params.officeCode], function (err, result, fields) {
+		if (err) throw err;
+		res.end(JSON.stringify(result)); // Result in JSON format
+	});
+});
+
+
+// DELETE
+// /api/deleteit
+router.delete('/customer/:customerNumber', async (req, res) => {
+	con.query("DELETE FROM customers WHERE customerNumber = ? ", req.params.customerNumber, function (err, result, fields) {
+		if (err)
+			return console.error(error.message);
+		res.end(JSON.stringify(result));
+	});
+});
+
+router.delete('/assignment/:assignmentID', async (req, res) => {
+	con.query("DELETE FROM assignment WHERE assignmentID = ? ", req.params.assignmentID, function (err, result, fields) {
+		if (err)
+			return console.error(error.message);
+		res.end(JSON.stringify(result));
+	});
+});
