@@ -1,38 +1,64 @@
 .App {
-  text-align: center;
+    text-align: center;
+    background-color: #335993;
+    height: 100%;
+    width: 100%;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.signout-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    text-align: left;
+    font-size: 2rem;
+    border-bottom: solid;
+    height:5%;
 }
 
-.App-link {
-  color: #61dafb;
+.App-view {
+    height: 85%;
+    width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box-login {
+    position: relative;
+    width: 30%;
+    height: 80%;
+    left: 35%;
+    background: #F2F0FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.box-loggedin {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    left: 10%;
+    background: #F2F0FF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.title-text {
+    color: #0B2E86;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+a {
+    text-decoration: none;
+    color: #0B2E86;
+}
+
+
+h1, h2, p {
+    margin: 0;
+}
+
+html, body, body > div {
+    width: 100%;
+    height: 100%;
+}
+
