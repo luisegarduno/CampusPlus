@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/.env'})
+require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -37,8 +37,7 @@ app.use(ExpressAPILogMiddleware(logger, { request: true }));
 connection.connect(function (err) {
   if (err)
     logger.error("Cannot connect to DB!");
-  else
-    logger.info("Connected to the DB!");
+  logger.info("Connected to the DB!");
 });
 
 // GET /
@@ -48,9 +47,9 @@ app.get('/', (req, res) => {
 
 // get list of users
 app.get('/getUser', (req, res) => {
-  connection.query('SELECT * FROM user;', function (err, rows, fields) {
+  connection.query('SELECT * FROM `canvasplus`.`user`', function (err, rows, fields) {
     if (err) {
-      logger.error("Error while executing Query!");
+      logger.error("Error while executing Query: \n", err);
       res.status(400).json({
         "data": [],
         "error": "MySQL error"
@@ -59,15 +58,15 @@ app.get('/getUser', (req, res) => {
     else{
       res.status(200).json({
         "data": rows
-      })
+      });
     }
   });
 });
 
 // GET
 // /api/getit
-// router.get('/assignment/:assignmentID', function (req, res) {
-// 	con.query(`SELECT * FROM assignment where assingmentID = ${req.params.assignmentID}`, function (err, result, fields) {
+// app.get('/assignment/:assignmentID', function (req, res) {
+// 	con.query(`SELECT * FROM `canvasplus`.assignment where assingmentID = ${req.params.assignmentID}`, function (err, result, fields) {
 // 		if (err) throw err;
 // 		res.end(JSON.stringify(result)); // Result in JSON format
 // 	});
@@ -75,7 +74,7 @@ app.get('/getUser', (req, res) => {
 
 //GET
 // /api/username
-//router.get('/user/:username', function (req, res) {
+//app.get('/user/:username', function (req, res) {
 //	con.query(`SELECT * FROM user WHERE username = ${req.params.username}`, function (err, result, fields) {
 //		if (err) throw err;
 //		res.end(JSON.stringify(result)); // Result in JSON format
@@ -84,7 +83,7 @@ app.get('/getUser', (req, res) => {
 
 // POST
 // /api/postit	
-// router.post('/user', async (req, res) => {
+// app.post('/user', async (req, res) => {
 // 	var username = req.param('username');
 // 	var password = req.param('password');//set up table to have an auto increment primary key
 // 	con.query("INSERT INTO user (username, password) VALUES( ?, ?)",
@@ -97,7 +96,7 @@ app.get('/getUser', (req, res) => {
 
 // POST
 // /api/postit	
-//router.post('/assignment', async (req, res) => {
+//app.post('/assignment', async (req, res) => {
 //	var classID = req.param('classID');
 //	var description = req.param('description');
 //	var dueDate = req.param('dueDate');
@@ -111,7 +110,7 @@ app.get('/getUser', (req, res) => {
 //});
 
 // /api/put
-// router.put('/user/:username', async (req, res) => {
+// app.put('/user/:username', async (req, res) => {
 // 	var password = req.body.password;
 // 	con.query(`UPDATE user SET password = ? WHERE username = ${req.params.username}`, password, function (err, result, fields) {
 // 		if (err) throw err;
@@ -120,7 +119,7 @@ app.get('/getUser', (req, res) => {
 // });
 
 // /api/put
-// router.put('/office/:officeCode', async (req, res) => {
+// app.put('/office/:officeCode', async (req, res) => {
 // 	var ci = req.body.city;
 // 	con.query("UPDATE offices SET city = ? WHERE officeCode = ?", [ci, req.params.officeCode], function (err, result, fields) {
 // 		if (err) throw err;
@@ -130,16 +129,16 @@ app.get('/getUser', (req, res) => {
 
 // DELETE
 // /api/deleteit
-// router.delete('/customer/:customerNumber', async (req, res) => {
-// 	con.query("DELETE FROM customers WHERE customerNumber = ? ", req.params.customerNumber, function (err, result, fields) {
+// app.delete('/customer/:customerNumber', async (req, res) => {
+// 	con.query("DELETE FROM customers WHERE `canvasplus`.customerNumber = ? ", req.params.customerNumber, function (err, result, fields) {
 // 		if (err)
 // 			return console.error(error.message);
 // 		res.end(JSON.stringify(result));
 // 	});
 // });
 
-// router.delete('/assignment/:assignmentID', async (req, res) => {
-// 	con.query("DELETE FROM assignment WHERE assignmentID = ? ", req.params.assignmentID, function (err, result, fields) {
+// app.delete('/assignment/:assignmentID', async (req, res) => {
+// 	con.query("DELETE FROM `canvasplus`.assignment WHERE assignmentID = ? ", req.params.assignmentID, function (err, result, fields) {
 // 		if (err)
 // 			return console.error(error.message);
 // 		res.end(JSON.stringify(result));
@@ -153,3 +152,4 @@ app.listen(config.port, config.host, (e) => {
   }
   logger.info(`${config.name} running on ${config.host}:${config.port}`);
 });
+

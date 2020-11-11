@@ -35,7 +35,7 @@ export class CreateAccount extends React.Component {
                 <div className="test">
                     <button type="button">Sign up</button>
                 </div>
-                <div className="tologin">Already have an account? <a href="">Login here</a>.</div>
+    {/*            <div className="tologin">Already have an account? <a href="">Login here</a>.</div>  */}
 		    </div>
         )
 	}
