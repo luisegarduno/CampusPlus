@@ -3,7 +3,6 @@
     background-color: #335993;
     height: 100%;
     width: 100%;
-
 }
 
 .signout-button {
@@ -16,7 +15,7 @@
     text-align: left;
     font-size: 2rem;
     border-bottom: solid;
-    height:5%;
+    height: 5%;
 }
 
 .App-view {
@@ -52,13 +51,15 @@ a {
     color: #0B2E86;
 }
 
-
-h1, h2, p {
+h1,
+h2,
+p {
     margin: 0;
 }
 
-html, body, body > div {
+html,
+body,
+body>div {
     width: 100%;
     height: 100%;
 }
-
