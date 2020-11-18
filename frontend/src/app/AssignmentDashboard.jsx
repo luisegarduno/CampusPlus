@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-//import { NavBar } from '../HomePage';
+import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 //import { ProductRepository } from '../Api/productRepository';
 
 export class AssignmentDashboard extends React.Component {
@@ -15,8 +14,8 @@ export class AssignmentDashboard extends React.Component {
 
             <div className="p-5 container">
             <div id="content">
+                <h1 className="text-center">Assignments</h1>
             <div className = "p-2 card text-center mx-auto">
-            <h5 className="card-title">Assignments</h5>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -51,7 +50,6 @@ export class AssignmentDashboard extends React.Component {
                     </tr>
                 </tbody>
             </table>
-
             <button type="button" className="btn btn-primary rounded">Add Assignment</button>
             </div>
             </div>

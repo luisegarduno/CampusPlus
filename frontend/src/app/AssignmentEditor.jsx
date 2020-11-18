@@ -1,64 +1,64 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-//import { NavBar } from '../HomePage';
-//import { ProductRepository } from '../Api/productRepository';
+import React from "react";
+import { Redirect } from 'react-router-dom'
+import { ProductRepository } from '../../Api/productRepository'
 
-export class AssignmentDashboard extends React.Component {
-    //api = new ProductRepository();
-    
-    state = {
+export class AssignmentEditor extends React.Component{
+  
+  //  api = new ProductRepository();
 
-    }//end state
+  state = {
+ 
+};
 
     render() {
-        return(<>
-
-            <div className="p-5 container">
-            <div id="content">
-            <div className = "p-2 card text-center mx-auto">
-            <h5 className="card-title">Assignments</h5>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Assignment</th>
-                        <th scope="col">Course</th>
-                        <th scope="col">Assignment Type</th>
-                        <th scope="col">Due Date</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Research Paper</td>
-                        <td>History</td>
-                        <td>Paper</td>
-                        <td>12/04/2020</td>
-                        <button type="button" className="btn btn-primary rounded">Edit</button>
-                    </tr>
-                    <tr>
-                        <td>Math Quiz</td>
-                        <td>Linear Algebra</td>
-                        <td>Quiz</td>
-                        <td>11/20/2020</td>
-                        <button type="button" className="btn btn-primary rounded">Edit</button>
-                    </tr>
-                    <tr>
-                        <td>Painting Due</td>
-                        <td>Intro To Painting</td>
-                        <td>Canvas Due</td>
-                        <td>11/25/20</td>
-                        <button type="button" className="btn btn-primary rounded">Edit</button>
-                    </tr>
-                </tbody>
-            </table>
-
-            <button type="button" className="btn btn-primary rounded">Add Assignment</button>
+        return(
+            <div className="p-5 container-sm">
+                <div className = "p-2 card text-center w-50 mx-auto">
+                    <div className = "form-group">
+                    <div className= "card-header">
+                        <h5 className="card-title">Edit Assignment</h5>
+                    </div>
+                    <div className = "card-body">
+                        <form>
+                            <div className="form-row">
+                                <div className="form-group col text-left">
+                                    <label htmlFor="exampleFormControlInput1">Assignment Name</label>
+                                    <input type="text" className="form-control" placeholder="Current Assignment Name" onChange={e => this.setState({description: e.target.value})}/>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group col text-left">
+                                    <label htmlFor="exampleFormControlInput1">Course</label>
+                                    <input type="text" className="form-control" placeholder="Current Course Name"/>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group col text-left">
+                                    <label htmlFor="exampleFormControlInput1">Due Date</label>
+                                    <input type="text" className="form-control" placeholder="Current Due Date"/>
+                                </div>
+                            </div>
+                            <div className="dropdown">
+                              <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Assignment Type
+                              </button>
+                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a className="dropdown-item" href="#">Exam</a>
+                                  <a className="dropdown-item" href="#">Quiz</a>
+                                  <a className="dropdown-item" href="#">Paper</a>
+                                  <a className="dropdown-item" href="#">Homework</a>
+                                  <a className="dropdown-item" href="#">Project</a>
+                               </div>
+                            </div>
+                        </form>
+                    </div>
+                
+                    <div className="footer">
+                        <button type="button" class="btn btn-primary btn-lg" onClick={e => this.submit()}>Save Changes</button>
+                        <button type="button" class="btn btn-primary btn-lg" onClick={e => this.submit()}>Mark As Complete</button>
+                    </div>
+                </div>
+                </div>
             </div>
-            </div>
-            </div>
-          </>
-        )
-      }
-
-
-}//end AssignmentDashboard
+        )}
+}
