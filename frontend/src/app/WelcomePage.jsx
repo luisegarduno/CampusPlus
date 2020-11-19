@@ -1,45 +1,49 @@
-// require('dotenv').config()
 import React from 'react';
-import axios from 'axios'
 import { Profile } from './Profile';
 import { Register } from './Register';
 import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 import { LoadRegister } from './LoadRegister';
+import {ProductRepository} from '../Api/productRepository';
 
 export class WelcomePage extends React.Component {
+
+    ProductRepo = new ProductRepository();
+
     constructor(props) {
         super(props)
 
         this.state = {
             userName: '',
             password: '',
+            userID: -1,
             incorrectLogin: false
         }
-        this.logIn = this.logIn.bind(this)
+        this.signIn = this.signIn.bind(this)
    }
 
-    logIn(){
-        this.setState({incorrectLogin: false});
-        axios.post(process.env.DB_API + '/user/login', {
-            username: this.state.userName,
-            password: this.state.password
-        })
-            .then((res) => {
-                this.setState({incorrectLogin: true})
-                this.history.push('homepages')
-            }, (err) => {
-                console.log(err)
-            })
-    }
-
-    newAccount(){
-        this.props.history.push("/NewAccount")
+    signIn() {
+        this.setState({
+            incorrectLogin: false,
+        });
+        const loginData = {username: this.state.userName, password: this.state.password}
+        this.ProductRepo.login(loginData)
+        .then(res => {
+            if (res) {
+                this.props.history.push({
+                    pathname: "/assignments"
+                })
+            }
+            else{
+                console.log("Wrong Username/password")
+            } 
+        });
     }
 
     render() {
         return(
         
           <div className="p-5 container">
+        
                 <div className = "p-2 card text-center w-50 mx-auto">
                     <div className = "form-group">
                         <img src="/logo2.png" alt="" className="img-rounded img-responsive" id = "image" />
@@ -65,7 +69,7 @@ export class WelcomePage extends React.Component {
                         </form>
                     </div>
                     <div className="footer">
-                        <button className="btn btn-warning rounded" onClick={this.logIn}>Log In</button>
+                        <button className="btn btn-warning rounded" onClick={this.signIn}>Log In</button>
                         <p>OR</p>
                         <button className="btn btn-dark rounded" onClick={() => this.props.history.push("/register")}>Click to Create an Account</button>
                     </div>
