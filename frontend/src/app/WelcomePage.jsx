@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios'
 import { Profile } from './Profile';
 import { Register } from './Register';
 import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
