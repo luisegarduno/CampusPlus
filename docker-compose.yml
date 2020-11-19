@@ -3,6 +3,8 @@ version: "3.3"
 services:
   backend-api:
     build: ./backend
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
     restart: always
     working_dir: /usr/src/app
     command: bash -c "yarn && yarn run dev"
@@ -16,6 +18,8 @@ services:
   frontend-app:
     stdin_open: true
     build: ./frontend
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
     restart: always
     working_dir: /usr/src/app
     command: bash -c "yarn && yarn start"
