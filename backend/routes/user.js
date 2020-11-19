@@ -18,6 +18,38 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/user-assignment/:userID', (req, res) => {
+    var uID = req.params.userID
+
+    connection.query('SELECT * from assignment a join `user-assignment` ua on a.assignmentID = ua.assignmentID where ua.userID = ?', [uID], (err, rows) => {
+        if (err) {
+            logger.error("Error while executing Query: \n", err);
+            res.status(400).json({
+                "data": [],
+                "error": "MySQL error"
+            })
+        } else {
+            res.status(200).json(rows)
+        }
+    })
+})
+
+router.get('/class/:classID', (req, res) => {
+    var uID = req.params.classID
+
+    connection.query('SELECT * from class where classID = ?', [cID], (err, rows) => {
+        if (err) {
+            logger.error("Error while executing Query: \n", err);
+            res.status(400).json({
+                "data": [],
+                "error": "MySQL error"
+            })
+        } else {
+            res.status(200).json(rows)
+        }
+    })
+})
+
 router.put('/', async(req, res) => {
     let password = req.body.password
     let username = req.body.username
