@@ -12,8 +12,8 @@ import { WelcomePage } from './WelcomePage';
 import { Profile } from './Profile';
 import { Home } from './Home';
 import { Calendar } from './Calendar';
-import { CoursesAndScheduleDash } from './CoursesAndScheduleDash';
-import {AssignmentEditor} from './AssignmentEditor';
+import { CoursesAndScheduleDash } from './CoursesAndSchedule';
+import { AssignmentEditor } from './AssignmentEditor';
 
 const App = props => {
   return(
