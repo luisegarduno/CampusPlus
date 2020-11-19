@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from 'react-router-dom'
-import { ProductRepository } from '../../Api/productRepository'
+//import { ProductRepository } from '../../Api/productRepository'
 
 export class AssignmentEditor extends React.Component{
   
@@ -11,11 +11,16 @@ export class AssignmentEditor extends React.Component{
 };
 
     render() {
-        return(
+        return(<>
+            <div className ="header">
+                <h1 className = "text-left bg-dark text-white">CampusPlus
+                    <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/welcomepages")}>Log Out</button>
+                </h1>
+            </div>
             <div className="p-5 container-sm">
                 <div className = "p-2 card text-center w-50 mx-auto">
                     <div className = "form-group">
-                    <div className= "card-header">
+                    <div className= "card-header bg-dark text-white">
                         <h5 className="card-title">Edit Assignment</h5>
                     </div>
                     <div className = "card-body">
@@ -60,5 +65,6 @@ export class AssignmentEditor extends React.Component{
                 </div>
                 </div>
             </div>
+            </>
         )}
 }

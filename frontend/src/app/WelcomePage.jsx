@@ -3,47 +3,34 @@ import { Profile } from './Profile';
 import { Register } from './Register';
 import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 import { LoadRegister } from './LoadRegister';
-import {ProductRepository} from '../Api/productRepository';
 
 export class WelcomePage extends React.Component {
+   
+    user
+   
+    state = {
+        userName: '',
+        password: '',
+        incorrectLogin: false
+    }
+    logIn(){
+        this.setState({incorrectLogin: false});
 
-    ProductRepo = new ProductRepository();
+        var loginInData = {userName: this.state.userName, password: this.state.password}
 
-    constructor(props) {
-        super(props)
+    }
 
-        this.state = {
-            userName: '',
-            password: '',
-            userID: -1,
-            incorrectLogin: false
-        }
-        this.signIn = this.signIn.bind(this)
-   }
-
-    signIn() {
-        this.setState({
-            incorrectLogin: false,
-        });
-        const loginData = {username: this.state.userName, password: this.state.password}
-        this.ProductRepo.login(loginData)
-        .then(res => {
-            if (res) {
-                this.props.history.push({
-                    pathname: "/assignments"
-                })
-            }
-            else{
-                console.log("Wrong Username/password")
-            } 
-        });
+    newAccount(){
+        this.props.history.push("/NewAccount")
     }
 
     render() {
-        return(
+        return( <>
+        <div header>
+            <h1 className = "text-left bg-dark text-white">CampusPlus</h1>
+        </div>
         
           <div className="p-5 container">
-        
                 <div className = "p-2 card text-center w-50 mx-auto">
                     <div className = "form-group">
                         <img src="/logo2.png" alt="" className="img-rounded img-responsive" id = "image" />
@@ -69,14 +56,14 @@ export class WelcomePage extends React.Component {
                         </form>
                     </div>
                     <div className="footer">
-                        <button className="btn btn-warning rounded" onClick={this.signIn}>Log In</button>
+                        <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/homepages")}>Log In</button>
                         <p>OR</p>
                         <button className="btn btn-dark rounded" onClick={() => this.props.history.push("/register")}>Click to Create an Account</button>
                     </div>
                 </div>
                 </div>
-                <h5 className = "text-center">Note: Played with colors to match trial logo and left some pages as they were so we can decide what we like </h5>
             </div>
+            </>
         );
     }
 }
