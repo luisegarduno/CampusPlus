@@ -1,3 +1,4 @@
+// require('dotenv').config()
 import React from 'react';
 import axios from 'axios'
 import { Profile } from './Profile';
@@ -6,19 +7,29 @@ import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 import { LoadRegister } from './LoadRegister';
 
 export class WelcomePage extends React.Component {
-   
-    user
-   
-    state = {
-        userName: '',
-        password: '',
-        incorrectLogin: false
-    }
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            userName: '',
+            password: '',
+            incorrectLogin: false
+        }
+        this.logIn = this.logIn.bind(this)
+   }
+
     logIn(){
         this.setState({incorrectLogin: false});
-
-        var loginInData = {userName: this.state.userName, password: this.state.password}
-
+        axios.post(process.env.DB_API + '/user/login', {
+            username: this.state.userName,
+            password: this.state.password
+        })
+            .then((res) => {
+                this.setState({incorrectLogin: true})
+                this.history.push('homepages')
+            }, (err) => {
+                console.log(err)
+            })
     }
 
     newAccount(){
@@ -54,7 +65,7 @@ export class WelcomePage extends React.Component {
                         </form>
                     </div>
                     <div className="footer">
-                        <button className="btn btn-warning rounded" onClick={() => this.props.history.push("/homepages")}>Log In</button>
+                        <button className="btn btn-warning rounded" onClick={this.logIn}>Log In</button>
                         <p>OR</p>
                         <button className="btn btn-dark rounded" onClick={() => this.props.history.push("/register")}>Click to Create an Account</button>
                     </div>
