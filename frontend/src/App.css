@@ -1,9 +1,11 @@
+/*
 .App {
     text-align: center;
     background-color: #335993;
     height: 100%;
     width: 100%;
 }
+
 
 .signout-button {
     position: absolute;
@@ -62,4 +64,16 @@ body,
 body>div {
     width: 100%;
     height: 100%;
+}
+
+*/
+
+
+.jumbotron {
+    background-color: #335993;
+    text-align: left;
+}
+ 
+#myTabJust {
+    background-color: 335993;
 }

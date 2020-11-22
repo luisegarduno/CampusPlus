@@ -1,6 +1,9 @@
 const router = require('express').Router()
-const logger = require('@rama41222/node-logger/src/logger')
 const connection = require('../connection')
+const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
+
+// create a logger object.  Using logger is preferable to simply writing to the console.
+const logger = log({ console: true, file: false});
 
 router.get('/', (req, res) => {
     const username = req.query.username

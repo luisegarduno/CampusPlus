@@ -1,4 +1,3 @@
-/*
 input {
     margin: .6rem;
 }
@@ -19,7 +18,6 @@ button {
     color: #F2F0FF;
 }
 
-    button:hover {
-        background: #335993;
-    }
-    */
+button:hover {
+    background: #335993;
+}

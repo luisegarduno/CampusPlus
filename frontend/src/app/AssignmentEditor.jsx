@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from 'react-router-dom'
+//import { Redirect } from 'react-router-dom'
 //import { ProductRepository } from '../../Api/productRepository'
 
 export class AssignmentEditor extends React.Component{
@@ -48,11 +48,11 @@ export class AssignmentEditor extends React.Component{
                                 Assignment Type
                               </button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a className="dropdown-item" href="#">Exam</a>
-                                  <a className="dropdown-item" href="#">Quiz</a>
-                                  <a className="dropdown-item" href="#">Paper</a>
-                                  <a className="dropdown-item" href="#">Homework</a>
-                                  <a className="dropdown-item" href="#">Project</a>
+                                {/* <a className="dropdown-item" href="#">Exam</a>     */}
+                                {/* <a className="dropdown-item" href="#">Quiz</a>     */}
+                                {/* <a className="dropdown-item" href="#">Paper</a>    */}
+                                {/* <a className="dropdown-item" href="#">Homework</a> */}
+                                {/* <a className="dropdown-item" href="#">Project</a>  */}
                                </div>
                             </div>
                         </form>

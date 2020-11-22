@@ -1,4 +1,5 @@
 import React from "react";
+
 export class CoursesAndScheduleDash extends React.Component{
 
     render() {
