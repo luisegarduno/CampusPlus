@@ -19,6 +19,7 @@ router.get('/:assignmentID', function (req, res) {
   })
 })
 
+
 router.get('/user/:userID', function (req, res) {
   var userID = req.params.userID
   connection.query('SELECT * FROM assignment WHERE userID = ? order by dueDate', [userID], function (err, rows, fields) {
