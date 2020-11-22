@@ -216,7 +216,6 @@ router.put('/:assignmentID/completion', function (req, res) {
   })
 })
 
-
 router.delete('/:assignmentID', async (req, res) => {
   var assignmentID = req.params.assignmentID;
   connection.query('DELETE FROM `canvasplus`.`assignment` a WHERE a.assignmentID = ?', [assignmentID], function (err, result, fields) {
