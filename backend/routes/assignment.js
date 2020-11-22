@@ -42,6 +42,22 @@ router.post('/', async (req, res) => {
   })
 })
 
+router.get('/user/:userID', (req, res) => {
+  var uID = req.params.userID
+
+  connection.query('SELECT * from assignment userID = ?', [uID], (err, rows) => {
+      if (err) {
+          logger.error("Error while executing Query: \n", err);
+          res.status(400).json({
+              "data": [],
+              "error": "MySQL error"
+          })
+      } else {
+          res.status(200).json(rows)
+      }
+  })
+})
+
 router.delete('/:assignmentID', async (req, res) => {
   var assignmentID = req.params.assignmentID;
   connection.query('DELETE FROM assignment WHERE assignmentID = ?', [assignmentID], function (err, result, fields) {
