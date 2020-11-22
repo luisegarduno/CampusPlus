@@ -8,7 +8,7 @@ const logger = log({ console: true, file: false});
 router.get('/', (req, res) => {
     const username = req.query.username
 
-    connection.query("SELECT * FROM `canvasplus`.`user` WHERE u.username = ?", [username], (err, rows) => {
+    connection.query("SELECT * FROM `canvasplus`.`user` u WHERE u.username = ?", [username], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err);
             res.status(400).json({
@@ -56,7 +56,7 @@ router.get('/class/:classID', (req, res) => {
 router.put('/', async(req, res) => {
     let password = req.body.password
     let username = req.body.username
-    connection.query('UPDATE `canvasplus`.`user` SET password = ? WHERE username = ?', [password, username], function(err, result, fields) {
+    connection.query('UPDATE `canvasplus`.`user` u SET u.password = ? WHERE u.username = ?', [password, username], function(err, result, fields) {
         if (err) throw err
         res.end(JSON.stringify(result))
     })
@@ -83,7 +83,7 @@ router.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
 
-    connection.query("SELECT COUNT(*) AS users_count FROM `canvasplus`.`user` u WHERE u.username = ? AND u.PASSWORD = ?", [username, password], (err, rows) => {
+    connection.query("SELECT COUNT(*) AS users_count FROM `canvasplus`.`user` u WHERE u.username = ? AND u.password = ?", [username, password], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err)
             res.status(400).json({
