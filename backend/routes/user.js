@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 router.get('/user-assignment/:userID', (req, res) => {
     var uID = req.params.userID
 
-    connection.query('SELECT * from assignment a join `user-assignment` ua on a.assignmentID = ua.assignmentID where ua.userID = ?', [uID], (err, rows) => {
+    connection.query('SELECT * from `canvasplus`.`assignment` a join `user-assignment` ua on a.assignmentID = ua.assignmentID where ua.userID = ?', [uID], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err);
             res.status(400).json({
@@ -40,7 +40,7 @@ router.get('/user-assignment/:userID', (req, res) => {
 router.get('/class/:classID', (req, res) => {
     var uID = req.params.classID
 
-    connection.query('SELECT * from class where classID = ?', [cID], (err, rows) => {
+    connection.query('SELECT * from `canvasplus`.`class` where `canvasplus`.`classID` = ?', [cID], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err);
             res.status(400).json({
@@ -56,7 +56,7 @@ router.get('/class/:classID', (req, res) => {
 router.put('/', async(req, res) => {
     let password = req.body.password
     let username = req.body.username
-    connection.query('UPDATE user SET password = ? WHERE username = ?', [password, username], function(err, result, fields) {
+    connection.query('UPDATE `canvasplus`.`user` SET password = ? WHERE username = ?', [password, username], function(err, result, fields) {
         if (err) throw err
         res.end(JSON.stringify(result))
     })
@@ -66,7 +66,7 @@ router.post('/create', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
 
-    connection.query("INSERT INTO user (username, password) VALUES(?, ?)", [username, password], (err) => {
+    connection.query("INSERT INTO `canvasplus`.`user` (username, password) VALUES(?, ?)", [username, password], (err) => {
         if (err) {
             logger.error("Error while executing Query: \n", err)
             res.status(400).json({
@@ -83,7 +83,7 @@ router.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
 
-    connection.query("SELECT COUNT(*) AS users_count FROM user WHERE username = ? AND PASSWORD = ?", [username, password], (err, rows) => {
+    connection.query("SELECT COUNT(*) AS users_count FROM `canvasplus`.`user` WHERE `canvasplus`.`username` = ? AND `canvasplus`.`PASSWORD` = ?", [username, password], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err)
             res.status(400).json({
