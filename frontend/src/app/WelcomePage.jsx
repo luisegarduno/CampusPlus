@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'
+//import { sha256 } from 'js-sha256';
 import logo from "../images/logo2.png"
 //import { Profile } from './Profile';
 //import { Register } from './login/Register';
@@ -29,6 +30,8 @@ export class WelcomePage extends React.Component {
     }
     
     onLogin() {
+        // TODO : Create API that checks for hashedpassword instead of plain-text password
+        // let hashedPassword = sha256(this.state.password);
 
         var loginData = {username : this.state.username, password : this.state.password}
         console.log(this.login.verifyUser(loginData))
