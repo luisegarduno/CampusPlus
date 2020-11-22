@@ -3,7 +3,7 @@ const connection = require('../connection')
 
 router.get('/:assignmentID', function (req, res) {
   var assignmentID = req.params.assignmentID
-  connection.query('SELECT * FROM `canvasplus`.`assignment` a where `canvasplus`.`assignmentID` = ?', [assignmentID], function (err, rows, fields) {
+  connection.query('SELECT * FROM `canvasplus`.`assignment` a where a.assignmentID = ?', [assignmentID], function (err, rows, fields) {
     if (err) {
       logger.error("Error while executing Query: \n", err)
       res.status(400).json({
@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:assignmentID', async (req, res) => {
   var assignmentID = req.params.assignmentID;
-  connection.query('DELETE FROM `canvasplus`.`assignment` WHERE `canvasplus`.`assignmentID` = ?', [assignmentID], function (err, result, fields) {
+  connection.query('DELETE FROM `canvasplus`.`assignment` a WHERE a.assignmentID = ?', [assignmentID], function (err, result, fields) {
     if (err)
       return console.error(error.message)
     res.end(JSON.stringify(result))

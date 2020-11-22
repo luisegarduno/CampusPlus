@@ -8,7 +8,7 @@ const logger = log({ console: true, file: false});
 router.get('/', (req, res) => {
     const username = req.query.username
 
-    connection.query("SELECT * FROM user WHERE username = ?", [username], (err, rows) => {
+    connection.query("SELECT * FROM `canvasplus`.`user` WHERE u.username = ?", [username], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err);
             res.status(400).json({
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 router.get('/user-assignment/:userID', (req, res) => {
     var uID = req.params.userID
 
-    connection.query('SELECT * from `canvasplus`.`assignment` a join `user-assignment` ua on a.assignmentID = ua.assignmentID where ua.userID = ?', [uID], (err, rows) => {
+    connection.query('SELECT * from `canvasplus`.`assignment` a join `canvasplus`.`user-assignment` ua on a.assignmentID = ua.assignmentID where ua.userID = ?', [uID], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err);
             res.status(400).json({
@@ -40,7 +40,7 @@ router.get('/user-assignment/:userID', (req, res) => {
 router.get('/class/:classID', (req, res) => {
     var uID = req.params.classID
 
-    connection.query('SELECT * from `canvasplus`.`class` where `canvasplus`.`classID` = ?', [cID], (err, rows) => {
+    connection.query('SELECT * from `canvasplus`.`class` c where c.classID = ?', [cID], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err);
             res.status(400).json({
@@ -83,7 +83,7 @@ router.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
 
-    connection.query("SELECT COUNT(*) AS users_count FROM `canvasplus`.`user` WHERE `canvasplus`.`username` = ? AND `canvasplus`.`PASSWORD` = ?", [username, password], (err, rows) => {
+    connection.query("SELECT COUNT(*) AS users_count FROM `canvasplus`.`user` u WHERE u.username = ? AND u.PASSWORD = ?", [username, password], (err, rows) => {
         if (err) {
             logger.error("Error while executing Query: \n", err)
             res.status(400).json({
