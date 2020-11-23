@@ -1,6 +1,6 @@
 import React from "react";
 
-export class CoursesAndScheduleDash extends React.Component{
+export class CourseDashboard extends React.Component{
 
     render() {
         return(<>
@@ -14,4 +14,4 @@ export class CoursesAndScheduleDash extends React.Component{
             </>
         )}
 
-}//end CourseAndScheduleDash
+}//end CourseDashboard
