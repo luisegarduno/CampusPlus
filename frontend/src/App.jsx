@@ -7,7 +7,7 @@ import { WelcomePage } from './app/WelcomePage';
 import { Profile } from './app/Profile';
 import { Home } from './app/Home';
 import { Calendar } from './app/Calendar';
-import { CoursesAndScheduleDash } from './app/CoursesAndSchedule';
+import { CourseDashboard } from './app/CourseDashboard';
 import { AssignmentEditor } from './app/AssignmentEditor';
 
 const App = props => {
@@ -21,7 +21,7 @@ const App = props => {
           <Route exact path="/homepages" component={Home} />
           <Route exact path="/assignments" component={AssignmentDashboard} />
           <Route exact path="/calendars" component={Calendar} />
-          <Route exact path="/schedules" component={CoursesAndScheduleDash} />
+          <Route exact path="/courses" component={CourseDashboard}/>
           <Route exact path="/welcomepages" component={WelcomePage} />
           <Route exact path="/assignmentchanges" component={AssignmentEditor} />
         </Switch>
