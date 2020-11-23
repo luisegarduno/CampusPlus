@@ -36,7 +36,7 @@ export class Home extends React.Component {
                 </div>
                 <div className="card">
                     <img src="/schedule.png" className="card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/schedules")}>View Schedule And Courses</button>
+                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/courses")}>View Schedule And Courses</button>
                 </div>
                 <div className="card">
                     <img src="/forum.png" className="card-img-top" alt="..."/>
