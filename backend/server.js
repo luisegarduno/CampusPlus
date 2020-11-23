@@ -30,10 +30,12 @@ app.use(ExpressAPILogMiddleware(logger, { request: true }));
 const user = require('./routes/user')
 const assignment = require('./routes/assignment')
 const classes = require('./routes/classes')
+const comment = require('./routes/comment')
 
 app.use('/user', user)
 app.use('/assignment', assignment)
 app.use('/classes', classes)
+app.use('/comment', comment)
 
 app.get('/', (req, res) => {
   res.status(200).send('Go to 0.0.0.0:3000.');
