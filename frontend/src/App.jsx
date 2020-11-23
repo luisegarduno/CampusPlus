@@ -9,6 +9,7 @@ import { Home } from './app/Home';
 import { Calendar } from './app/Calendar';
 import { CourseDashboard } from './app/CourseDashboard';
 import { AssignmentEditor } from './app/AssignmentEditor';
+import { CourseSearch } from './CourseSearch';
 
 const App = props => {
   return(
@@ -24,6 +25,7 @@ const App = props => {
           <Route exact path="/courses" component={CourseDashboard}/>
           <Route exact path="/welcomepages" component={WelcomePage} />
           <Route exact path="/assignmentchanges" component={AssignmentEditor} />
+          <Route exact path="/courseOptions" component={CourseSearch} />
         </Switch>
       </Router>
     </div>
