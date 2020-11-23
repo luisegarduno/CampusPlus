@@ -6,9 +6,9 @@ export class LoginRepository {
     config = {
     }
     
-    registerUser(){
+    registerUser(loginData){
         return new Promise((resolve,reject) =>{
-            axios.get(`${this.url}/user/create`)
+            axios.get(`${this.url}/user/create`, loginData, this.config)
                 .then(x => {
                 resolve(x.data);
             })

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-//import { sha256 } from 'js-sha256';
+import { sha256 } from 'js-sha256';
 import logo from "../images/logo2.png"
 //import { Profile } from './Profile';
 //import { Register } from './login/Register';
@@ -31,9 +31,9 @@ export class WelcomePage extends React.Component {
     
     onLogin() {
         // TODO : Create API that checks for hashedpassword instead of plain-text password
-        // let hashedPassword = sha256(this.state.password);
+        let hashedPassword = sha256(this.state.password);
 
-        var loginData = {username : this.state.username, password : this.state.password}
+        var loginData = {username : this.state.username, password : hashedPassword}
         console.log(this.login.verifyUser(loginData))
         
         axios.post(`${this.url}/user/login`, loginData)
@@ -88,15 +88,17 @@ export class WelcomePage extends React.Component {
                         <form id="loginInfo">
                             <div className="form-row">
                                 <div className="form-group col text-left">
+                                    <label htmlFor="exampleFormControlInput1">Username</label>
                                     <div className = "username" onChange={this.getUsername}>
-                                        <input autoComplete="on" type="text" className="form-control mx-auto" name = "username" placeholder="StarStudent"/>
+                                        <input autoComplete="on" type="text" className="form-control mx-auto" name="username" placeholder="StarStudent"/>
                                     </div>
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col text-left">
+                                    <label htmlFor="exampleFormControlInput1">Password</label>
                                     <div className = "password" onChange={this.getPassword}>
-                                        <input autoComplete="current-password" type="password" className="form-control mx-auto" name="password" placeholder = "Password"></input>
+                                        <input autoComplete="current-password" type="password" className="form-control mx-auto" name="password" placeholder="Password"></input>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +118,7 @@ export class WelcomePage extends React.Component {
                                 </div>
                             }
                             else
-                                return <button className="btn btn-primary rounded button disabled" type = "button" >Log In</button>
+                                return <button className="btn btn-primary rounded button disabled" type="button" >Log In</button>
                         })()}
 
                         <p>OR</p>

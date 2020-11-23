@@ -48,10 +48,11 @@ router.put('/', async(req, res) => {
 });
 
 router.post('/create', async(req, res) => {
+    const email = req.body.email
     const username = req.body.username
     const password = req.body.password
 
-    connection.query("INSERT INTO `canvasplus`.`user` (username, password) VALUES(?, ?)", [username, password], (err) => {
+    connection.query("INSERT INTO `canvasplus`.`user` (email, password, username) VALUES(?, ?, ?)", [email, password, username], (err) => {
         if (err) {
             logger.error("Error while executing Query: \n", err)
             res.status(400).json({

@@ -9,7 +9,7 @@ import { Home } from './app/Home';
 import { Calendar } from './app/Calendar';
 import { CourseDashboard } from './app/CourseDashboard';
 import { AssignmentEditor } from './app/AssignmentEditor';
-import { CourseSearch } from './CourseSearch';
+import { CourseSearch } from './app/CourseSearch';
 
 const App = props => {
   return(
