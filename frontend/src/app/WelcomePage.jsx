@@ -79,7 +79,7 @@ export class WelcomePage extends React.Component {
             <h1 className = "text-left bg-dark text-white">CampusPlus</h1>
         </header>
         
-          <div className="p-5 container">
+          <div className="p-5 container-fluid container-md">
                 <div className = "p-2 card text-center w-50 mx-auto">
                     <div className = "form-group">
                         <img src={logo} alt="logo" className="img-rounded img-responsive" id = "image" />
