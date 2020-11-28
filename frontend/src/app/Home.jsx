@@ -8,12 +8,12 @@ export class Home extends React.Component {
     
      render() {
          return(<>
-         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <span class="mb-0 h3 text-white">Campus</span>
-            <span class="mb-0 h3 text-primary">Plus</span>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
-                <form class="form-inline ">
-                    <button class="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/welcomepages")}>LOG OUT</button>
+         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+            <span className="mb-0 h3 text-white">Campus</span>
+            <span className="mb-0 h3 text-primary">Plus</span>
+            <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+                <form className="form-inline ">
+                    <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/welcomepages")}>LOG OUT</button>
                 </form>
             </div>
         </nav>
