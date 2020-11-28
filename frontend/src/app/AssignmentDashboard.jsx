@@ -1,6 +1,7 @@
 import React from 'react'
 //import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 //import { productRepository } from '../Api/productRepository';
+import { Header } from './Header';
 
 export class AssignmentDashboard extends React.Component {
     //api = new ProductRepository();
@@ -11,12 +12,11 @@ export class AssignmentDashboard extends React.Component {
 
     render() {
         return(<>
-            <div className ="header">
-                <h1 className = "text-left bg-dark text-white">CampusPlus
-                    <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/welcomepages")}>Log Out</button>
-                </h1>
-            </div>
-                <div className="p-5 container">
+            <Header />
+                <nav className="navbar bg-white">
+                    <span className="mb-0 h5 text-primary">Assignments</span>
+                </nav>
+                <div className="p-5 container-fluid container-md">
                     <h2 className = " p-2 text-center bg-dark text-white">Assignments</h2>
                 <div id="content">
             <div className = "p-2 text-center mx-auto">
