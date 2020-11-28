@@ -125,7 +125,7 @@ export class WelcomePage extends React.Component {
                         <p>OR</p>
 
                         <Link to="/register">
-                            <button className="btn btn-dark rounded">Click to Create an Account</button>
+                            <button className="btn btn-dark rounded">Create Account</button>
                         </Link>
 
                     </div>

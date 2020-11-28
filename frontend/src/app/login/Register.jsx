@@ -19,6 +19,8 @@ export class Register extends React.Component{
             username: "",
             password: "",
             confirmPassword: "",
+            school: "",
+            major: "",
             status: "",
         };
 
@@ -26,6 +28,8 @@ export class Register extends React.Component{
         this.getUsername = this.getUsername.bind(this);
         this.getPassword = this.getPassword.bind(this);
         this.getConfirmPassword = this.getConfirmPassword.bind(this);
+        this.getSchool = this.getSchool.bind(this);
+        this.getMajor = this.getMajor.bind(this);
         this.onRegister = this.onRegister.bind(this);
     }
 
@@ -46,6 +50,13 @@ export class Register extends React.Component{
         this.setState({ confirmPassword : pass2.target.value })
     }
 
+    getSchool(school){
+        this.setState({ school : school.target.value })
+    }
+    getMajor(major){
+        this.setState({ major : major.target.value })
+    }
+
     onRegister(){
         const { password, confirmPassword } = this.state;
 
@@ -61,7 +72,7 @@ export class Register extends React.Component{
 
             let password = this.state.password;
             password = sha256(this.state.password);
-            var loginData = {email : this.state.email, password: password, username : this.state.username}
+            var loginData = {email : this.state.email, password: password, username : this.state.username, school : this.state.school, major: this.state.major }
             //console.log(this.login.registerUser(loginData))
         
             //axios.post(`${this.url}/user/create`, loginData)
@@ -133,6 +144,22 @@ export class Register extends React.Component{
                                     </div>
                                 </div>
                             </div>
+                            <div className="form-row">
+                                <div className="form-group col text-left">
+                                    <label for="exampleFormControlInput1">School</label>
+                                    <div className = "school" onChange = {this.getSchool}>
+                                        <input name="school" type="text" className="form-control mx-auto" placeholder="Southern Methodist University"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group col text-left">
+                                    <label for="exampleFormControlInput1">Major</label>
+                                    <div className = "major" onChange = {this.getMajor}>
+                                        <input name="major" type="text" className="form-control mx-auto" placeholder="Computer Science"/>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div className="footer">
@@ -144,7 +171,7 @@ export class Register extends React.Component{
                                 </div>
                             }
                             else
-                                return <button className="btn btn-primary rounded button disabled" type="button" >Complete Registration</button>    
+                                return <button className="btn btn-primary rounded button disabled" type="button" >Register</button>    
                         })()}
                     {/* <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/homepages")}>Complete Registration</button> */}
                     </div>

@@ -28,13 +28,13 @@ export class Calendar extends React.Component{
                             </ul>
                         </div>
                         <ul class="weekdays">
+                            <li>Su</li>
                             <li>Mo</li>
                             <li>Tu</li>
                             <li>We</li>
                             <li>Th</li>
                             <li>Fr</li>
                             <li>Sa</li>
-                            <li>Su</li>
                         </ul>
                     </tr>
                 </thead>
@@ -75,6 +75,7 @@ export class Calendar extends React.Component{
             </table>
         <div className="form-inline ">
             <button className="btn btn-primary col-sm-3" id="pre" onclick="pre()">Previous Month</button>
+            <div className="col-sm-3"></div>
             <button className="btn btn-primary col-sm-3" id="nex" onclick="nex()">Next Month</button>
         </div>
         <br/>
