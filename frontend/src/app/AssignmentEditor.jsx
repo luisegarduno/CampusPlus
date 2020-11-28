@@ -27,24 +27,30 @@ export class AssignmentEditor extends React.Component{
                         <form>
                             <div className="form-row">
                                 <div className="form-group col text-left">
-                                    <label htmlFor="exampleFormControlInput1">Assignment Name</label>
+                                    <label htmlFor="assignmentName">Assignment Name</label>
                                     <input type="text" className="form-control" placeholder="Current Assignment Name" onChange={e => this.setState({description: e.target.value})}/>
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col text-left">
-                                    <label htmlFor="exampleFormControlInput1">Course</label>
+                                    <label htmlFor="courseInput">Course</label>
                                     <input type="text" className="form-control" placeholder="Current Course Name"/>
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col text-left">
-                                    <label htmlFor="exampleFormControlInput1">Due Date</label>
+                                    <label htmlFor="dateInput">Due Date</label>
+                                    <input type="text" className="form-control" placeholder="Current Due Date"/>
+                                </div>
+                            </div>
+                            <div className="form-row">
+                                <div className="form-group col text-left">
+                                    <label htmlFor="descriptionInput">Description</label>
                                     <input type="text" className="form-control" placeholder="Current Due Date"/>
                                 </div>
                             </div>
                             <div className="dropdown">
-                              <button className="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <button className="btn btn-dark btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Assignment Type
                               </button>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -59,8 +65,11 @@ export class AssignmentEditor extends React.Component{
                     </div>
                 
                     <div className="footer">
-                        <button type="button" class="btn btn-primary btn-lg" onClick={e => this.submit()}>Save Changes</button>
-                        <button type="button" class="btn btn-primary btn-lg" onClick={e => this.submit()}>Mark As Complete</button>
+                        <div className ="p-3 btn-group" role="group" >
+                          <button type="button" class="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Save Changes</button>
+                          <button type="button" class="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Mark As Complete</button>
+                          <button type="button" class="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Delete</button>
+                    </div>
                     </div>
                 </div>
                 </div>
