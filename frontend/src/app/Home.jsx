@@ -41,7 +41,7 @@ export class Home extends React.Component {
             <div className = " p-3 card-deck row-cols-2 row align-items-center">
                 <div className="card">
                     <img src="/archive.png" className="p-2 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded">Archived Assignments</button>
+                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/finishedAssignments")}>Archived Assignments</button>
                 </div>
                 <div className="card">
                     <img src="/schedule.png" className="p-3 card-img-top" alt="..."/>
@@ -49,7 +49,7 @@ export class Home extends React.Component {
                 </div>
                 <div className="card">
                     <img src="/forum.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/homepages")}>Chat Forum</button>
+                        <button className="btn btn-primary text-white btn-sm rounded">Chat Forum</button>
                 </div>
              </div>
         </div>
