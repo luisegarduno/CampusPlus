@@ -18,7 +18,7 @@ export class CourseDashboard extends React.Component{
                     <thead className = "thead-dark">
                         <tr>
                             <th scope="col">Course ID</th>
-                            <th scope="col">Course name</th>
+                            <th scope="col">Course Name</th>
                             <th scope="col">Days</th>
                             <th scope="col">Professor</th>
                             <th scope="col">Start Time</th>
@@ -55,7 +55,7 @@ export class CourseDashboard extends React.Component{
                 </table>
                 <div className ="p-3 btn-group" role="group" >
                     <button type="button rounded" class="btn btn-primary" onClick={() => this.props.history.push("/courseOptions")}>Search Available Courses</button>
-                    <button type="button rounded" class="btn btn-primary">Archived Courses</button>
+                    <button type="button rounded" class="btn btn-primary" onClick={() => this.props.history.push("/completedCourses")}>Archived Courses</button>
                 </div>
             </div>
             </div>
