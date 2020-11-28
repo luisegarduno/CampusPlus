@@ -10,6 +10,7 @@ import { Calendar } from './app/Calendar';
 import { CourseDashboard } from './app/CourseDashboard';
 import { AssignmentEditor } from './app/AssignmentEditor';
 import { CourseSearch } from './app/CourseSearch';
+import { ArchivedAssignments } from '.app./ArchivedAssignments';
 
 const App = props => {
   return(
@@ -26,6 +27,7 @@ const App = props => {
           <Route exact path="/welcomepages" component={WelcomePage} />
           <Route exact path="/assignmentchanges" component={AssignmentEditor} />
           <Route exact path="/courseOptions" component={CourseSearch} />
+          <Route exact path="/finishedAssignments" component={ArchivedAssignments} />
         </Switch>
       </Router>
     </div>
