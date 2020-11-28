@@ -1,20 +1,17 @@
 import React from "react";
+import { Header } from './Header';
+
 export class CourseDashboard extends React.Component{
 
     render() {
         return(<>
-            <div className ="header">
-                <h1 className = "text-left bg-dark text-white">CampusPlus
-                    <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/welcomepages")}>Log Out</button>
-                </h1>
-            </div>
-            <div id="content">
+            <Header />
+            <nav className="navbar bg-white">
+                <span className="mb-0 h5 text-primary">Courses</span>
+            </nav>
+                
+            <div "container-fluid container-lg" id="content">
             <div className = "text-center mx-auto">
-                <div className ="p-3 btn-group" role="group" >
-                    <button type="button" class="btn btn-primary" onClick={() => this.props.history.push("/courseOptions")}>Search Courses</button>
-                    <button type="button" class="btn btn-primary">Add A Course?</button>
-                    <button type="button" class="btn btn-primary">Archived Courses?</button>
-                </div>
                 <div className="p-3 container">
                     <h2 className = " p-3 text-center text-dark">My Current Courses</h2>
                 <table className="table table-striped table-bordered">
@@ -56,6 +53,10 @@ export class CourseDashboard extends React.Component{
                         </tr>
                     </tbody>
                 </table>
+                <div className ="p-3 btn-group" role="group" >
+                    <button type="button rounded" class="btn btn-primary" onClick={() => this.props.history.push("/courseOptions")}>Search Available Courses</button>
+                    <button type="button rounded" class="btn btn-primary">Archived Courses</button>
+                </div>
             </div>
             </div>
             </div>
