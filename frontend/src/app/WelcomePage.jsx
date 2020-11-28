@@ -75,9 +75,10 @@ export class WelcomePage extends React.Component {
 
     render() {
         return( <>
-        <header>
-            <h1 className = "text-left bg-dark text-white">CampusPlus</h1>
-        </header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+                <span class="mb-0 h3 text-white">Campus</span>
+                <span class="mb-0 h3 text-primary">Plus</span>
+            </nav>
         
           <div className="p-5 container-fluid container-md">
                 <div className = "p-2 card text-center w-50 mx-auto">
