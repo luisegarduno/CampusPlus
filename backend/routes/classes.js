@@ -35,7 +35,7 @@ router.get('/user/:userID', (req, res) => {
 })
 
 router.post('/:userID', async (req, res) => {
-    var classID = req.param('classID')
+    var classID = req.body('classID')
     connection.query('INSERT INTO schedule (userID, classID) VALUES(?, ?)',
     [req.params.userID, classID], function (err, rows, fields) {
       if (err) {
