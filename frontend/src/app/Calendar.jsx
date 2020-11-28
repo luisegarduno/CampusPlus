@@ -1,15 +1,15 @@
 import React from "react";
 import './Calendar.css';
+import { Header } from './Header';
 export class Calendar extends React.Component{
 
     render() {
         return(<>
                 
-         <div className ="header">
-            <h1 className = "text-left bg-dark text-white">CampusPlus
-                <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/welcomepages")}>Log Out</button>
-            </h1>
-        </div>
+         <Header />
+            <nav className="navbar bg-white">
+                <span className="mb-0 h5 text-primary">Monthly Calendar</span>
+            </nav>
 
         <div className="p-5 card">
             <h3 className="card-header" id="mandyr"></h3>
