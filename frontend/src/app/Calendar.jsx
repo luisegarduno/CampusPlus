@@ -1,6 +1,7 @@
 import React from "react";
 import './Calendar.css';
 import { Header } from './Header';
+
 export class Calendar extends React.Component{
 
     render() {
@@ -11,8 +12,11 @@ export class Calendar extends React.Component{
                 <span className="mb-0 h5 text-primary">Monthly Calendar</span>
             </nav>
 
-        <div className="p-5 card">
-            <h3 className="card-header" id="mandyr"></h3>
+         <div className="p-3 card">
+            <h2>
+                <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/weekly")}>Week View</button>
+                <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/daily")}>Day View</button>
+            </h2>
             <table className="table table-bordered table-responsive-sm" id="calendar">
                 <thead>
                     <tr>
