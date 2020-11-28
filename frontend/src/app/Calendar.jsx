@@ -15,7 +15,7 @@ export class Calendar extends React.Component{
          <div className="p-3 card">
             <h2>
                 <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/weekly")}>Week View</button>
-                <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/daily")}>Day View</button>
+                <button className="btn btn-primary btn-sm float-right rounded">Day View</button>
             </h2>
             <table className="table table-bordered table-responsive-sm" id="calendar">
                 <thead>
