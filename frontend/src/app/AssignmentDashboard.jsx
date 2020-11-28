@@ -17,16 +17,18 @@ export class AssignmentDashboard extends React.Component {
                     <span className="mb-0 h5 text-primary">Assignments</span>
                 </nav>
                 <div className="p-5 container-fluid container-md">
-                    <h2 className = " p-2 text-center bg-dark text-white">Assignments</h2>
+                    <h2 className = " p-3 text-center text-dark">Current Assignments</h2>
                 <div id="content">
             <div className = "p-2 text-center mx-auto">
                 <table className="table table-striped">
-                    <thead>
+                    <thead className = "thead-dark">
                         <tr>
                             <th scope="col">Assignment</th>
                             <th scope="col">Course</th>
                             <th scope="col">Assignment Type</th>
                             <th scope="col">Due Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +37,7 @@ export class AssignmentDashboard extends React.Component {
                             <td>History</td>
                             <td>Paper</td>
                             <td>12/04/2020</td>
+                            <td>Write about Christopher Columbus</td>
                             <button type="button" className="btn btn-primary rounded">Edit</button>
                         </tr>
                         <tr>
@@ -42,6 +45,7 @@ export class AssignmentDashboard extends React.Component {
                             <td>Linear Algebra</td>
                             <td>Quiz</td>
                             <td>11/20/2020</td>
+                            <td>What are matrices and how do you use them</td>
                             <button type="button" className="btn btn-primary rounded">Edit</button>
                         </tr>
                         <tr>
@@ -49,6 +53,7 @@ export class AssignmentDashboard extends React.Component {
                             <td>Intro To Painting</td>
                             <td>Canvas Due</td>
                             <td>11/25/20</td>
+                            <td>I am a master of the brushes</td>
                             <button type="button" className="btn btn-primary rounded">Edit</button>
                         </tr>
                     </tbody>
