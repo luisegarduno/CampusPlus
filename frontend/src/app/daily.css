@@ -1,0 +1,17 @@
+h2 {
+    text-align: center;
+}
+
+.days {
+    text-align: center;
+}
+
+.weekdays {
+    text-align: center;
+}
+
+#calDay {
+    position: relative;
+    bottom: .4em;
+    text-decoration: underline;
+}
