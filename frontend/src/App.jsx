@@ -14,7 +14,7 @@ import { ArchivedAssignments } from './app/ArchivedAssignments';
 import { ArchivedCourses } from './app/ArchivedCourses';
 import { CalendarWeekly } from './app/CalendarWeekly';
 import { CalendarDaily } from './app/CalendarDaily';
-import { ViewCourse } from './ViewCourse';
+import { ViewCourse } from './app/ViewCourse';
 
 const App = props => {
   return(
