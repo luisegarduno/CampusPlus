@@ -76,20 +76,19 @@ router.post('/create', async(req, res) => {
     })
 })
 
-router.post('/login', async(req, res) => {
-    const username = req.body.username
-    const password = req.body.password
-
-    connection.query("SELECT COUNT(*) AS users_count FROM `canvasplus`.`user` u WHERE u.username = ? AND u.password = ?", [username, password], (err, rows) => {
+router.post('/login', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    connection.query('SELECT IF(EXISTS(SELECT * FROM `canvasplus`.`user` u1 WHERE u1.username = ? AND u1.password = ?), (SELECT u2.username AS result FROM `canvasplus`.`user` u2 WHERE u2.password = ?), 0) AS result;', [username, password, password], function (err, rows, fields) {
         if (err) {
-            logger.error("Error while executing Query: \n", err)
+            logger.error("Error while executing Query");
             res.status(400).json({
                 "data": [],
                 "error": "MySQL error"
             })
-        } else {
-            const accountExists = rows[0]['users_count'] > 0
-            res.status(200).json(accountExists)
+        }
+        else {
+            res.status(200).send(rows[0].result.toString());
         }
     })
 })

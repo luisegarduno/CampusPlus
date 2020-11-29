@@ -30,15 +30,15 @@ export class WelcomePage extends React.Component {
     }
     
     onLogin() {
-        // TODO : Create API that checks for hashedpassword instead of plain-text password
-        let hashedPassword = sha256(this.state.password);
+        const password = sha256(this.state.password);
 
-        var loginData = {username : this.state.username, password : hashedPassword}
-        console.log(this.login.verifyUser(loginData))
+        //var loginData = {username : this.state.username, password : password}
+        console.log(this.login.verifyUser(this.state.username, password))
+        //console.log(this.login.verifyUser(loginData))
         
-        axios.post(`${this.url}/user/login`, loginData)
+        axios.post(`${this.url}/user/login`, {username: this.state.username, password : password})
             .then(response => {
-                if(response.data !== 1 && response.data === false) {
+                if(response.data === 0) {
                     this.invalidLogin()
                 }
                 else {
@@ -75,9 +75,9 @@ export class WelcomePage extends React.Component {
 
     render() {
         return( <>
-            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-                <span class="mb-0 h3 text-white">Campus</span>
-                <span class="mb-0 h3 text-primary">Plus</span>
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+                <span className="mb-0 h3 text-white">Campus</span>
+                <span className="mb-0 h3 text-primary">Plus</span>
             </nav>
         
           <div className="p-5 container-fluid container-md">
@@ -121,13 +121,12 @@ export class WelcomePage extends React.Component {
                             else
                                 return <button className="btn btn-primary rounded button disabled" type="button" >Log In</button>
                         })()}
-
+                        <p></p>
                         <p>OR</p>
 
                         <Link to="/register">
                             <button className="btn btn-dark rounded">Create Account</button>
                         </Link>
-
                     </div>
                 </div>
             </div>

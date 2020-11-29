@@ -51,7 +51,8 @@ export class Profile extends React.Component {
                     <div class="form-group">
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
-                         <p>OR</p>
+                        <p></p>
+                        <p>OR</p>
                     <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/homepages")}>Return To Home Page</button>
                 </form>
                 </div>

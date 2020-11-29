@@ -1,14 +1,49 @@
 import React from 'react'
 //import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
-//import { productRepository } from '../Api/productRepository';
+import { ProductRepository } from '../Api/productRepository';
 import { Header } from './Header';
+import _ from 'lodash';
+
 
 export class AssignmentDashboard extends React.Component {
-    //api = new ProductRepository();
-    
-    state = {
+    username;
+    productRepository = new ProductRepository();
 
-    }//end state
+    constructor(props){
+        super(props);
+        this.username = localStorage['username']
+
+        this.state = {
+            assignments: [],
+            sortDirection : 'asc',
+            //userID: 1,
+
+        };
+        this.formatDate = this.formatDate.bind(this);
+        
+    };//end state
+
+    componentDidMount(){
+        this.productRepository.getAssignments().then(x => this.setState({assignments : x.data}))
+    }
+
+    sortBy(field) {
+        if (this.state.sortDirection === 'asc') {
+            this.setState({sortDirection: 'desc'})
+            this.setState({assignments: _.orderBy(this.state.assignments, field, this.state.sortDirection)
+            });
+        }
+        if (this.state.sortDirection === 'desc') {
+            this.setState({sortDirection: 'asc'})
+            this.setState({assignments: _.orderBy(this.state.assignments, field, this.state.sortDirection)
+            });
+        }
+    }
+
+    formatDate(date){
+        var properDate =  date.substring(5,7) + "-" + date.substring(8,10) + "-" + date.substring(0,4); 
+        return properDate;
+    }
 
     render() {
         return(<>
@@ -16,46 +51,35 @@ export class AssignmentDashboard extends React.Component {
                 <nav className="navbar bg-white">
                     <span className="mb-0 h5 text-primary">Assignments</span>
                 </nav>
+
                 <div className="p-5 container-fluid container-md">
                     <h2 className = " p-3 text-center text-dark">Current Assignments</h2>
                 <div id="content">
-            <div className = "p-2 text-center mx-auto">
+
+            <div className = "p-2 text-center mx-auto assignmentsTable tableSort">
                 <table className="table table-striped">
-                    <thead className = "thead-dark">
+                    <thead className="thead-dark">
                         <tr>
-                            <th scope="col">Assignment</th>
-                            <th scope="col">Course</th>
-                            <th scope="col">Assignment Type</th>
-                            <th scope="col">Due Date</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Edit</th>
+                            <th><button type="button" id="Assign" onClick={this.sortBy.bind(this, 'name')}>Assignment</button></th>
+                            <th><button type="button" id="Assign" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
+                            <th><button type="button" id="Assign" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
+                            <th><button type="button" id="Assign" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
+                            <th><button type="button" id="Assign" onClick={this.sortBy.bind(this, 'description')}>Description</button></th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr>
-                            <td>Research Paper</td>
-                            <td>History</td>
-                            <td>Paper</td>
-                            <td>12/04/2020</td>
-                            <td>Write about Christopher Columbus</td>
-                            <button type="button" className="btn btn-primary rounded">Edit</button>
-                        </tr>
-                        <tr>
-                            <td>Math Quiz</td>
-                            <td>Linear Algebra</td>
-                            <td>Quiz</td>
-                            <td>11/20/2020</td>
-                            <td>What are matrices and how do you use them</td>
-                            <button type="button" className="btn btn-primary rounded">Edit</button>
-                        </tr>
-                        <tr>
-                            <td>Painting Due</td>
-                            <td>Intro To Painting</td>
-                            <td>Canvas Due</td>
-                            <td>11/25/20</td>
-                            <td>I am a master of the brushes</td>
-                            <button type="button" className="btn btn-primary rounded">Edit</button>
-                        </tr>
+                        {this.state.assignments.map(assign => (
+                            <tr key={assign.id}>
+                                <td id="assign">{assign.assignmentID}</td>
+                                <td id="assign">{assign.classID}</td>
+                                <td id="assign">{assign.assignmentType}</td>
+                                <td id="assign">{this.formatDate(assign.dueDate)}</td>
+                                <td id="assign">{assign.description}</td>
+                            </tr>
+                        ))}
+                        
+                            {/*<button type="button" className="btn btn-primary rounded">Edit</button> */}
                     </tbody>
                 </table>
                 <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/assignmentchanges")}>Add Assignment</button>

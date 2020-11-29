@@ -3,25 +3,10 @@ import axios from 'axios'
 export class LoginRepository {
 
     url = 'http://localhost:8000'
-    config = {
-    }
     
     registerUser(loginData){
         return new Promise((resolve,reject) =>{
-            axios.get(`${this.url}/user/create`, loginData, this.config)
-                .then(x => {
-                resolve(x.data);
-            })
-            .catch(x => {
-                alert(x);
-                reject(x);
-            })
-        })
-    }
-
-    verifyUser(loginData){
-        return new Promise((resolve,reject) =>{
-            axios.post(`${this.url}/user/login`, loginData, this.config)
+            axios.get(`${this.url}/user/create`, loginData)
                 .then(x => {
                     resolve(x.data);
                 })
@@ -32,4 +17,17 @@ export class LoginRepository {
         })
     }
 
+    verifyUser(loginData){
+        return new Promise((resolve,reject) =>{
+            axios.post(`${this.url}/user/login`, loginData)
+                .then(x => {
+                    resolve(x.data);
+                })
+            .catch(x => {
+                alert(x);
+                reject(x);
+            })
+        })
+    }
+    
 }
