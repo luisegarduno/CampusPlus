@@ -8,7 +8,7 @@ export class CalendarWeekly extends React.Component{
         super(props);
         this.state = {
             product: {
-               month: ''
+               //month: ''
             }
         };
     }

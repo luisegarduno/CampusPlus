@@ -30,11 +30,10 @@ export class WelcomePage extends React.Component {
     }
     
     onLogin() {
-        const password = sha256(this.state.password);
+        let password = this.state.password
+        password = sha256(this.state.password);
 
-        //var loginData = {username : this.state.username, password : password}
-        console.log(this.login.verifyUser(this.state.username, password))
-        //console.log(this.login.verifyUser(loginData))
+        console.log(this.login.verifyUser({username: this.state.username, password : password}))
         
         axios.post(`${this.url}/user/login`, {username: this.state.username, password : password})
             .then(response => {

@@ -1,15 +1,15 @@
 import React from "react";
 //import { Redirect } from 'react-router-dom'
-//import { ProductRepository } from '../../Api/productRepository'
+import { ProductRepository } from '../Api/productRepository'
 import { Header } from './Header';
 
 export class AssignmentEditor extends React.Component{
   
-  //  api = new ProductRepository();
+    api = new ProductRepository();
 
-  state = {
+    state = {
  
-};
+    };
 
     render() {
         return(<>
@@ -66,9 +66,9 @@ export class AssignmentEditor extends React.Component{
                 
                     <div className="footer">
                         <div className ="p-3 btn-group" role="group" >
-                          <button type="button" class="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Save Changes</button>
-                          <button type="button" class="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Mark As Complete</button>
-                          <button type="button" class="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Delete</button>
+                          <button type="button" className="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Save Changes</button>
+                          <button type="button" className="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Mark As Complete</button>
+                          <button type="button" className="btn btn-primary btn-md btn-primary" onClick={e => this.submit()}>Delete</button>
                     </div>
                     </div>
                 </div>
