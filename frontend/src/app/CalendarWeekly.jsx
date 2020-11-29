@@ -1,5 +1,5 @@
 import React from "react";
-//import './Weekly.css';
+import './Weekly.css';
 import { Header } from './Header';
 
 export class CalendarWeekly extends React.Component{
