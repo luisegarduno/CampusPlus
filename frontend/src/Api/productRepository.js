@@ -21,6 +21,17 @@ export class ProductRepository {
         })
     }
 
+    getCourses(id){
+    return new Promise((resolve, reject) => {
+        axios.get(`${this.url}/classes/user/${id}`, this.config)
+            .then(x => resolve(x.data))
+            .catch(x => {
+                alert(x);
+                reject(x);
+            })
+        })
+   }
+
 //    addAppointment(form) {
 //        return new Promise((resolve, reject) => {
 //            axios.post(`${this.url}/api/assignments`, form, this.config)
