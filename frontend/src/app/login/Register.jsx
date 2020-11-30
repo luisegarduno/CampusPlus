@@ -6,7 +6,6 @@ import { Redirect } from "react-router-dom";
 
 export class Register extends React.Component{
 
-    url = 'http://localhost:8000'
     login = new LoginRepository()
     config = {
     }
@@ -71,7 +70,7 @@ export class Register extends React.Component{
             this.setState({ status : true })
 
             let password = this.state.password;
-            password = sha256(this.state.password);
+            password = sha256(password);
             var loginData = {email : this.state.email, password: password, username : this.state.username, school : this.state.school, major: this.state.major }
             //console.log(this.login.registerUser(loginData))
         
@@ -86,7 +85,7 @@ export class Register extends React.Component{
             //        }
             //})
 
-            axios.post(`${this.url}/user/create`, loginData)
+            axios.post(`${this.login.url}/user/create`, loginData)
         }
     }
 

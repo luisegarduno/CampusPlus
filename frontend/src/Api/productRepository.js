@@ -1,8 +1,12 @@
 import axios from 'axios'
 
 export class ProductRepository {
-    url = 'http://localhost:8000';
-// TODO: Create API calls for the things below
+
+
+    // Leave this here
+    url = false ? 'http://44.233.149.216:8000' : 'http://localhost:8000';
+
+    // TODO: Create API calls for the things below
 
     getAssignments(id){
         return new Promise((resolve,reject) => {

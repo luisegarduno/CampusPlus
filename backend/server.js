@@ -5,9 +5,6 @@ const cors = require('cors');
 const mysql = require('mysql');
 const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 
-const connection = require('./connection')
-
-
 // set up some configs for express.
 const config = {
   name: 'sample-express-app',
@@ -32,10 +29,10 @@ const assignment = require('./routes/assignment')
 const classes = require('./routes/classes')
 const comment = require('./routes/comment')
 
-app.use('/user', user)
-app.use('/assignment', assignment)
-app.use('/classes', classes)
-app.use('/comment', comment)
+user(app, logger);
+assignment(app, logger);
+classes(app, logger);
+comment(app,comment);
 
 app.get('/', (req, res) => {
   res.status(200).send('Go to 0.0.0.0:3000.');

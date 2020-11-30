@@ -3,13 +3,11 @@ import axios from 'axios'
 import { sha256 } from 'js-sha256';
 import logo from "../images/logo2.png"
 //import { Profile } from './Profile';
-//import { Register } from './login/Register';
 import { Redirect, Link } from "react-router-dom";
 import { LoginRepository } from '../Api/loginRepository';
 
 export class WelcomePage extends React.Component {
 
-    url = 'http://localhost:8000'
     login = new LoginRepository();
 
     constructor(props){
@@ -35,7 +33,7 @@ export class WelcomePage extends React.Component {
 
         console.log(this.login.verifyUser({username: this.state.username, password : password}))
         
-        axios.post(`${this.url}/user/login`, {username: this.state.username, password : password})
+        axios.post(`${this.login.url}/user/login`, {username: this.state.username, password : password})
             .then(response => {
                 if(response.data === 0) {
                     this.invalidLogin()
@@ -129,7 +127,7 @@ export class WelcomePage extends React.Component {
                     </div>
                 </div>
                 <Link to="/homepages">
-                    <button type="button" class="btn btn-link text-dark">Continue As Guest</button>
+                    <button type="button" className="btn btn-link text-dark">Continue As Guest</button>
                 </Link>
             </div>
         </div>

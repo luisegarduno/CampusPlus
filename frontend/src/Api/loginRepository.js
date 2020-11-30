@@ -2,7 +2,8 @@ import axios from 'axios'
 
 export class LoginRepository {
 
-    url = 'http://localhost:8000'
+    // Leave this here
+    url = false ? 'http://44.233.149.216:8000' : 'http://localhost:8000';
     
     registerUser(loginData){
         return new Promise((resolve,reject) =>{

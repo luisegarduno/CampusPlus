@@ -8,15 +8,13 @@ export class CalendarWeekly extends React.Component{
         super(props);
         this.state = {
             product: {
-               //month: ''
+               month: ''
             }
         };
     }
     month(){
-        var today = new Date();
-      var month = today.getMonth();
-
-
+        //var today = new Date();
+        //var month = today.getMonth();
     }
 
     render() {
