@@ -1,26 +1,24 @@
 import React from "react";
 import { Header } from './Header';
-import {Course} from '../models/Class';
-import {ProductRepository} from '../Api/productRepository';
+import { Course } from '../models/Class';
+import { ClassesRepository} from '../Api/classesRepository';
 
 export class CourseDashboard extends React.Component{
     
-        constructor(props){
+    constructor(props){
         super(props);
-            this.state = {
-
-       courses: [],
-       userID: 1,
-     
-
-            };
-    this.productRepo = new ProductRepository();
+        this.state = {
+            courses: [],
+            userID: 1,
+        };
+        
+        this.classesRepo = new ClassesRepository();
 
     }//end state
 
 
     componentDidMount(){
-        this.productRepo.getCourses(this.state.userID)
+        this.classesRepo.getCourses(this.state.userID)
         .then(res => {
             console.log(res)
             res.forEach(ele => {
@@ -59,7 +57,15 @@ export class CourseDashboard extends React.Component{
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.state.courses.map((x) => <tr key = {x.classID}> <td>{x.classDaysID}</td> <td>{x.description}</td> <td>{x.yearOffered}</td> <td>{x.seasonOffered}</td><td>{x.classTimeStart}</td> <td>{x.classTimeEnd}</td> </tr>)}
+                                { this.state.courses.map((x) =>
+                                    <tr key = {x.classID}>
+                                        <td>{x.classDaysID}</td>
+                                        <td>{x.description}</td>
+                                        <td>{x.yearOffered}</td>
+                                        <td>{x.seasonOffered}</td>
+                                        <td>{x.classTimeStart}</td>
+                                        <td>{x.classTimeEnd}</td>
+                                    </tr>)}
                                 <tr>
                                     {/* <td>ASIM 1310</td>
                                     <td>Creative Coding 1</td>

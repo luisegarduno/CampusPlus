@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from './Header';
-import {Comment} from '../models/Comment';
+//import { Comment } from '../models/Comment';
 
 export class ForumDashboard extends React.Component {
 

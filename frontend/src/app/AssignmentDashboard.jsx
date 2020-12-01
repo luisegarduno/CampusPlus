@@ -1,6 +1,6 @@
 import React from 'react'
 //import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
-import { ProductRepository } from '../Api/productRepository';
+import { AssignmentRepository } from '../Api/assignmentRepository';
 import { Header } from './Header';
 import { Assignment } from '../models/Assignment';
 import _ from 'lodash';
@@ -8,8 +8,11 @@ import _ from 'lodash';
 
 export class AssignmentDashboard extends React.Component {
 
+    username;
+
     constructor(props){
         super(props);
+        this.username = localStorage['username'];
 
         this.state = {
 
@@ -18,14 +21,14 @@ export class AssignmentDashboard extends React.Component {
             userID: 1,
         };
 
-        this.productRepo = new ProductRepository();
+        this.assignmentRepo = new AssignmentRepository();
         this.formatDate = this.formatDate.bind(this);
 
     }//end state
 
 
     componentDidMount(){
-        this.productRepo.getAssignments(this.state.userID)
+        this.assignmentRepo.getAssignments(this.state.userID)
         .then(res => {
             console.log(res)
             res.data.forEach(ele => {
@@ -51,7 +54,8 @@ export class AssignmentDashboard extends React.Component {
         }
     }
 
-    formatDate(date){
+    formatDate(myDate){
+        var date = String(myDate);
         var properDate =  date.substring(5,7) + "-" + date.substring(8,10) + "-" + date.substring(0,4); 
         return properDate;
     }
@@ -82,9 +86,16 @@ export class AssignmentDashboard extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                    { this.state.assignments.map((x) => <tr key = {x.assignmentID}> <td>{x.name}</td> <td>{x.classID}</td> <td>{x.assignmentType}</td> <td>{x.dueDate}</td><td>{x.description}</td> </tr>)}
+                        { this.state.assignments.map((x) =>
+                        <tr key = {x.assignmentID}>
+                            <td>{x.name}</td>
+                            <td>{x.classID}</td>
+                            <td>{x.assignmentType}</td>
+                            <td>{this.formatDate(x.dueDate)}</td>
+                            <td>{x.description}</td>
+                            </tr>)}
                         <tr>
-                            <button type="button" className="btn btn-primary rounded float-right">Edit</button>
+                           {/* <button type="button" className="btn btn-primary rounded float-right">Edit</button> */}
                         </tr>
                     </tbody>
                 </table>

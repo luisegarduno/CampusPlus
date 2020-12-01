@@ -1,12 +1,12 @@
 import React from "react";
 import axios from 'axios';
 import { sha256 } from 'js-sha256'
-import { LoginRepository } from '../../Api/loginRepository'
+import { UserRepository } from '../../Api/userRepository'
 import { Redirect } from "react-router-dom";
 
 export class Register extends React.Component{
 
-    login = new LoginRepository()
+    login = new UserRepository()
     config = {
     }
 

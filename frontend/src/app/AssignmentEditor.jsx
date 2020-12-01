@@ -1,11 +1,11 @@
 import React from "react";
 //import { Redirect } from 'react-router-dom'
-import { ProductRepository } from '../Api/productRepository'
+import { AssignmentRepository } from '../Api/assignmentRepository'
 import { Header } from './Header';
 
 export class AssignmentEditor extends React.Component{
   
-    api = new ProductRepository();
+    assignment = new AssignmentRepository();
 
     state = {
  

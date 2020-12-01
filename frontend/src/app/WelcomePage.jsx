@@ -4,11 +4,11 @@ import { sha256 } from 'js-sha256';
 import logo from "../images/logo2.png"
 //import { Profile } from './Profile';
 import { Redirect, Link } from "react-router-dom";
-import { LoginRepository } from '../Api/loginRepository';
+import { UserRepository } from '../Api/userRepository';
 
 export class WelcomePage extends React.Component {
 
-    login = new LoginRepository();
+    login = new UserRepository();
 
     constructor(props){
         localStorage.setItem('username', null)
