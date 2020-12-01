@@ -47,10 +47,11 @@ export class CourseDashboard extends React.Component{
                                 <tr>
                                     <th scope="col">Course ID</th>
                                     <th scope="col">Course Name</th>
-                                    <th scope="col">Days</th>
+                                    <th scope="col">Year</th>
                                     <th scope="col">Professor</th>
                                     <th scope="col">Start Time</th>
                                     <th scope="col">End Time</th>
+                                    <th scope="col">Edit</th>
                                     {/* <th scope="col">Professor</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Edit</th> */}
@@ -65,6 +66,7 @@ export class CourseDashboard extends React.Component{
                                         <td>{x.seasonOffered}</td>
                                         <td>{x.classTimeStart}</td>
                                         <td>{x.classTimeEnd}</td>
+                                        <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button>
                                     </tr>)}
                                 <tr>
                                     {/* <td>ASIM 1310</td>
@@ -74,8 +76,8 @@ export class CourseDashboard extends React.Component{
                                     <td>10:00 AM</td>
                                     <td>10:50 AM</td>
                                     <td>January 2021</td>
-                                    <td>Explore the mystery of code in a creative way.</td> */}
-                                    <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button>
+                                    <td>Explore the mystery of code in a creative way.</td> 
+                                    <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button> */}
                                 </tr>
                                 <tr>
                                     {/* <td>ASPT 1300</td>
@@ -85,8 +87,8 @@ export class CourseDashboard extends React.Component{
                                     <td>12:30 PM</td>
                                     <td>3:20 PM</td>
                                     <td>Spring 2021</td>
-                                    <td>Learn how to use a paintbrush like a pro</td> */}
-                                    <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button>
+                                    <td>Learn how to use a paintbrush like a pro</td> 
+                                    <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button> */}
                                 </tr>
                             </tbody>
                         </table>
