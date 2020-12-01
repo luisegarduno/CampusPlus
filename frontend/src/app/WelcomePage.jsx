@@ -126,7 +126,7 @@ export class WelcomePage extends React.Component {
                         </Link>
                     </div>
                 </div>
-                <Link to="/homepages">
+                <Link to="/guestpages">
                     <button type="button" className="btn btn-link text-dark">Continue As Guest</button>
                 </Link>
             </div>
