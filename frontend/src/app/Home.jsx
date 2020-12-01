@@ -7,7 +7,7 @@ export class Home extends React.Component {
 
     constructor(props){
         super(props);
-        this.username = localStorage['username']
+        this.username = localStorage['username'];
      }
     
     render() {

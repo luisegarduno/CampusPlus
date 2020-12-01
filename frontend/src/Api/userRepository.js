@@ -34,7 +34,7 @@ export class UserRepository {
     }
 
     // GET Returns all information depending on username (passed into the BODY) : http://localhost:8000/user/
-    userBody(username){
+    userDetailsBody(username){
         return new Promise((resolve,reject) =>{
             axios.get(`${this.url}/user/`, username)
                 .then(x => {
@@ -48,7 +48,7 @@ export class UserRepository {
     }
 
     // GET Returns all information depending on userID (passed as request parameter): http://localhost:8000/user/:userID
-    userInfo(userID){
+    userDetailsParam(userID){
         return new Promise((resolve,reject) =>{
             axios.get(`${this.url}/user/${userID}`)
                 .then(x => {
@@ -76,9 +76,10 @@ export class UserRepository {
     }
 
     // PUT update profile : http://localhost:8000/user/:userID/updateProfile
-    updateProfile(userID, grade, school, major, gradDate){
+    // profileData = grade, school, major, gradDate
+    updateProfile(userID, profileData){
         return new Promise((resolve,reject) =>{
-            axios.put(`${this.url}/user/${userID}/updateProfile`, grade, school, major, gradDate)
+            axios.put(`${this.url}/user/${userID}/updateProfile`, profileData)
                 .then(x => {
                     resolve(x.data);
                 })
