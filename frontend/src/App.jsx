@@ -17,6 +17,7 @@ import { CalendarDaily } from './app/CalendarDaily';
 import { ViewCourse } from './app/ViewCourse';
 import { GuestHome } from './app/GuestHome';
 import { CourseList } from './app/CourseList';
+import { ForumDashboard } from './app/ForumDashboard';
 
 const App = props => {
   return(
@@ -40,6 +41,7 @@ const App = props => {
           <Route exact path="/viewCourses" component={ViewCourse} />
           <Route exact path ="/guestpages" component={GuestHome} />
           <Route exact path ="/courselists" component={CourseList} />
+          <Route exact path ="/forumReviews" component={ForumDashboard} />
         </Switch>
       </Router>
     </div>
