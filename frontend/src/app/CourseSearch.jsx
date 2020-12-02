@@ -7,13 +7,13 @@ export class CourseSearch extends React.Component{
         return(<>
             <Header />
             <nav className="navbar bg-white">
-                <span className="mb-0 h5 text-primary">Course Search</span>
+                <span className="mb-0 h5 text-primary ">Course Search</span>
             </nav>
-            <div className = "p-3 container-sm container-fluid text-center w-50">
+            <div className = "p-3 container-sm container-fluid text-center">
                 <div className ="header"> 
                 </div>
                 <form>
-                    <h2 className = "text-left">Search Courses</h2>
+                    <h2 className = "text-left font-weight-bold">Search Courses</h2>
                     <div>
                     <select className="p-2 custom-select mb-3">
                         <option selected>Search By Semester (required)</option>

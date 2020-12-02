@@ -12,7 +12,7 @@ export class ArchivedCourses extends React.Component{
             <div className = "container-fluid container-lg" id="content">
             <div className = "text-center mx-auto">
                 <div className="p-3 container">
-                    <h2 className = " p-3 text-center text-dark">Completed Courses</h2>
+                    <h2 className = " p-3 text-center text-dark font-weight-bold">Completed Courses</h2>
                 <table className="table table-striped table-bordered">
                     <thead className = "thead-dark">
                         <tr>

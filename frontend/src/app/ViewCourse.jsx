@@ -16,7 +16,7 @@ export class ViewCourse extends React.Component{
             <div className = "text-center mx-auto">
                 
                 <div className="p-3 container">
-                    <h2 className = " p-3 text-center text-dark">Course Information</h2>
+                    <h2 className = " p-3 text-center text-dark font-weight-bold">Course Information</h2>
                 <table className="table table-striped table-bordered">
                     <thead className = "thead-dark">
                         <tr>

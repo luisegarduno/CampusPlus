@@ -1,11 +1,35 @@
 import React from 'react'
-//import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 import { Header } from './Header';
-//import { Redirect } from 'react-router-dom'
+import { ProductRepository } from '../Api/productRepository';
+import {Assignment } from '../models/Assignment';
 
 export class ArchivedAssignments extends React.Component {
     
-    state = {}
+    constructor(props){
+        super(props);
+
+        this.state = {
+            archieve: [],
+            userID: 1,
+        };
+
+        this.productRepo = new ProductRepository();
+    }
+
+    componentDidMount(){
+        this.productRepo.getAssignments(this.state.userID)
+        .then(res => {
+            console.log(res)
+            res.data.forEach(ele => {
+                if(ele.completionStatus === 1){
+                this.setState({archieve:[...this.state.archieve, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
+                
+             } });
+     
+        console.log(this.state);
+            })
+            .catch(res => console.log(res));
+    }
 
     render() {
         return(<>
@@ -13,11 +37,11 @@ export class ArchivedAssignments extends React.Component {
             <nav className="navbar bg-white">
                 <span className="mb-0 h5 text-primary">Archived Assignments</span>
             </nav>
-
-                <div className="p-5 container-fluid container-md">
-                    <h2 className = " p-3 text-center text-dark">Completed Assignments</h2>
-                <div id="content">
-            <div className = "text-center mx-auto">
+            <div className="p-3 container-fluid container-md">
+            <form className="mb-1 w-75 mx-auto">
+                <h2 className = "p-3 text-center text-dark font-weight-bold">Completed Assignments</h2>
+            <div id="content">
+            <div className = "text-center mx-auto w-auto table-responsive-md">
                 <table className="table table-striped">
                     <thead className = "thead-dark">
                         <tr>
@@ -30,34 +54,14 @@ export class ArchivedAssignments extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Research Paper</td>
-                            <td>History</td>
-                            <td>Paper</td>
-                            <td>12/04/2020</td>
-                            <td>Write about Christopher Columbus</td>
-                            <button type="button" className="btn btn-primary btn-sm rounded">View</button>
-                        </tr>
-                        <tr>
-                            <td>Math Quiz</td>
-                            <td>Linear Algebra</td>
-                            <td>Quiz</td>
-                            <td>11/20/2020</td>
-                            <td>What are matrices and how do you use them</td>
-                            <button type="button" className="btn btn-primary btn-sm rounded">View</button>
-                        </tr>
-                        <tr>
-                            <td>Painting Due</td>
-                            <td>Intro To Painting</td>
-                            <td>Canvas Due</td>
-                            <td>11/25/20</td>
-                            <td>I am a master of the brushes</td>
-                            <button type="button" className="btn btn-primary btn-sm rounded">View</button>
-                        </tr>
-                    </tbody>
+                    { this.state.archieve.map((x) => <tr key = {x.assignmentID}> <td>{x.name}</td> <td>{x.classID}</td> <td>{x.assignmentType}</td> <td>{x.dueDate}</td><td>{x.description}</td> 
+                    <button type="button" className="btn btn-primary btn-sm rounded">View</button>
+                    </tr>)}
+                    </tbody> 
                 </table>
             </div>
             </div>
+            </form>
             </div>
           </>
         )

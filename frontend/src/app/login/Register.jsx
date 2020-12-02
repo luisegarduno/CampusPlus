@@ -92,8 +92,8 @@ export class Register extends React.Component{
     render() {
         return(<>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <span className="mb-0 h3 text-white">Campus</span>
-                <span className="mb-0 h3 text-primary">Plus</span>
+                <span className="mb-0 h3 text-white font-weight-bold">Campus</span>
+                <span className="mb-0 h3 text-primary font-weight-bold">Plus</span>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                     <form className="form-inline ">
                         <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/welcomepages")}>Return</button>
@@ -103,12 +103,12 @@ export class Register extends React.Component{
             <nav className="navbar bg-white">
                 <span className="mb-0 h5 text-primary">Register</span>
             </nav>
-            <div className="p-5 container-sm">
-                <div className = "p-2 card text-center w-50 mx-auto">
+            <div className="p-3 container-fluid container-sm">
+                <div className = "card text-center mb-1 w-75 mx-auto">
+                    <div className = "jumbotron-fluid h-75 bg-light text-white text-center">
+                        <h4 className="p-4 card-title font-weight-bold">Register</h4>
+                    </div>
                     <div className = "form-group">
-                        <div className= "card-header">
-                            <h5 className="card-title">Register</h5>
-                        </div>
                     <div className = "card-body">
                         <form>
                             <div className="form-row">

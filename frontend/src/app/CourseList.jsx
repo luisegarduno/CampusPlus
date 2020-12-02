@@ -36,8 +36,8 @@ export class CourseList extends React.Component{
         return(<>
             
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <span className="mb-0 h3 text-white">Campus</span>
-                <span className="mb-0 h3 text-primary">Plus</span>
+                <span className="mb-0 h3 text-white font-weight-bold">Campus</span>
+                <span className="mb-0 h3 text-primary font-weight-bold">Plus</span>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ">
                         <li className="nav-item text-white">
@@ -48,7 +48,7 @@ export class CourseList extends React.Component{
                 <a href="/welcomepages" className="btn btn-primary btn-sm rounded" role="button" aria-pressed="true">LOG OUT</a>
             </nav>
             <nav className="navbar bg-white">
-                <span className="mb-0 h5 text-primary">Courses Offered</span>
+                <span className="mb-0 h5 text-primary font-weight-bold">Courses Offered</span>
             </nav>
 
             <div className = "container-fluid container-lg" id="content">

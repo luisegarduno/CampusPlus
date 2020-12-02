@@ -73,14 +73,14 @@ export class WelcomePage extends React.Component {
     render() {
         return( <>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-                <span className="mb-0 h3 text-white">Campus</span>
-                <span className="mb-0 h3 text-primary">Plus</span>
+                <span className="mb-0 h4 text-white font-weight-bold">Campus</span>
+                <span className="mb-0 h4 text-primary font-weight-bold">Plus</span>
             </nav>
         
-          <div className="p-5 container-fluid container-md">
-                <div className = "p-2 card text-center w-50 mx-auto">
+          <div className="p-4 container-fluid container-sm">
+                <div className = "p-1 card mb-1 w-75 mx-auto text-center">
                     <div className = "form-group">
-                        <img src={logo} alt="logo" className="img-rounded img-responsive" id = "image" />
+                        <img src={logo} alt="logo" className="img-rounded img-fluid" id = "image" />
 
                     <div className = "card-body">
                         <form id="loginInfo">

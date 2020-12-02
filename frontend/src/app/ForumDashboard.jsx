@@ -13,7 +13,7 @@ export class ForumDashboard extends React.Component {
             
             <div className="p-4 container-fluid container-md">
                 <div className = "jumbotron-fluid bg-white text-center">
-                    <h4 className="display-4 text-dark">Course Forum </h4>
+                    <h5 className="display-4 text-dark font-weight-bold">Course Forum </h5>
                     <div className = "row justify-content-center">
                         <button className="btn btn-dark text-white btn-sm rounded">Create New Thread</button>
                     </div>
@@ -26,21 +26,21 @@ export class ForumDashboard extends React.Component {
                     </a>
                     <a href="#" className="list-group-item list-group-item-action">
                         <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1">Graphical User Interface Reviews</h5>
+                            <h5 className="mb-1 font-weight-bold">Graphical User Interface Reviews</h5>
                             <small className="text-muted align-items-right">3 days ago</small>
                         </div>
-                        <p className="mb-1">Reviews for a CS Class at SMU</p>
-                        <small className="text-muted">Current number of comments:</small>
-                        <span className="badge badge-primary badge-pill">14</span>
+                        <p className="mb-1 ">Reviews for a CS Class at SMU</p>
+                        <small className="text-muted">Comment Count: </small>
+                        <span className="badge badge-primary badge-pill"> 14</span>
                     </a>
                     <a href="#" className="list-group-item list-group-item-action">
                         <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1">Art History</h5>
+                            <h5 className="mb-1 font-weight-bold" >Art History</h5>
                             <small className="text-muted align-items-right">5 days ago</small>
                         </div>
                         <p className="mb-1">What is Meadows Like</p>
-                        <small className="text-muted">Current number of comments:</small>
-                        <span className="badge badge-primary badge-pill">5</span>
+                        <small className="text-muted">Comment Count: </small>
+                        <span className="badge badge-primary badge-pill"> 5</span>
                     </a>
                 </div>
 
@@ -52,12 +52,12 @@ export class ForumDashboard extends React.Component {
                     </a>
                     <a href="#" className="list-group-item list-group-item-action">
                         <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1">KNW 2300</h5>
+                            <h5 className="mb-1 font-weight-bold">KNW 2300</h5>
                             <small className="text-muted align-items-right">15 days ago</small>
                         </div>
                         <p className="mb-1">A reminder of our torture</p>
-                        <small className="text-muted">Current number of comments:</small>
-                        <span className="badge badge-primary badge-pill">7</span>
+                        <small className="text-muted">Comment Count: </small>
+                        <span className="badge badge-primary badge-pill"> 7</span>
                     </a>
                 </div>
             </div>

@@ -40,9 +40,9 @@ export class CourseDashboard extends React.Component{
             
             <div className="container-fluid container-lg" id="content">
                 <div className = "text-center mx-auto">
-                    <div className="p-3 container">
-                        <h2 className = " p-3 text-center text-dark">My Current Courses</h2>
-                        <table className="table table-striped table-bordered">
+                    <div className="p-3 container justify-content-center">
+                        <h2 className = " p-3 text-center text-dark font-weight-bold ">My Current Courses</h2>
+                        <table className="table table-striped table-bordered w-auto table-responsive-md">
                             <thead className = "thead-dark">
                                 <tr>
                                     <th scope="col">Course ID</th>
@@ -68,28 +68,6 @@ export class CourseDashboard extends React.Component{
                                         <td>{x.classTimeEnd}</td>
                                         <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button>
                                     </tr>)}
-                                <tr>
-                                    {/* <td>ASIM 1310</td>
-                                    <td>Creative Coding 1</td>
-                                    <td>MWF</td>
-                                    <td>James Burns</td>
-                                    <td>10:00 AM</td>
-                                    <td>10:50 AM</td>
-                                    <td>January 2021</td>
-                                    <td>Explore the mystery of code in a creative way.</td> 
-                                    <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button> */}
-                                </tr>
-                                <tr>
-                                    {/* <td>ASPT 1300</td>
-                                    <td>Introduction to Painting</td>
-                                    <td>TuTh</td>
-                                    <td>Nyugen Smith</td>
-                                    <td>12:30 PM</td>
-                                    <td>3:20 PM</td>
-                                    <td>Spring 2021</td>
-                                    <td>Learn how to use a paintbrush like a pro</td> 
-                                    <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button> */}
-                                </tr>
                             </tbody>
                         </table>
                         <div className ="p-3 btn-group" role="group" >

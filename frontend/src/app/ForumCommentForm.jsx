@@ -8,7 +8,7 @@ export class ForumCommentForm extends React.Component{
             <div className = "p-4 container-fluid container-sm">
             <form className = "card">
                 <div className = "card-header bg-dark text-light">
-                   <h4 id = "addReviewTitle">Create New Comment</h4> 
+                   <h4 id = "addReviewTitle font-weight-bold">Create New Comment</h4> 
                 </div>
                 <div className = "p-4 cardBody">  
                     <div className ="form-row">

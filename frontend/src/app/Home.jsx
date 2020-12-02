@@ -15,8 +15,8 @@ export class Home extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
             <ul className="navbar-nav">
                 <li className="nav-item nav-link">
-                    <a href="/homepages" className="mb-0 h3 text-white">Campus</a>
-                    <a href="/homepages" className="mb-0 h3 text-primary">Plus</a>
+                    <a href="/homepages" className="mb-0 h3 text-white font-weight-bold">Campus</a>
+                    <a href="/homepages" className="mb-0 h3 text-primary font-weight-bold">Plus</a>
                 </li>
             </ul>
             <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
@@ -28,38 +28,41 @@ export class Home extends React.Component {
         <nav className="navbar bg-white">
             <span className="mb-0 h5 text-primary">Home</span>
         </nav>
-         <div className = "p-4 container-fluid container-sm w-50">
-             <header className = "p-3">
-                 <h2 className = "p-2 text-center text-dark">Welcome, {this.username}!</h2>
+
+         <div className = "p-2 container-fluid container-md">
+         <form className="mb-1 w-75 mx-auto mb-auto">
+             <header className = "p-1">
+                 <h3 className = "text-center text-dark font-weight-bold">Welcome, {this.username}!</h3>
              </header>
-            <div className = " p-3 card-deck row-cols-2 row align-items-center">
-                <div className="card">
-                    <img src="/profileIcon.png" className="card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/profiles")}>Edit Profile</button>
+            <div className = "p-2 card-deck row-cols-3 row align-items-center">
+                <div className="p-1 card h-100 w-100">
+                    <img src="/profileIcon.png" className="p-2 card-img-top" alt="..."/>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/profiles")}>Edit Profile</button>
                 </div>
-                <div className="card">
-                    <img src="/rightCalendar.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/calendars")}>View Calendar</button>
+                <div className="p-1 card h-100 w-100">
+                    <img src="/rightCalendar.png" className="p-2 card-img-top" alt="..."/>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/calendars")}>View Calendar</button>
                 </div>
-                <div className="card">
-                    <img src="/assignments.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/assignments")}>Assignments</button>
+                <div className="p-1 card h-100 w-100">
+                    <img src="/assignments.png" className="p-2 card-img-top" alt="..."/>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/assignments")}>Current Assignments</button>
                 </div>
              </div>
-            <div className = " p-3 card-deck row-cols-2 row align-items-center">
-                <div className="card">
+            <div className = " p-2 card-deck row-cols-3 row align-items-center">
+                <div className="p-1 card h-100 w-100">
                     <img src="/archive.png" className="p-2 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/finishedAssignments")}>Archived Assignments</button>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/finishedAssignments")}>Archived Assignments</button>
                 </div>
-                <div className="card">
-                    <img src="/schedule.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/courses")}>View Courses</button>
+                <div className="p-1 card h-100 w-100">
+                    <img src="/schedule.png" className="p-2 card-img-top" alt="..."/>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/courses")}>View Courses</button>
                 </div>
-                <div className="card">
-                    <img src="/forum.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/forumReviews")}>Review Forum</button>
+                <div className="p-1 card h-100 w-100">
+                    <img src="/forum.png" className="p-2 card-img-top" alt="..."/>
+                        <button className="btn btn-primary text-white mx-auto my-auto btn-sm rounded" onClick={() => this.props.history.push("/forumReviews")}>Review Forum</button>
                 </div>
              </div>
+             </form>
         </div>
          </>
             

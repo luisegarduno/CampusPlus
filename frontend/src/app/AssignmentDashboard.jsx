@@ -63,16 +63,15 @@ export class AssignmentDashboard extends React.Component {
 
     render() {
         return(<>
-            <Header />
+                <Header />
                 <nav className="navbar bg-white">
                     <span className="mb-0 h5 text-primary">Assignments</span>
                 </nav>
-
                 <div className="p-5 container-fluid container-md">
-                    <h2 className = " p-3 text-center text-dark">Current Assignments</h2>
+                    <h2 className = " p-3 text-center text-dark font-weight-bold">Current Assignments</h2>
                 <div id="content">
 
-                <div className = "p-2 text-center mx-auto assignmentsTable tableSort">
+                <div className = "p-2 text-center mx-auto assignmentsTable w-auto table-responsive-md tableSort">
                 <table className="table table-striped">
                     <thead className="thead-dark">
                         <tr>
@@ -103,6 +102,7 @@ export class AssignmentDashboard extends React.Component {
             </div>
             </div>
             </div>
+            
           </>
         )
       }
