@@ -86,8 +86,25 @@ export class Register extends React.Component{
             //})
 
             axios.post(`${this.login.url}/user/create`, loginData)
+                .then(x => { this.storeInfo(this.state.username);
+            })
+            
+
         }
     }
+
+    async getUserID(username) {
+        return (await this.login.userDetailsBody({username}))[0];
+    }
+
+    async storeInfo(name) {
+        localStorage.setItem('username', name);
+        var uid = (await this.getUserID(name)).userID;
+        console.log(uid);
+        localStorage.setItem('userID', uid);
+        this.setState({status : true})
+    }
+
 
     render() {
         return(<>
@@ -96,7 +113,7 @@ export class Register extends React.Component{
                 <span className="mb-0 h3 text-primary font-weight-bold">Plus</span>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                     <form className="form-inline ">
-                        <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/welcomepages")}>Return</button>
+                        <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/login")}>Return</button>
                     </form>
                 </div>
             </nav>
@@ -166,7 +183,7 @@ export class Register extends React.Component{
                             if(this.state.email && this.state.username && this.state.password && this.state.confirmPassword){
                                 return <div>
                                     <button type="button" className="btn btn-primary rounded" onClick={this.onRegister}>Complete Registration</button>
-                                    { this.state.status ? <Redirect to={"/homepages"}/> : <Redirect to={"/register"} /> }
+                                    { this.state.status ? <Redirect to={"/home"}/> : <Redirect to={"/register"} /> }
                                 </div>
                             }
                             else
