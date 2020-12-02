@@ -23,17 +23,18 @@ export class Profile extends React.Component {
             school: "",
             major: "",
             grade: "",
-            status: "",
-            gradDate: '2022-11-12',
+            gradYear: "",
+            status: ""
         };
 
         this.userData = new UserRepository();
-        //this.getUsername = this.getUsername.bind(this)
         this.getEmail = this.getEmail.bind(this)
         this.getPassword = this.getPassword.bind(this)
         this.getConfirmPassword = this.getConfirmPassword.bind(this)
+        this.getGrade = this.getGrade.bind(this)
         this.getSchool = this.getSchool.bind(this)
         this.getMajor = this.getMajor.bind(this)
+        this.getGradYear = this.getGradYear.bind(this)
         this.onUpdate = this.onUpdate.bind(this)
     };
 
@@ -49,10 +50,6 @@ export class Profile extends React.Component {
         })
         .catch(res => console.log(res));
     };
-
-    //getUsername(name){
-        //this.setState({username: name.target.value })
-    //};
 
     getEmail(emailAddress){
         this.setState({email : emailAddress.target.value })
@@ -73,6 +70,14 @@ export class Profile extends React.Component {
     getMajor(major){
         this.setState({ major : major.target.value })
     }
+    
+    getGrade(grade) {
+        this.setState({ grade: grade.target.value })
+    }
+
+    getGradYear(year){
+        this.setState({ gradYear : year.target.value })
+    }
 
 
     onUpdate(){
@@ -88,8 +93,6 @@ export class Profile extends React.Component {
         else{
             this.setState({ status : true })
 
-            let password = this.state.password;
-            password = sha256(password);
             // var loginData = {username : this.state.username, email : this.state.email, password: password, school : this.state.school, major: this.state.major}
 
             // Update username + password
@@ -100,15 +103,27 @@ export class Profile extends React.Component {
             var profileData = {grade: this.state.grade, school : this.state.school, major : this.state.major, gradDate : this.state.gradDate}
             this.userData.updateProfile(this.state.userID, profileData);
 
-            this.userData.updateEmail(this.state.userID, this.state.email);
-
         }
 
     };
 
     updateProf() {
         console.log("update");
-
+        console.log(this.state.username);
+        console.log(this.state.password);
+        if ((this.state.password !== "") && (this.state.password === this.state.confirmPassword)) {
+            let password = this.state.password;
+            password = sha256(password);
+            this.userData.updateCreds({ username: this.state.username, password: password });
+        } else if (this.state.password !== this.state.confirmPassword) {
+             alert("Passwords do not match");
+        }
+        if ((this.state.email !== "")) {
+            console.log(this.state.email);
+            this.userData.updateEmail(this.state.userID, { email: this.state.email });
+        }
+        console.log({ grade: this.state.grade, school : this.state.school, major : this.state.major, gradDate : this.state.gradDate });
+        this.userData.updateProfile(this.state.userID, { grade: this.state.grade, school: this.state.school, major: this.state.major, gradDate: this.state.gradYear });
     }
 
 
@@ -127,34 +142,38 @@ export class Profile extends React.Component {
                     <form className = "p-3">
                         <div className="form-group">
                             <label htmlFor="username">Username</label>
-                            <input type="text" className="form-control" id="username" placeholder=""/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="text" className="form-control" id="email" onChange = {this.getEmail} placeholder=""/>
+                            <input type="text" className="form-control" id="username" value={this.state.username} readOnly/>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" id="password"/>
+                                <input type="password" className="form-control" id="password" onChange = {this.getPassword}/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label htmlFor="confirmPassword">Password Confirmation</label>
-                                <input type="password" className="form-control" id="confirmPassword"/>
+                                <input type="password" className="form-control" id="confirmPassword" onChange = {this.getConfirmPassword}/>
                             </div>
+                        </div>
+                         <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="text" className="form-control" id="email" placeholder="" onChange = {this.getEmail}/>
+                        </div>
+                        <div className="form-row">
+                            <label htmlFor="inputSchool">School</label>
+                            <input type="text" className="form-control" id="inputSchool" onChange = {this.getSchool}/>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
-                                <label htmlFor="inputSchool">School</label>
-                                <input type="text" className="form-control" id="inputSchool"/>
+                                <label htmlFor="inputMajor">Major</label>
+                                <input type="text" className="form-control" id="inputMajor" onChange = {this.getMajor}/>
                             </div>
                             <div className="form-group col-md-4">
-                                <label htmlFor="inputMajor">Major</label>
-                                <input type="text" className="form-control" id="inputMajor"/>
+                                <label htmlFor="inputGrade">Grade</label>
+                                <input type="text" className="form-control" id="inputGrade" onChange = {this.getGrade}/>
                             </div>
                             <div className="form-group col-md-2">
                                 <label htmlFor="gradYear">Grad Year</label>
-                                <select id="gradYear" className="form-control">
+                                <select id="gradYear" className="form-control" onChange = {this.getGradYear}>
                                     <option defaultValue>Choose...</option>
                                     <option>2020</option>
                                     <option>2021</option>
@@ -164,7 +183,7 @@ export class Profile extends React.Component {
                             </div> 
                         </div>
                         <div className = "text-center">
-                            <button type="button" className="btn btn-primary btn-md" onClick={this.updateProf()}>Save</button>
+                            <button type="button" className="btn btn-primary btn-md" onClick={() => this.updateProf()}>Save</button>
                         </div>
                     </form>
                 </div>

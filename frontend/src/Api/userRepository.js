@@ -65,7 +65,7 @@ export class UserRepository {
     // PUT update username + password : http://localhost:8000/user/
     updateCreds(loginData){
         return new Promise((resolve,reject) =>{
-            axios.put(`${this.url}/user/`,loginData)
+            axios.put(`${this.url}/user/`, loginData)
                 .then(x => {
                     resolve(x.data);
                 })

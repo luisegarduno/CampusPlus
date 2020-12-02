@@ -152,7 +152,7 @@ module.exports = function user(app, logger) {
     });
 
     // PUT /user/:userID/updateProfile
-    app.put('/user/userID/updateProfile', (req, res) => {
+    app.put('/user/:userID/updateProfile', (req, res) => {
         console.log(req.params.userID,req.body.grade,req.body.school,req.body.gradDate);
         // obtain a connection from our pool of connections
         pool.getConnection(function (err, connection){
@@ -186,7 +186,7 @@ module.exports = function user(app, logger) {
     });
 
     // PUT /user/:userID/updateEmail
-    app.put('/:userID/updateEmail', (req, res) => {
+    app.put('/user/:userID/updateEmail', (req, res) => {
         console.log(req.params.userID,req.body.email);
         // obtain a connection from our pool of connections
         pool.getConnection(function (err, connection){
