@@ -12,6 +12,7 @@ export class WelcomePage extends React.Component {
 
     constructor(props){
         localStorage.setItem('username', null)
+        localStorage.setItem('userID', null)
         super(props);
 
         this.state = {
@@ -54,9 +55,23 @@ export class WelcomePage extends React.Component {
         var val = pass.target.value;
         this.setState({password : val});
     }
+
+    getUserID(username) {
+        
+        var uid;
+        this.login.userDetailsBody({username: this.state.username})
+            .then(res => {
+                console.log(res)
+                uid = res.data[0];
+            })
+            .catch(res => console.log(res));
+
+        return uid;
+    }
     
     validLogin(name) {
         localStorage.setItem('username', name);
+        localStorage.setItem('userID', this.getUserID(name))
         this.setState({status : true})
     }
 
