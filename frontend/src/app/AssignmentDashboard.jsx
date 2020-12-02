@@ -80,26 +80,26 @@ export class AssignmentDashboard extends React.Component {
                     <thead className="thead-dark">
                         <tr>
                         
-                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'name')}>Assignment</button></th>
-                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
-                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
-                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
-                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'description')}>Description</button></th>
+                            <th>Assignment</th>
+                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
+                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
+                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
+                            <th>Description</th>
+                            <th>Edit</th>
                             
                         </tr>
                     </thead>
                     <tbody>
                         { this.state.assignments.map((x) =>
-                        <tr key = {x.assignmentID}>
-                            <td>{x.name}</td>
-                            <td>{x.classID}</td>
-                            <td>{x.assignmentType}</td>
-                            <td>{this.formatDate(x.dueDate)}</td>
-                            <td>{x.description}</td>
-                            </tr>)}
-                        <tr>
-                           {/* <button type="button" className="btn btn-primary rounded float-right">Edit</button> */}
-                        </tr>
+                            <tr key = {x.assignmentID}>
+                                <td>{x.name}</td>
+                                <td>{x.classID}</td>
+                                <td>{x.assignmentType}</td>
+                                <td>{this.formatDate(x.dueDate)}</td>
+                                <td>{x.description}</td>
+                                <td><button type="button" className="btn-floating yellow darken-1 rounded"><i className="far fa-edit"></i></button></td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
                 <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/assignmentchanges")}>Add Assignment</button>

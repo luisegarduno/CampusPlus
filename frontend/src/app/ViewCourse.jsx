@@ -2,7 +2,6 @@ import React from "react";
 import _ from 'lodash';
 import { Header } from './Header';
 import { Course } from '../models/Course';
-import { Assignment } from '../models/Assignment'
 import { ClassesRepository } from "../Api/classesRepository";
 import { AssignmentRepository } from "../Api/assignmentRepository";
 
@@ -20,10 +19,13 @@ export class ViewCourse extends React.Component{
             sortDirection : 'asc',
             userID: 1,
             classID: 1,
+            classes: [],
+            descriptions: [],
+            backup: [],
         };
 
         this.courseRepo = new ClassesRepository();
-        //this.assignmentRepo = new AssignmentRepository();
+        this.assignmentRepo = new AssignmentRepository();
         this.formatDate = this.formatDate.bind(this);
         this.formatSemester = this.formatSemester.bind(this);
 
@@ -43,16 +45,8 @@ export class ViewCourse extends React.Component{
         })
         .catch(res => console.log(res));
 
-
-{/*        this.assignmentRepo.getAssignmentsClass(this.state.userID, this.state.classID)
-            .then(res => {
-                console.log(res)
-                res.data.forEach(ele => {
-                    this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
-                });
-                console.log(this.state);
-            })
-        .catch(res => console.log(res)); */}
+        this.assignmentRepo.getAssignmentsClass(this.state.userID, this.state.classID).then(x => this.setState({classes : x.data}));
+        this.assignmentRepo.getAssignmentsClass(this.state.userID, this.state.classID).then(y => this.setState({description : y.data}));
     }
 
     sortBy(field) {
@@ -114,7 +108,7 @@ export class ViewCourse extends React.Component{
                             <th scope="col">End Time</th>
                             <th scope="col">Semester Offered</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col">Remove</th>
                         </tr>
                     </thead>
 
@@ -122,14 +116,14 @@ export class ViewCourse extends React.Component{
                         { this.state.courseDetails.map((x) =>
                             <tr key = {x.classID}>
                                 <td>{x.classID}</td>
-                                <td> Name(x.name)</td>
+                                <td>{x.description}</td>
                                 <td>{x.classDaysID}</td>
-                                <td>Proffesor(x.?)</td>
+                                <td> ? </td>
                                 <td>{x.classTimeStart}</td>
                                 <td>{x.classTimeEnd}</td>
                                 <td>{this.formatSemester(x.seasonOffered, x.yearOffered)}</td>
-                                <td>{x.description}</td>
-                                <button type="button" className="btn btn-primary btn-sm rounded">Remove Course</button>
+                                <td> ? </td>
+                                <td><button type="button" className="btn-floating btn-danger darken-1 rounded"><i className="fas fa-trash-alt"></i></button></td>
                             </tr>)}
                         </tbody> 
                     <tbody>
@@ -142,7 +136,7 @@ export class ViewCourse extends React.Component{
                             <td>10:50 AM</td>
                             <td>January 2021</td>
                             <td>Explore the mystery of code in a creative way.</td>
-                            <button type="button" className="btn btn-primary btn-sm rounded">Remove Course</button>
+                            <td><button type="button" className="btn-floating btn-danger darken-1 rounded"><i className="fas fa-trash-alt"></i></button></td>
                         </tr>
                     </tbody>
                 </table>
