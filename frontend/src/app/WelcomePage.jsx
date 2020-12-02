@@ -57,7 +57,6 @@ export class WelcomePage extends React.Component {
     }
 
     async getUserID(username) {
-
         return (await this.login.userDetailsBody({username}))[0];
     }
     
@@ -67,8 +66,6 @@ export class WelcomePage extends React.Component {
         console.log(uid);
         localStorage.setItem('userID', uid);
         this.setState({status : true})
-
-        
     }
 
     invalidLogin() {

@@ -15,8 +15,8 @@ export class Profile extends React.Component {
 
         this.state = {
             userInfo: [],
-            userID: 1,
-            username: "",
+            userID: this.userID,
+            username: this.username,
             email: "",
             password: "",
             confirmPassword: "",
