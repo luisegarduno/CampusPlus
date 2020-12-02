@@ -35,7 +35,6 @@ export class Profile extends React.Component {
         this.getSchool = this.getSchool.bind(this)
         this.getMajor = this.getMajor.bind(this)
         this.getGradYear = this.getGradYear.bind(this)
-        this.onUpdate = this.onUpdate.bind(this)
     };
 
     componentDidMount(){
@@ -78,34 +77,6 @@ export class Profile extends React.Component {
     getGradYear(year){
         this.setState({ gradYear : year.target.value })
     }
-
-
-    onUpdate(){
-        const { password, confirmPassword } = this.state;
-    
-        if(password !== confirmPassword){
-            alert("Passwords do not match");
-
-            this.setState({ status : false });
-            document.getElementById("passwordV1").value = "";
-            document.getElementById("passwordV2").value = "";
-        }
-        else{
-            this.setState({ status : true })
-
-            // var loginData = {username : this.state.username, email : this.state.email, password: password, school : this.state.school, major: this.state.major}
-
-            // Update username + password
-            var loginData = {username : this.state.username, password : password};
-            this.userData.updateCreds(loginData);
-
-            // Update grade, school, major, gradDate
-            var profileData = {grade: this.state.grade, school : this.state.school, major : this.state.major, gradDate : this.state.gradDate}
-            this.userData.updateProfile(this.state.userID, profileData);
-
-        }
-
-    };
 
     updateProf() {
         console.log("update");
