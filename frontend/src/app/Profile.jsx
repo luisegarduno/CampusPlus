@@ -1,6 +1,5 @@
 import React from 'react';
 //import './Profile.css';
-import axios from 'axios';
 import { sha256 } from 'js-sha256'
 import { Header } from './Header';
 import { User } from '../models/User'
@@ -15,17 +14,18 @@ export class Profile extends React.Component {
     constructor(props){
         super(props);
         this.username = localStorage['username'];
+        this.userID = localStorage['userID'];
 
         this.state = {
             userInfo: [],
             userID: 1,
-            username: localStorage['username'],
+            username: "",
             email: "",
             password: "",
             confirmPassword: "",
             school: "",
             major: "",
-            grade: 8,
+            grade: "",
             status: "",
             gradDate: '2022-11-12',
         };
@@ -41,11 +41,11 @@ export class Profile extends React.Component {
     };
 
     componentDidMount(){
-        this.userData.userDetailsParam(this.state.userID)
+        this.userData.userDetailsParam(this.userID)
         .then(res => {
             console.log(res)
             res.data.forEach(ele => {
-                this.setState({userInfo:[...this.state.userInfo, new User(ele.userID, ele.username, ele.email, ele.password, ele.school, ele.major, ele.name, ele.grade)]});
+                this.setState({userInfo:[...this.state.userInfo, new User(ele.userID, ele.username, ele.password, ele.email, ele.school, ele.major, ele.name, ele.grade, ele.isAdmin)]});
                 
             });
             console.log(this.state);
@@ -58,7 +58,7 @@ export class Profile extends React.Component {
     //};
 
     getEmail(emailAddress){
-        this.setState({email : emailAddress.taget.value })
+        this.setState({email : emailAddress.target.value })
     };
 
     getPassword(pass1){
@@ -93,7 +93,7 @@ export class Profile extends React.Component {
 
             let password = this.state.password;
             password = sha256(password);
-            var loginData = {username : this.state.username, email : this.state.email, password: password, school : this.state.school, major: this.state.major}
+            // var loginData = {username : this.state.username, email : this.state.email, password: password, school : this.state.school, major: this.state.major}
 
             // Update username + password
             var loginData = {username : this.state.username, password : password};
@@ -105,13 +105,14 @@ export class Profile extends React.Component {
 
             this.userData.updateEmail(this.state.userID, this.state.email);
 
-
-            axios.post(`${this.login.url}/user/create`, loginData)
         }
     };
 
     updateProfile() {
-        console.log("update")
+        console.log("update");
+        if (this.state.username === "") {
+            this.setState({username: "test" })
+        }
     }
 
 
