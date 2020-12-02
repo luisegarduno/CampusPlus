@@ -6,12 +6,16 @@ import { ClassesRepository } from '../Api/classesRepository';
 
 export class ArchivedCourses extends React.Component{
 
+
         constructor(props){
-        super(props);
-        this.state = {
-            courses: [],
-            sortDirection: 'asc',
-            userID: 1,
+            super(props);
+            this.username = localStorage['username'];
+            this.userID = localStorage['userID'];
+
+            this.state = {
+                courses: [],
+                sortDirection: 'asc',
+                userID: this.userID,
         };
         
         this.coursesRepo = new ClassesRepository();

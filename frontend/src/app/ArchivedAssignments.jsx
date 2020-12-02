@@ -6,16 +6,17 @@ import { Assignment } from '../models/Assignment';
 
 export class ArchivedAssignments extends React.Component {
 
-    username;
     
     constructor(props){
         super(props);
         this.username = localStorage['username'];
+        this.userID = localStorage['userID'];
 
         this.state = {
             archieve: [],
             sortDirection: 'asc',
-            userID: 1,
+            username: this.username,
+            userID: this.userID,
         };
 
         this.assignmentRepo = new AssignmentRepository();

@@ -8,16 +8,16 @@ import _ from 'lodash';
 
 export class AssignmentDashboard extends React.Component {
 
-    username;
 
     constructor(props){
         super(props);
         this.username = localStorage['username'];
+        this.userID = localStorage['userID'];
 
         this.state = {
             assignments: [],
             sortDirection : 'asc',
-            userID: 1,
+            userID: this.userID,
         };
 
         this.assignmentRepo = new AssignmentRepository();

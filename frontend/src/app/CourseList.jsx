@@ -5,16 +5,16 @@ import { ClassesRepository} from '../Api/classesRepository';
 
 export class CourseList extends React.Component{
 
-    username;
 
     constructor(props){
         super(props);
         this.username = localStorage['username'];
+        this.userID = localStorage['userID'];
 
         this.state = {
             classes: [],
             sortDirection: 'asc',
-            userID: 1,
+            userID: this.userID,
         };
 
         this.classRepo = new ClassesRepository();

@@ -7,17 +7,18 @@ import { AssignmentRepository } from "../Api/assignmentRepository";
 
 export class ViewCourse extends React.Component{
 
-    username;
 
     constructor(props){
         super(props);
         this.username = localStorage['username'];
+        this.userID = localStorage['userID'];
 
         this.state = {
             assignments: [],
             courseDetails: [],
             sortDirection : 'asc',
-            userID: 1,
+            userID: this.userID,
+            username: this.username,
             classID: 1,
             classes: [],
             descriptions: [],

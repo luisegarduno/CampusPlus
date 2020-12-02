@@ -3,11 +3,11 @@ import React from 'react';
 
 
 export class Home extends React.Component {
-    username;
 
     constructor(props){
         super(props);
         this.username = localStorage['username'];
+        this.userID = localStorage['userID'];
      }
     
     render() {

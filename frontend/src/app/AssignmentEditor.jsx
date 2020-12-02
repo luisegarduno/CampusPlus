@@ -7,7 +7,6 @@ export class AssignmentEditor extends React.Component{
     assignment = new AssignmentRepository();
 
     state = {
- 
     };
 
     render() {

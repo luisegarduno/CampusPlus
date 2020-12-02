@@ -8,10 +8,14 @@ export class CourseDashboard extends React.Component{
     
     constructor(props){
         super(props);
+
+        this.username = localStorage['username'];
+        this.userID = localStorage['userID'];
+        
         this.state = {
             courses: [],
             sortDirection: 'asc',
-            userID: 1,
+            userID: this.userID,
         };
         
         this.coursesRepo = new ClassesRepository();
