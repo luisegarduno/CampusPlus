@@ -158,7 +158,7 @@ module.exports = function assignment(app, logger) {
 
 
 
-  app.post('/assignment/:userID/:classID/', async (req, res) => {
+  app.post('/assignment/:userID', async (req, res) => {
     console.log(req.params.userID, req.params.classID, req.body.name, req.body.description, req.body.dueDate, req.body.assignmentType);
     // obtain a connection from our pool of connections
     pool.getConnection(function (err, connection){
@@ -169,14 +169,17 @@ module.exports = function assignment(app, logger) {
       } else {
           // if there is no issue obtaining a connection, execute query and release connection
           var userID = req.params.userID
-          var classID = req.params.classID
+          var classDescription = req.body.classDescription
           var name = req.body.name
           var description = req.body.description
           var dueDate = req.body.dueDate
           var assignmentType = req.body.assignmentType
 
-          connection.query('INSERT INTO `canvasplus`.`assignment` (userID, classID, name, description, dueDate, assignmentType, completionStatus) VALUES(?, ?, ?, ?, ?, ?, 0)',
-          [userID, classID, name, description, dueDate, assignmentType], function (err, rows, fields) {
+          query = 'SELECT @class := `classID` from canvasplus.class WHERE description = ?;' + 
+                  'INSERT INTO canvasplus.assignment (classID, userID, name, description, dueDate, assignmentType, completionStatus)' + 
+                  'VALUES (@class,?,?,?,?,?,0)'
+          connection.query(query,
+          [classDescription, userID, name, description, dueDate, assignmentType], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
             if (err) {
