@@ -21,7 +21,7 @@ export class CourseDashboard extends React.Component{
     }//end state
 
     componentDidMount(){
-        this.coursesRepo.getCourses(this.state.userID)
+        this.coursesRepo.getStudentSchedule(this.state.userID)
         .then(res => {
             console.log(res)
             res.forEach(ele => {

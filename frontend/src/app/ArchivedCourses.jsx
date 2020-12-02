@@ -1,7 +1,72 @@
 import React from "react";
+import _ from 'lodash';
 import { Header } from './Header';
+import { Course } from '../models/Course';
+import { ClassesRepository } from '../Api/classesRepository';
 
 export class ArchivedCourses extends React.Component{
+
+        constructor(props){
+        super(props);
+        this.state = {
+            courses: [],
+            sortDirection: 'asc',
+            userID: 1,
+        };
+        
+        this.coursesRepo = new ClassesRepository();
+        this.formatDate = this.formatDate.bind(this);
+        this.formatSemester = this.formatSemester.bind(this);
+
+    }//end state
+
+    componentDidMount(){
+        this.coursesRepo.getStudentSchedule(this.state.userID)
+        .then(res => {
+            console.log(res)
+            res.forEach(ele => {
+                this.setState({courses:[...this.state.courses, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd)]});
+            });
+            console.log(this.state);
+
+        })
+
+        .catch(res => console.log(res));
+    }
+
+    sortBy(field) {
+        if (this.state.sortDirection === 'asc') {
+            this.setState({sortDirection: 'desc'})
+            this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
+            });
+        }
+        if (this.state.sortDirection === 'desc') {
+            this.setState({sortDirection: 'asc'})
+            this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
+            });
+        }
+    }
+
+    formatSemester(semester, year){
+        if(semester === 1){
+            return 'Fall ' + String(year);
+        }
+
+        if(semester === 2){
+            return 'Spring ' + String(year);
+        }
+
+    }
+
+    formatDate(myDate){
+        var date = String(myDate);
+        if(date === 'null'){
+            return '-';
+        }
+
+        var properDate =  date.substring(5,7) + "-" + date.substring(8,10) + "-" + date.substring(0,4); 
+        return properDate;
+    }
 
     render() {
         return(<>
