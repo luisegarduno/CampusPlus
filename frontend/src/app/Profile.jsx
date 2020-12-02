@@ -19,7 +19,7 @@ export class Profile extends React.Component {
         this.state = {
             userInfo: [],
             userID: 1,
-            //username: "",
+            username: localStorage['username'],
             email: "",
             password: "",
             confirmPassword: "",
@@ -41,7 +41,7 @@ export class Profile extends React.Component {
     };
 
     componentDidMount(){
-        this.userData.userDetailsParam(this.state.username)
+        this.userData.userDetailsParam(this.state.userID)
         .then(res => {
             console.log(res)
             res.data.forEach(ele => {
@@ -93,7 +93,7 @@ export class Profile extends React.Component {
 
             let password = this.state.password;
             password = sha256(password);
-            //var loginData = {username : this.state.username, email : this.state.email, password: password, school : this.state.school, major: this.state.major}
+            var loginData = {username : this.state.username, email : this.state.email, password: password, school : this.state.school, major: this.state.major}
 
             // Update username + password
             var loginData = {username : this.state.username, password : password};
@@ -101,7 +101,7 @@ export class Profile extends React.Component {
 
             // Update grade, school, major, gradDate
             var profileData = {grade: this.state.grade, school : this.state.school, major : this.state.major, gradDate : this.state.gradDate}
-            this.userDate.updateProfile(this.state.userID, profileData);
+            this.userData.updateProfile(this.state.userID, profileData);
 
             this.userData.updateEmail(this.state.userID, this.state.email);
 
@@ -109,6 +109,10 @@ export class Profile extends React.Component {
             axios.post(`${this.login.url}/user/create`, loginData)
         }
     };
+
+    updateProfile() {
+        console.log("update")
+    }
 
 
     render(){
@@ -163,7 +167,7 @@ export class Profile extends React.Component {
                             </div> 
                         </div>
                         <div className = "text-center">
-                            <button type="submit" className="btn btn-primary btn-md">Save</button>
+                            <button type="button" className="btn btn-primary btn-md" onClick={this.updateProfile()}>Save</button>
                         </div>
                     </form>
                 </div>
