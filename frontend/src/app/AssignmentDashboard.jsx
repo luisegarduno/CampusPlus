@@ -15,7 +15,6 @@ export class AssignmentDashboard extends React.Component {
         this.username = localStorage['username'];
 
         this.state = {
-
             assignments: [],
             sortDirection : 'asc',
             userID: 1,
@@ -56,6 +55,11 @@ export class AssignmentDashboard extends React.Component {
 
     formatDate(myDate){
         var date = String(myDate);
+        if(date === 'null'){
+            return '-';
+        }
+
+
         var properDate =  date.substring(5,7) + "-" + date.substring(8,10) + "-" + date.substring(0,4); 
         return properDate;
     }
@@ -68,7 +72,7 @@ export class AssignmentDashboard extends React.Component {
                     <span className="mb-0 h5 text-primary">Assignments</span>
                 </nav>
                 <div className="p-5 container-fluid container-md">
-                    <h2 className = " p-3 text-center text-dark font-weight-bold">Current Assignments</h2>
+                    <h2 className="p-3 text-center text-dark font-weight-bold">Current Assignments</h2>
                 <div id="content">
 
                 <div className = "p-2 text-center mx-auto assignmentsTable w-auto table-responsive-md tableSort">
