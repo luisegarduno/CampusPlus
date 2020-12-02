@@ -26,22 +26,22 @@ const App = props => {
         <Switch>
           <Route exact path ="/" component={WelcomePage} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/profiles" component={Profile} />
-          <Route exact path="/homepages" component={Home} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/assignments" component={AssignmentDashboard} />
-          <Route exact path="/calendars" component={Calendar} />
+          <Route exact path="/calendar" component={Calendar} />
           <Route exact path="/courses" component={CourseDashboard}/>
-          <Route exact path="/welcomepages" component={WelcomePage} />
+          <Route exact path="/login" component={WelcomePage} />
           <Route exact path="/assignmentchanges" component={AssignmentEditor} />
           <Route exact path="/courseOptions" component={CourseSearch} />
-          <Route exact path="/finishedAssignments" component={ArchivedAssignments} />
+          <Route exact path="/finished_assignments" component={ArchivedAssignments} />
           <Route exact path="/completedCourses" component={ArchivedCourses} />
           <Route exact path ="/weekly" component={CalendarWeekly} />
           <Route exact path="/daily" component={CalendarDaily} />
           <Route exact path="/viewCourses" component={ViewCourse} />
-          <Route exact path ="/guestpages" component={GuestHome} />
-          <Route exact path ="/courselists" component={CourseList} />
-          <Route exact path ="/forumReviews" component={ForumDashboard} />
+          <Route exact path ="/guest" component={GuestHome} />
+          <Route exact path ="/courselist" component={CourseList} />
+          <Route exact path ="/forum" component={ForumDashboard} />
         </Switch>
       </Router>
     </div>

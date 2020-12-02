@@ -14,7 +14,7 @@ export class GuestHome extends React.Component {
             <span className="mb-0 h3 text-primary font-weight-bold">Plus</span>
             <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                 <form className="form-inline ">
-                    <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/welcomepages")}>LOG OUT</button>
+                    <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/login")}>LOG OUT</button>
                 </form>
             </div>
         </nav>
@@ -30,11 +30,11 @@ export class GuestHome extends React.Component {
             <div className = " p-3 card-deck row-cols-2 row align-items-center">
                 <div className="card">
                     <img src="/schedule.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/courselists")}>Courses Offered</button>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/courselist")}>Courses Offered</button>
                 </div>
                 <div className="card">
                     <img src="/forum.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/forumReviews")}>Course Forum</button>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/forum")}>Course Forum</button>
                 </div>
              </div>
              </form>
