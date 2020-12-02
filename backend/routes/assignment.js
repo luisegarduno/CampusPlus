@@ -350,6 +350,41 @@ module.exports = function assignment(app, logger) {
     });
   });
 
+  app.put('/assignment/:assignmentID', function (req, res) {
+    console.log(req.params.assignmentID,req.body.completionStatus);
+    // obtain a connection from our pool of connections
+    pool.getConnection(function (err, connection){
+      if(err){
+        // if there is an issue obtaining a connection, release the connection instance and log the error
+        logger.error('Problem obtaining MySQL connection',err)
+        res.status(400).send('Problem obtaining MySQL connection'); 
+      } else {
+          // if there is no issue obtaining a connection, execute query and release connection
+          var assignmentID = req.params.assignmentID
+          var name = req.params.name
+          var description = req.body.description
+          var dueDate = req.params.dueDate
+          var assignmentType = req.body.assignmentType
+          var completionStatus = req.body.completionStatus
+          connection.query('UPDATE `canvasplus`.`assignment` a SET a.name = ?, a.description = ?, a.dueDate = ?, a.assignmentType = ?, a.completionStatus = ? WHERE a.assignmentID = ?', [name, description, dueDate, assignmentType, completionStatus, assignmentID], function (err, rows, fields) {
+            // if there is an error with the query, release the connection instance and log the error
+            connection.release();
+            if (err) {
+              logger.error("Error while executing Query: \n", err)
+              res.status(400).json({
+                "data": [],
+                "error": "MySQL error"
+              })
+            } else{
+                res.status(200).json({
+                  "data": rows
+              })
+            }
+          });
+      }
+    });
+  });
+
   app.delete('/assignment/:assignmentID', async (req, res) => {
     console.log(req.params.assignmentID);
     // obtain a connection from our pool of connections
