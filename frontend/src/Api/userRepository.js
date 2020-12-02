@@ -36,8 +36,9 @@ export class UserRepository {
     // GET Returns all information depending on username (passed into the BODY) : http://localhost:8000/user/
     userDetailsBody(username){
         return new Promise((resolve,reject) =>{
-            axios.get(`${this.url}/user/`, username)
+            axios.get(`${this.url}/user/`, {params: username})
                 .then(x => {
+                    console.log(x);
                     resolve(x.data);
                 })
             .catch(x => {

@@ -56,23 +56,19 @@ export class WelcomePage extends React.Component {
         this.setState({password : val});
     }
 
-    getUserID(username) {
-        
-        var uid;
-        this.login.userDetailsBody({username: this.state.username})
-            .then(res => {
-                console.log(res)
-                uid = res.data[0];
-            })
-            .catch(res => console.log(res));
+    async getUserID(username) {
 
-        return uid;
+        return (await this.login.userDetailsBody({username}))[0];
     }
     
-    validLogin(name) {
+    async validLogin(name) {
         localStorage.setItem('username', name);
-        localStorage.setItem('userID', this.getUserID(name))
+        var uid = (await this.getUserID(name)).userID;
+        console.log(uid);
+        localStorage.setItem('userID', uid);
         this.setState({status : true})
+
+        
     }
 
     invalidLogin() {

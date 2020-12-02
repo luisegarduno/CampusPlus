@@ -4,7 +4,7 @@ module.exports = function user(app, logger) {
 
     // GET /user/
     app.get('/user/', (req, res) => {
-        console.log(req.body.username)
+        console.log(req.query.username)
         // obtain a connection from our pool of connections
         pool.getConnection(function (err, connection){
             if(err){
@@ -12,7 +12,7 @@ module.exports = function user(app, logger) {
                 logger.error('Problem obtaining MySQL connection',err)
                 res.status(400).send('Problem obtaining MySQL connection'); 
             } else {
-                var username = req.body.username
+                var username = req.query.username
                 // if there is no issue obtaining a connection, execute query and release connection
                 connection.query("SELECT * FROM `canvasplus`.`user` u WHERE u.username = ?", [username], (err, rows) => {
                     connection.release();

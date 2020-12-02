@@ -7,9 +7,6 @@ import { UserRepository } from '../Api/userRepository'
 
 export class Profile extends React.Component {
 
-    username;
-
-    //userData = new UserRepository();
 
     constructor(props){
         super(props);
@@ -80,7 +77,7 @@ export class Profile extends React.Component {
 
     onUpdate(){
         const { password, confirmPassword } = this.state;
-
+    
         if(password !== confirmPassword){
             alert("Passwords do not match");
 
@@ -106,13 +103,12 @@ export class Profile extends React.Component {
             this.userData.updateEmail(this.state.userID, this.state.email);
 
         }
+
     };
 
-    updateProfile() {
+    updateProf() {
         console.log("update");
-        if (this.state.username === "") {
-            this.setState({username: "test" })
-        }
+
     }
 
 
@@ -135,12 +131,12 @@ export class Profile extends React.Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text" className="form-control" id="email" placeholder=""/>
+                            <input type="text" className="form-control" id="email" onChange = {this.getEmail} placeholder=""/>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label htmlFor="password">Password</label>
-                                <input type="email" className="form-control" id="password"/>
+                                <input type="password" className="form-control" id="password"/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label htmlFor="confirmPassword">Password Confirmation</label>
@@ -168,7 +164,7 @@ export class Profile extends React.Component {
                             </div> 
                         </div>
                         <div className = "text-center">
-                            <button type="button" className="btn btn-primary btn-md" onClick={this.updateProfile()}>Save</button>
+                            <button type="button" className="btn btn-primary btn-md" onClick={this.updateProf()}>Save</button>
                         </div>
                     </form>
                 </div>
