@@ -71,7 +71,7 @@ export class CourseList extends React.Component{
                 <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ">
                         <li className="nav-item text-white">
-                            <a className="nav-link active text-white" href="/guestpages">Home</a>
+                            <a className="nav-link active text-white" href="/guest">Home</a>
                         </li>
                     </ul>
                 </div>

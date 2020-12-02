@@ -15,13 +15,13 @@ export class Home extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
             <ul className="navbar-nav">
                 <li className="nav-item nav-link">
-                    <a href="/homepages" className="mb-0 h3 text-white font-weight-bold">Campus</a>
-                    <a href="/homepages" className="mb-0 h3 text-primary font-weight-bold">Plus</a>
+                    <a href="/home" className="mb-0 h3 text-white font-weight-bold">Campus</a>
+                    <a href="/home" className="mb-0 h3 text-primary font-weight-bold">Plus</a>
                 </li>
             </ul>
             <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                 <form className="form-inline ">
-                    <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/welcomepages")}>LOG OUT</button>
+                    <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/login")}>LOG OUT</button>
                 </form>
             </div>
         </nav>
@@ -37,11 +37,11 @@ export class Home extends React.Component {
             <div className = "p-2 card-deck row-cols-3 row align-items-center">
                 <div className="p-1 card h-100 w-100">
                     <img src="/profileIcon.png" className="p-2 card-img-top" alt="..."/>
-                        <button type="button" className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/profiles")}>Edit Profile</button>
+                        <button type="button" className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/profile")}>Edit Profile</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/rightCalendar.png" className="p-2 card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/calendars")}>View Calendar</button>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/calendar")}>View Calendar</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/assignments.png" className="p-2 card-img-top" alt="..."/>
@@ -51,7 +51,7 @@ export class Home extends React.Component {
             <div className = " p-2 card-deck row-cols-3 row align-items-center">
                 <div className="p-1 card h-100 w-100">
                     <img src="/archive.png" className="p-2 card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/finishedAssignments")}>Archived Assignments</button>
+                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/finished_assignments")}>Archived Assignments</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/schedule.png" className="p-2 card-img-top" alt="..."/>
@@ -59,7 +59,7 @@ export class Home extends React.Component {
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/forum.png" className="p-2 card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white mx-auto my-auto btn-sm rounded" onClick={() => this.props.history.push("/forumReviews")}>Review Forum</button>
+                        <button className="btn btn-primary text-white mx-auto my-auto btn-sm rounded" onClick={() => this.props.history.push("/forum")}>Review Forum</button>
                 </div>
              </div>
              </form>

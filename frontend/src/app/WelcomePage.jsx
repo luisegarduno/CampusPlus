@@ -120,7 +120,7 @@ export class WelcomePage extends React.Component {
                             if(this.state.password){
                                 return <div>
                                     <button className="btn btn-primary rounded" onClick={this.onLogin}>Log In</button>
-                                    { this.state.status ? <Redirect to={"/homepages"}/> : <Redirect to={"/"} /> }
+                                    { this.state.status ? <Redirect to={"/home"}/> : <Redirect to={"/"} /> }
                                 </div>
                             }
                             else
@@ -134,7 +134,7 @@ export class WelcomePage extends React.Component {
                         </Link>
                     </div>
                 </div>
-                <Link to="/guestpages">
+                <Link to="/guest">
                     <button type="button" className="btn btn-link text-dark">Continue As Guest</button>
                 </Link>
             </div>
