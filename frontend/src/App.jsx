@@ -5,6 +5,7 @@ import { AssignmentDashboard } from './app/AssignmentDashboard';
 import { Register } from './app/login/Register';
 import { WelcomePage } from './app/WelcomePage';
 import { Profile } from './app/Profile';
+import { EditProfile } from './app/EditProfile';
 import { Home } from './app/Home';
 import { Calendar } from './app/Calendar';
 import { CourseDashboard } from './app/CourseDashboard';
@@ -27,6 +28,7 @@ const App = props => {
           <Route exact path ="/" component={WelcomePage} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile/edit" component={EditProfile} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/assignments" component={AssignmentDashboard} />
           <Route exact path="/calendar" component={Calendar} />

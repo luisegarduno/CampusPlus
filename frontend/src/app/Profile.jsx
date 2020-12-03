@@ -1,6 +1,4 @@
 import React from 'react';
-//import './Profile.css';
-import { sha256 } from 'js-sha256'
 import { Header } from './Header';
 import { User } from '../models/User'
 import { UserRepository } from '../Api/userRepository'
@@ -28,13 +26,6 @@ export class Profile extends React.Component {
         };
 
         this.userData = new UserRepository();
-        this.getEmail = this.getEmail.bind(this)
-        this.getPassword = this.getPassword.bind(this)
-        this.getConfirmPassword = this.getConfirmPassword.bind(this)
-        this.getGrade = this.getGrade.bind(this)
-        this.getSchool = this.getSchool.bind(this)
-        this.getMajor = this.getMajor.bind(this)
-        this.getGradYear = this.getGradYear.bind(this)
     };
 
     componentDidMount(){
@@ -42,61 +33,13 @@ export class Profile extends React.Component {
         .then(res => {
             console.log(res)
             res.data.forEach(ele => {
-                this.setState({userInfo:[...this.state.userInfo, new User(ele.userID, ele.username, ele.password, ele.email, ele.school, ele.major, ele.name, ele.grade, ele.isAdmin)]});
+                this.setState({userInfo:[...this.state.userInfo, new User(ele.userID, ele.username, ele.email, ele.isAdmin, ele.password, ele.grade, ele.school, ele.major, ele.name, ele.gradDate)]});
                 
             });
             console.log(this.state);
         })
         .catch(res => console.log(res));
     };
-
-    getEmail(emailAddress){
-        this.setState({email : emailAddress.target.value })
-    };
-
-    getPassword(pass1){
-        this.setState({ password : pass1.target.value })
-    }
-
-    getConfirmPassword(pass2){
-        this.setState({ confirmPassword : pass2.target.value })
-    }
-
-    getSchool(school){
-        this.setState({ school : school.target.value })
-    }
-
-    getMajor(major){
-        this.setState({ major : major.target.value })
-    }
-    
-    getGrade(grade) {
-        this.setState({ grade: grade.target.value })
-    }
-
-    getGradYear(year){
-        this.setState({ gradYear : year.target.value })
-    }
-
-    updateProf() {
-        console.log("update");
-        console.log(this.state.username);
-        console.log(this.state.password);
-        if ((this.state.password !== "") && (this.state.password === this.state.confirmPassword)) {
-            let password = this.state.password;
-            password = sha256(password);
-            this.userData.updateCreds({ username: this.state.username, password: password });
-        } else if (this.state.password !== this.state.confirmPassword) {
-             alert("Passwords do not match");
-        }
-        if ((this.state.email !== "")) {
-            console.log(this.state.email);
-            this.userData.updateEmail(this.state.userID, { email: this.state.email });
-        }
-        console.log({ grade: this.state.grade, school : this.state.school, major : this.state.major, gradDate : this.state.gradDate });
-        this.userData.updateProfile(this.state.userID, { grade: this.state.grade, school: this.state.school, major: this.state.major, gradDate: this.state.gradYear });
-    }
-
 
     render(){
         return(<>
@@ -118,43 +61,44 @@ export class Profile extends React.Component {
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" id="password" onChange = {this.getPassword}/>
+                                <input type="password" className="form-control" id="password" value={this.state.password} readOnly/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label htmlFor="confirmPassword">Password Confirmation</label>
-                                <input type="password" className="form-control" id="confirmPassword" onChange = {this.getConfirmPassword}/>
+                                <input type="password" className="form-control" id="confirmPassword" readOnly/>
                             </div>
                         </div>
                          <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text" className="form-control" id="email" placeholder="" onChange = {this.getEmail}/>
+                            <input type="text" className="form-control" id="email" placeholder="" value={this.state.email} readOnly/>
                         </div>
                         <div className="form-row">
                             <label htmlFor="inputSchool">School</label>
-                            <input type="text" className="form-control" id="inputSchool" onChange = {this.getSchool}/>
+                            <input type="text" className="form-control" id="inputSchool" value={this.state.school} readOnly/>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label htmlFor="inputMajor">Major</label>
-                                <input type="text" className="form-control" id="inputMajor" onChange = {this.getMajor}/>
+                                <input type="text" className="form-control" id="inputMajor" value={this.state.major} readOnly/>
                             </div>
                             <div className="form-group col-md-4">
                                 <label htmlFor="inputGrade">Grade</label>
-                                <input type="text" className="form-control" id="inputGrade" onChange = {this.getGrade}/>
+                                <input type="text" className="form-control" id="inputGrade" value={this.state.grade} readOnly/>
                             </div>
                             <div className="form-group col-md-2">
                                 <label htmlFor="gradYear">Grad Year</label>
-                                <select id="gradYear" className="form-control" onChange = {this.getGradYear}>
+                                <select id="gradYear" className="form-control" value={this.state.gradYear} readOnly>
                                     <option defaultValue>Choose...</option>
-                                    <option>2020</option>
-                                    <option>2021</option>
-                                    <option>2022</option>
-                                    <option>2023</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
                                 </select>
-                            </div> 
+                            </div>
                         </div>
                         <div className = "text-center">
-                            <button type="button" className="btn btn-primary btn-md" onClick={() => this.updateProf()}>Save</button>
+                            <button type="button" className="btn btn-primary btn-md" onClick={() => this.props.history.push("/home")}>Home</button>
+                            <button type="button" className="btn btn-primary btn-md" onClick={() => this.props.history.push("/profile/edit")}>Edit</button>
                         </div>
                     </form>
                 </div>

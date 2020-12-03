@@ -37,7 +37,7 @@ export class Home extends React.Component {
             <div className = "p-2 card-deck row-cols-3 row align-items-center">
                 <div className="p-1 card h-100 w-100">
                     <img src="/profileIcon.png" className="p-2 card-img-top" alt="..."/>
-                        <button type="button" className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/profile")}>Edit Profile</button>
+                        <button type="button" className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/profile")}>Profile</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/rightCalendar.png" className="p-2 card-img-top" alt="..."/>
