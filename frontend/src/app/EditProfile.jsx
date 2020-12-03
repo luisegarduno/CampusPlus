@@ -107,7 +107,6 @@ export class EditProfile extends React.Component {
                 <div className="card mb-1 w-75 mx-auto">
                     <div className = "p-1 jumbotron jumbotron-fluid bg-light text-center">
                         <img src="/profileIcon.png" className=" img-fluid w-25 rounded mx-auto d-block" alt="..."/>
-                        <button type="submit" className="btn btn-sm btn-primary">Change Image</button>
                     </div>
                     <form className = "p-3">
                         <div className="form-group">

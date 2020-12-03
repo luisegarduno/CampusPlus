@@ -51,7 +51,6 @@ export class Profile extends React.Component {
                 <div className="card mb-1 w-75 mx-auto">
                     <div className = "p-1 jumbotron jumbotron-fluid bg-light text-center">
                         <img src="/profileIcon.png" className=" img-fluid w-25 rounded mx-auto d-block" alt="..."/>
-                        <button type="submit" className="btn btn-sm btn-primary">Change Image</button>
                     </div>
                     <form className = "p-3">
                         <div className="form-group">
@@ -77,7 +76,7 @@ export class Profile extends React.Component {
                             <input type="text" className="form-control" id="inputSchool" value={this.state.school} readOnly/>
                         </div>
                         <div className="form-row">
-                            <div className="form-group col-md-6">
+                            <div className="form-group col-md-5">
                                 <label htmlFor="inputMajor">Major</label>
                                 <input type="text" className="form-control" id="inputMajor" value={this.state.major} readOnly/>
                             </div>
@@ -85,15 +84,9 @@ export class Profile extends React.Component {
                                 <label htmlFor="inputGrade">Grade</label>
                                 <input type="text" className="form-control" id="inputGrade" value={this.state.grade} readOnly/>
                             </div>
-                            <div className="form-group col-md-2">
+                            <div className="form-group col-md-3">
                                 <label htmlFor="gradYear">Grad Year</label>
-                                <select id="gradYear" className="form-control" value={this.state.gradYear} readOnly>
-                                    <option defaultValue>Choose...</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                </select>
+                                <input type="date" id="gradYear" className="form-control" value={this.state.gradYear} readOnly />
                             </div>
                         </div>
                         <div className = "text-center">
