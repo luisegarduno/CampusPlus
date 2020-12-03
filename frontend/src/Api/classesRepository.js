@@ -4,7 +4,19 @@ export class ClassesRepository {
 
     // Leave this here
     url = false ? 'http://44.233.149.216:8000' : 'http://localhost:8000';
-    
+
+    getCourseList(){
+        return new Promise((resolve, reject) => {
+            axios.get(`${this.url}/classes`, this.config)
+                .then(x => resolve(x.data))
+            .catch(x => {
+                alert(x);
+                reject(x);
+            })
+        })
+   }
+
+
     getCourses(classID){
         return new Promise((resolve, reject) => {
             axios.get(`${this.url}/classes/user/${classID}`, this.config)

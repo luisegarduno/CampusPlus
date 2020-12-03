@@ -20,6 +20,7 @@ export class ArchivedCourses extends React.Component{
         
         this.coursesRepo = new ClassesRepository();
         this.formatDate = this.formatDate.bind(this);
+        this.formatTime = this.formatTime.bind(this);
         this.formatSemester = this.formatSemester.bind(this);
 
     }//end state
@@ -49,6 +50,25 @@ export class ArchivedCourses extends React.Component{
             this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
             });
         }
+    }
+
+    formatTime(myTime){
+        var timeValue;
+        var time = String(myTime);
+        time = time.split(':');
+
+        var timeValue;
+        var hours = Number(time[0]);
+        var minutes = Number(time[1]);
+
+        if (hours > 0 && hours <= 12) timeValue= "" + hours;
+        else if (hours > 12) timeValue= "" + (hours - 12);
+        else if (hours == 0) timeValue= "12";
+
+        timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+        timeValue += (hours >= 12) ? " P.M." : " A.M.";
+
+        return timeValue;
     }
 
     formatSemester(semester, year){

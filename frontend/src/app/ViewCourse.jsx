@@ -28,6 +28,7 @@ export class ViewCourse extends React.Component{
         this.courseRepo = new ClassesRepository();
         this.assignmentRepo = new AssignmentRepository();
         this.formatDate = this.formatDate.bind(this);
+        this.formatTime = this.formatTime.bind(this);
         this.formatSemester = this.formatSemester.bind(this);
 
     }//end state
@@ -61,6 +62,24 @@ export class ViewCourse extends React.Component{
             this.setState({assignments: _.orderBy(this.state.assignments, field, this.state.sortDirection)
             });
         }
+    }
+
+    formatTime(myTime){
+        var timeValue;
+        var time = String(myTime);
+        time = time.split(':');
+
+        var hours = Number(time[0]);
+        var minutes = Number(time[1]);
+
+        if (hours > 0 && hours <= 12) timeValue= "" + hours;
+        else if (hours > 12) timeValue= "" + (hours - 12);
+        else if (hours === 0) timeValue= "12";
+
+        timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+        timeValue += (hours >= 12) ? " P.M." : " A.M.";
+
+        return timeValue;
     }
 
     formatDate(myDate){
@@ -120,8 +139,8 @@ export class ViewCourse extends React.Component{
                                 <td>{x.description}</td>
                                 <td>{x.classDaysID}</td>
                                 <td> ? </td>
-                                <td>{x.classTimeStart}</td>
-                                <td>{x.classTimeEnd}</td>
+                                <td>{this.formatTime(x.classTimeStart)}</td>
+                                <td>{this.formatTime(x.classTimeEnd)}</td>
                                 <td>{this.formatSemester(x.seasonOffered, x.yearOffered)}</td>
                                 <td> ? </td>
                                 <td><button type="button" className="btn-floating btn-danger darken-1 rounded"><i className="fas fa-trash-alt"></i></button></td>

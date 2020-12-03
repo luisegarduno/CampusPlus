@@ -2,6 +2,34 @@ const pool = require('../connection')
 
 module.exports = function classes(app, logger) {
 
+
+    app.get('/classes', (req, res) => {
+    console.log(req.params.userID);
+    // obtain a connection from our pool of connections
+    pool.getConnection(function (err, connection){
+      if(err){
+        // if there is an issue obtaining a connection, release the connection instance and log the error
+        logger.error('Problem obtaining MySQL connection',err)
+        res.status(400).send('Problem obtaining MySQL connection'); 
+      } else {
+          // if there is no issue obtaining a connection, execute query and release connection
+          connection.query('SELECT * FROM `canvasplus`.`class` c', (err, rows) => {
+            // if there is an error with the query, release the connection instance and log the error
+            connection.release();
+            if (err) {
+              logger.error("Error while executing Query: \n", err);
+              res.status(400).json({
+                "data": [],
+                "error": "MySQL error"
+              })
+            } else {
+                res.status(200).json(rows)
+            }
+          });
+      }
+    });
+  });
+
   app.get('/classes/:classID', (req, res) => {
     console.log(req.params.commentID);
     // obtain a connection from our pool of connections

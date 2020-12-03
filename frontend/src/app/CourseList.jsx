@@ -8,31 +8,27 @@ export class CourseList extends React.Component{
 
     constructor(props){
         super(props);
-        this.username = localStorage['username'];
-        this.userID = localStorage['userID'];
 
         this.state = {
             classes: [],
             sortDirection: 'asc',
-            userID: this.userID,
         };
 
         this.classRepo = new ClassesRepository();
         this.formatDate = this.formatDate.bind(this);
+        this.formatTime = this.formatTime.bind(this);
+        this.formatSemester = this.formatSemester.bind(this);
 
     }//end state
 
 
     componentDidMount(){
         //need to return full list of classes, userID not needed
-        this.classRepo.getCourses(this.state.userID)
+        this.classRepo.getCourseList()
         .then(res => {
-            console.log(res)
             res.forEach(ele => {
-                this.setState({classes:[...this.state.classes, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd)]});
+                this.setState({classes:[...this.state.classes, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName)]});
             });
-     
-            console.log(this.state);
         })
         
         .catch(res => console.log(res));
@@ -49,6 +45,35 @@ export class CourseList extends React.Component{
             this.setState({classes: _.orderBy(this.state.classes, field, this.state.sortDirection)
             });
         }
+    }
+
+    formatSemester(semester, year){
+        if(semester === 1){
+            return 'Fall ' + String(year);
+        }
+
+        if(semester === 2){
+            return 'Spring ' + String(year);
+        }
+    }
+
+    formatTime(myTime){
+        var timeValue;
+        var time = String(myTime);
+        time = time.split(':');
+
+        var timeValue;
+        var hours = Number(time[0]);
+        var minutes = Number(time[1]);
+
+        if (hours > 0 && hours <= 12) timeValue= "" + hours;
+        else if (hours > 12) timeValue= "" + (hours - 12);
+        else if (hours == 0) timeValue= "12";
+
+        timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
+        timeValue += (hours >= 12) ? " P.M." : " A.M.";
+
+        return timeValue;
     }
 
     formatDate(myDate){
@@ -91,7 +116,7 @@ export class CourseList extends React.Component{
                         <tr>
                             <th scope="col">Course ID</th>
                             <th scope="col">Course Name</th>
-                            <th scope="col">Days</th>
+                            <th scope="col">Offered Term</th>
                             <th scope="col">Professor</th>
                             <th scope="col">Start Time</th>
                             <th scope="col">End Time</th>
@@ -100,12 +125,12 @@ export class CourseList extends React.Component{
                     <tbody>
                     { this.state.classes.map((x) =>
                         <tr key = {x.classID}>
-                            <td>{x.classDaysID}</td>
+                            <td>{x.classID}</td>
                             <td>{x.description}</td>
-                            <td>{x.yearOffered}</td>
-                            <td>{x.seasonOffered}</td>
-                            <td>{x.classTimeStart}</td>
-                            <td>{x.classTimeEnd}</td>
+                            <td>{this.formatSemester(x.seasonOffered,x.yearOffered)}</td>
+                            <td>{x.teacherName}</td>
+                            <td>{this.formatTime(x.classTimeStart)}</td>
+                            <td>{this.formatTime(x.classTimeEnd)}</td>
                         </tr>
                     )}
                     {/*
