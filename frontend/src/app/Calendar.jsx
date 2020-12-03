@@ -108,6 +108,33 @@ findAssignments(date){
         var properDate =  date.substring(5,7) + "-" + date.substring(8,10) + "-" + date.substring(0,4); 
         return properDate;
     }
+
+    nextMonth(){
+        
+        if(this.state.month != 12){
+            this.setState({month: (this.state.month + 1)});
+        }
+        else{
+            console.log(this.state.year);
+            var year = (this.state.year+1);
+            this.setState({year: year});
+            this.setState({month: 1});
+            console.log(this.state.year);
+        }
+
+    }
+
+    prevMonth(){
+
+        if(this.state.month != 1){
+            this.setState({month: (this.state.month - 1)});
+        }
+        else{
+            this.setState({year: (this.state.year- 1)});
+            this.setState({month: 12});
+        }
+
+    }
     
 
 
@@ -126,8 +153,8 @@ findAssignments(date){
                     <tr>
                         <div className="month">      
                             <ul>
-                                <li className="prev">&#10094;</li>
-                                <li className="next">&#10095;</li>
+                                <li className="prev" onClick={()=>this.prevMonth()}>&#10094;</li>
+                                <li className="next" onClick={()=>this.nextMonth()}>&#10095;</li>
                                 <li>                              
                                {this.state.month}
                                 <br></br>
@@ -182,9 +209,9 @@ findAssignments(date){
                     </ul>
                 </tbody>
             </table>
-        <div className="form-inline ">
-            <button className="btn btn-primary col-sm-3" id="pre" onClick="pre()">Previous Month</button>
-            <button className="btn btn-primary col-sm-3" id="nex" onClick="nex()">Next Month</button>
+            <div className="form-inline ">
+            <button className="btn btn-primary col-sm-3" id="pre" onClick={()=>this.prevMonth()}>Previous Month</button>
+            <button className="btn btn-primary col-sm-3" id="nex" onClick={()=>this.nextMonth()}>Next Month</button>
         </div>
         <br/>
     </div>

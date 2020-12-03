@@ -100,3 +100,11 @@ body {
     position: relative;
     left: 20em;
 }
+
+.prev {
+    cursor: pointer;
+}
+
+.next {
+    cursor: pointer;
+}

@@ -35,26 +35,27 @@ export class CalendarDaily extends React.Component{
    }
 
    async displayAssignments(){
-       var assignments = (await this.findAssignments()).data;
-       assignments.forEach(ele => {
-        if (ele.dueDate){
-            var newDate = new Date(ele.dueDate);
-            //console.log(newDate);
-            console.log(newDate.getDate());
-            console.log(this.state.day);
-            
-            if(this.state.day === newDate.getDate()+1){
-                this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
-                         
+    var assignments = (await this.findAssignments()).data;
+    assignments.forEach(ele => {
+     if (ele.dueDate){
+         var newDate = new Date(ele.dueDate);
+         //console.log(newDate);
+         console.log(newDate.getDate());
+         console.log(this.state.day);
+         
+         if((this.state.day === newDate.getDate()+1)&&(this.state.month === newDate.getMonth()+1)&&(this.state.year === newDate.getFullYear())){
 
-            }
-            
-            
-        }
-    })
-       console.log(this.state.assignments);
+             this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
+                      
 
-   }
+         }
+         
+         
+     }
+ })
+    console.log(this.state.assignments);
+
+}
 
   
 
@@ -75,8 +76,6 @@ export class CalendarDaily extends React.Component{
                  <tr>
                      <div className="month">      
                          <ul>
-                             <li class="prev">&#10094;</li>
-                             <li class="next">&#10095;</li>
                              <li>
                             
                            {this.state.month}
