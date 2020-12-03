@@ -120,8 +120,8 @@ export class CourseDashboard extends React.Component{
                                                 <td>{x.classDaysID}</td>
                                                 <td>{x.description}</td>
                                                 <td>{this.formatSemester(x.seasonOffered, x.yearOffered)}</td>
-                                                <td>{x.classTimeStart}</td>
-                                                <td>{x.classTimeEnd}</td>
+                                                <td>{this.formatTime(x.classTimeStart)}</td>
+                                                <td>{this.formatTime(x.classTimeEnd)}</td>
                                                 <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button>
                                             </tr>)}
                                         </tbody>
