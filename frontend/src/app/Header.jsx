@@ -13,12 +13,6 @@ export class Header extends React.Component{
                         <a href="/home" className="mb-0 h4 text-primary font-weight-bold">Plus</a>
                     </li>
                 </ul>
-                    <ul className="nav justify-content-end">
-                        <li className="nav-item">
-                            <a className="nav-link text-white" href="/home">Home</a>
-                        </li>
-                        
-                    </ul>  
                     <a href="/login" className="btn btn-primary btn-sm rounded justify-content-end" role="button" aria-pressed="true">LOG OUT</a>      
             </nav>
         </>)
