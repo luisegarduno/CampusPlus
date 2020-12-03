@@ -67,7 +67,7 @@ this.ProductRepo = new AssignmentRepository();
 
 //    }
 
-findAssignments(date){
+    findAssignments(date){
         console.log(this.state.month);
 
         this.props.history.push({

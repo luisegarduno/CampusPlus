@@ -1,7 +1,7 @@
 import React from "react";
 import _ from 'lodash';
 import { Course } from '../models/Course';
-import { ClassesRepository} from '../Api/classesRepository';
+import { ClassesRepository } from '../Api/classesRepository';
 
 export class CourseList extends React.Component{
 

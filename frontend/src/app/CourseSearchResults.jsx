@@ -1,6 +1,5 @@
 import React from "react";
 import _ from 'lodash';
-import { Course } from '../models/Course';
 import { ClassesRepository} from '../Api/classesRepository';
 import { Header } from './Header';
 
@@ -11,7 +10,7 @@ export class CourseSearchResults extends React.Component{
         super(props);
 
         this.state = {
-            classes: [],
+            classes: this.props.location.state.classes,
             sortDirection: 'asc',
         };
 
@@ -21,19 +20,6 @@ export class CourseSearchResults extends React.Component{
         this.formatSemester = this.formatSemester.bind(this);
 
     }//end state
-
-
-    componentDidMount(){
-        //need to return full list of classes, userID not needed
-        this.classRepo.getCourseList()
-        .then(res => {
-            res.forEach(ele => {
-                this.setState({classes:[...this.state.classes, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName)]});
-            });
-        })
-        
-        .catch(res => console.log(res));
-    }
 
     sortBy(field) {
         if (this.state.sortDirection === 'asc') {
