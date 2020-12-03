@@ -364,9 +364,9 @@ module.exports = function assignment(app, logger) {
       } else {
           // if there is no issue obtaining a connection, execute query and release connection
           var assignmentID = req.params.assignmentID
-          var name = req.params.name
+          var name = req.body.name
           var description = req.body.description
-          var dueDate = req.params.dueDate
+          var dueDate = req.body.dueDate
           var assignmentType = req.body.assignmentType
           var completionStatus = req.body.completionStatus
           connection.query('UPDATE `canvasplus`.`assignment` a SET a.name = ?, a.description = ?, a.dueDate = ?, a.assignmentType = ?, a.completionStatus = ? WHERE a.assignmentID = ?', [name, description, dueDate, assignmentType, completionStatus, assignmentID], function (err, rows, fields) {
