@@ -77,9 +77,9 @@ export class AssignmentRepository {
 
 
     // POST Create new assignment : http://localhost:8000/assignment/:userID/:classID
-    createAssignment(userID, classID, loginData){
+    createAssignment(userID, assignmentData){
         return new Promise((resolve,reject) =>{
-            axios.post(`${this.url}/assignment/${userID}/${classID}`, loginData)
+            axios.post(`${this.url}/assignment/${userID}`, assignmentData)
                 .then(x => {
                     resolve(x.data);
                 })
@@ -89,6 +89,7 @@ export class AssignmentRepository {
             })
         });
     }
+
 
     // PUT Change name of the assignment : http://localhost:8000/assignment/:assignmentID/name
     updateName(assignmentID, name){
@@ -151,6 +152,20 @@ export class AssignmentRepository {
     updateCompletion(assignmentID, completionStatus){
         return new Promise((resolve,reject) =>{
             axios.put(`${this.url}/assignment/${assignmentID}/completion`, completionStatus)
+                .then(x => {
+                    resolve(x.data);
+                })
+            .catch(x => {
+                alert(x);
+                reject(x);
+            })
+        });
+    }
+
+    // PUT updates assignment depending on assignmentID : http://localhost:8000/assignment/:assignmentID
+    updateAssignment(assignmentID, body){
+        return new Promise((resolve,reject) =>{
+            axios.put(`${this.url}/assignment/${assignmentID}`, body)
                 .then(x => {
                     resolve(x.data);
                 })

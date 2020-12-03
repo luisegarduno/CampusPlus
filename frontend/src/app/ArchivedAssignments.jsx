@@ -65,6 +65,15 @@ export class ArchivedAssignments extends React.Component {
         return properDate;
     }
 
+    storeID(id){
+        this.props.history.push({
+            pathname: `/assignment/${id}`,
+            state: {assignmentID: id}
+        });
+        
+
+    }
+
     render() {
         return(<>
             <Header />
@@ -79,11 +88,11 @@ export class ArchivedAssignments extends React.Component {
                     <table className="table table-striped table-responsive-md">
                         <thead className="thead-dark">
                             <tr>
-                            <th>Assignment</th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'name')}>Assignment</button></th>
                             <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
                             <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
                             <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
-                            <th>Description</th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'description')}>Description</button></th>
                             <th>Edit</th>
                             </tr>
                         </thead>
@@ -96,7 +105,7 @@ export class ArchivedAssignments extends React.Component {
                                     <td>{x.assignmentType}</td>
                                     <td>{this.formatDate(x.dueDate)}</td>
                                     <td>{x.description}</td>
-                                    <td><button type="button" className="btn-floating yellow darken-1 rounded"><i className="fas fa-pencil-alt"></i></button></td>
+                                    <td><button type="button" className="btn-floating yellow darken-1 rounded" onClick={() => this.storeID(x.assignmentID)}><i className="fas fa-pencil-alt"></i></button></td>
                                 </tr>)}
                         </tbody> 
                     </table>

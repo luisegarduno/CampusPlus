@@ -44,7 +44,8 @@ export class AssignmentEditor extends React.Component{
                 description: this.state.assignmentDescription,
                 classDescription: this.state.classDescription,
                 dueDate: this.state.dueDate,
-                assignmentType: this.state.assignmentType}
+                assignmentType: this.state.assignmentType,
+                completionStatus: 0}
                
                 this.api.updateAssignment(this.props.location.state.assignmentID, data);
                 await this.loadDash();

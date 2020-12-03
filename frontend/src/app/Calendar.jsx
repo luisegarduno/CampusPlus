@@ -158,18 +158,18 @@ findAssignments(date){
                                 <li>                              
                                {this.state.month}
                                 <br></br>
-                                2020
+                                {this.state.year}
                                 </li>
                             </ul>
                         </div>
                         <ul className="weekdays">
-                            <li>mon</li>
+                            <li>Sun</li>
+                            <li>Mon</li>
                             <li>Tu</li>
                             <li>We</li>
                             <li>Th</li>
-                            <li>Fr</li>
-                            <li>Sa</li>
-                            <li>Su</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
                         </ul>
                     </tr>
                 </thead>
@@ -211,6 +211,7 @@ findAssignments(date){
             </table>
             <div className="form-inline ">
             <button className="btn btn-primary col-sm-3" id="pre" onClick={()=>this.prevMonth()}>Previous Month</button>
+            <div className="col-sm-3"></div>
             <button className="btn btn-primary col-sm-3" id="nex" onClick={()=>this.nextMonth()}>Next Month</button>
         </div>
         <br/>

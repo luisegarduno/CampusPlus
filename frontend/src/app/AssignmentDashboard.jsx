@@ -8,8 +8,10 @@ import _ from 'lodash';
 
 export class AssignmentDashboard extends React.Component {
 
+    username;
 
     constructor(props){
+
         super(props);
         this.username = localStorage['username'];
         this.userID = localStorage['userID'];
@@ -17,23 +19,34 @@ export class AssignmentDashboard extends React.Component {
         this.state = {
             assignments: [],
             sortDirection : 'asc',
-            userID: this.userID,
+            userID: '',
         };
 
         this.assignmentRepo = new AssignmentRepository();
         this.formatDate = this.formatDate.bind(this);
+        this.displayAssignments();
 
     }//end state
 
+    async getAss(){
+        //window.location.reload(false);
+        return await this.assignmentRepo.getAssignments(this.userID)
+       
+    }
 
-    componentDidMount(){
-        this.assignmentRepo.getAssignments(this.state.userID)
+
+    displayAssignments(){
+       
+        console.log("loaded");
+        this.getAss()
         .then(res => {
             console.log(res)
             res.data.forEach(ele => {
+                if(ele.completionStatus === 0){
                 this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
                 
-          });
+          }
+        });
      
         console.log(this.state);
             })
@@ -63,6 +76,15 @@ export class AssignmentDashboard extends React.Component {
         var properDate =  date.substring(5,7) + "-" + date.substring(8,10) + "-" + date.substring(0,4); 
         return properDate;
     }
+
+    storeID(id){
+        this.props.history.push({
+            pathname: `/assignment/${id}`,
+            state: {assignmentID: id}
+        });
+        
+
+    }
     
 
     render() {
@@ -80,29 +102,33 @@ export class AssignmentDashboard extends React.Component {
                     <thead className="thead-dark">
                         <tr>
                         
-                            <th>Assignment</th>
-                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
-                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
-                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
-                            <th>Description</th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'name')}>Assignment</button></th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'description')}>Description</button></th>
                             <th>Edit</th>
                             
                         </tr>
                     </thead>
                     <tbody>
                         { this.state.assignments.map((x) =>
-                            <tr key = {x.assignmentID}>
-                                <td>{x.name}</td>
-                                <td>{x.classID}</td>
-                                <td>{x.assignmentType}</td>
-                                <td>{this.formatDate(x.dueDate)}</td>
-                                <td>{x.description}</td>
-                                <td><button type="button" className="btn-floating yellow darken-1 rounded" onClick={() => this.props.history.push("/assignment/:assignmentID")}><i className="far fa-edit"></i></button></td>
-                            </tr>
-                        )}
+                        <tr key = {x.assignmentID}>
+                            <td>{x.name}</td>
+                            <td>{x.classID}</td>
+                            <td>{x.assignmentType}</td>
+                            <td>{this.formatDate(x.dueDate)}</td>
+                            <td>{x.description}</td>
+                            <td><button type="button" className="btn-floating yellow darken-1 rounded" onClick={() => this.storeID(x.assignmentID)}><i className="fas fa-pencil-alt"></i></button></td>
+                            </tr>)}
+
+                        <tr>
+                           {/* <button type="button" className="btn btn-primary rounded float-right">Edit</button> */}
+                        </tr>
                     </tbody>
                 </table>
                 <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/add")}>Add Assignment</button>
+             
             </div>
             </div>
             </div>
