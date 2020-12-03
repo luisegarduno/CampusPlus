@@ -84,7 +84,6 @@ export class ArchivedAssignments extends React.Component {
                             <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
                             <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
                             <th>Description</th>
-                            <th>Edit</th>
                             </tr>
                         </thead>
 
@@ -96,11 +95,9 @@ export class ArchivedAssignments extends React.Component {
                                     <td>{x.assignmentType}</td>
                                     <td>{this.formatDate(x.dueDate)}</td>
                                     <td>{x.description}</td>
-                                    <td><button type="button" className="btn-floating yellow darken-1 rounded"><i className="fas fa-pencil-alt"></i></button></td>
                                 </tr>)}
                         </tbody> 
                     </table>
-                    <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/homepages")}>Add Assignment</button>
                 </div>
             </div>
         </div>
