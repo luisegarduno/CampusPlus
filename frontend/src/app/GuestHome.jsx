@@ -33,8 +33,8 @@ export class GuestHome extends React.Component {
                         <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/courselist")}>Courses Offered</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
-                    <img src="/forum.png" className="p-2 img-fluid card-img-top" alt="..."/>
-                    <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/forum")}>Course Forum</button>  
+                    <img src="/people.jpg" className="p-2 img-fluid card-img-top" alt="..."/>
+                    <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/guestAboutUs")}>AboutUs</button>  
                 </div>
              </div>
              </form>

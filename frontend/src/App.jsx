@@ -21,6 +21,8 @@ import { ForumDashboard } from './app/ForumDashboard';
 import { CourseAndComments } from './app/CourseAndComments';
 import {AssignmentAdder} from './app/AddAssignments';
 import { CourseSearchResults } from './app/CourseSearchResults';
+import {AboutUs} from './app/AboutUs';
+import {GuestAboutUs} from './app/GuestAboutUs';
 
 const App = props => {
   return(
@@ -48,6 +50,8 @@ const App = props => {
           <Route exact path ="/course_reviews/:classID" component={CourseAndComments} />
           <Route exact path ="/add" component={AssignmentAdder} />
           <Route exact path="/course_search_results" component={CourseSearchResults} />
+          <Route exact path="/guestAboutUs" component={GuestAboutUs} />
+          <Route exact path="/aboutUs" component={AboutUs} />
         </Switch>
       </Router>
     </div>
