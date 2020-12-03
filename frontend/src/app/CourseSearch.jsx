@@ -29,16 +29,13 @@ export class CourseSearch extends React.Component{
         .then(res => {
             console.log(res);
             res.forEach(ele => {
-                console.log(parseInt(this.state.semester));
-                console.log(parseInt(this.state.courseID));
                 console.log(this.state.courseName);
-                console.log(this.state.professor);
-                var val = parseInt(this.state.semester);
+                // var val = parseInt(this.state.semester);
                 if (
-                    ((ele.seasonOffered === val) || (val === -1)) && 
-                    ((ele.classID === parseInt(this.state.courseID)) || (parseInt(this.state.courseID) === 0)) &&
-                    ((ele.description === this.state.courseName) || (this.state.courseName === "None")) &&
-                    ((ele.teacherName === this.state.professor) || (this.state.professor === "None"))
+                   /*   ((ele.seasonOffered === val) || (val === -1)) && 
+                    ((ele.classID === parseInt(this.state.courseID)) || (parseInt(this.state.courseID) === 0)) && */
+                    ((ele.description === this.state.courseName) || (this.state.courseName === "None"))
+                   //((ele.teacherName === this.state.professor) || (this.state.professor === "None"))
                 ) 
                 {
                     this.setState({classes:[...this.state.classes, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName)]}); 
@@ -69,7 +66,7 @@ export class CourseSearch extends React.Component{
                 <form>
                     <h2 className = "text-left font-weight-bold">Search Courses</h2>
                     <div>
-                    <select className="p-2 custom-select mb-3" onChange={e => this.setState({semester: e.target.value})}>
+                    {/*<select className="p-2 custom-select mb-3" onChange={e => this.setState({semester: e.target.value})}>
                         <option value="-1"selected>Search By Semester (required)</option>
                             <option value="1">Fall 2020</option>
                             <option value="2">January 2021</option>
@@ -83,14 +80,22 @@ export class CourseSearch extends React.Component{
                             <option value="ASIM 3305">ASIM 3305</option>
                             <option value="ASPT 1300">ASPT 1300</option>
                             <option value="CS 5324">CS 5324</option>
-                    </select>
+                    </select> */}
                     
                     <select className="p-2 custom-select mb-3" onChange={e => this.setState({courseName: e.target.value})}>
                         <option value="None" defaultValue>Search By Course Name (required)</option>
                             <option value="Programming Languages">Programming Languages</option>
-                            <option value="ASIM 3305">Design For Professionals</option>
-                            <option value="ASPT 1300">Painting Is Fun</option>
-                            <option value="CS 5324">Some Kind of Coding</option>
+                            <option value="Calculus 2 ">Calculus 2</option>
+                            <option value="GUI">GUI</option>
+                            <option value="Swimming">Swimming</option>
+                            <option value="Bowling">Bowling</option>
+                            <option value="Databases ">Databases</option>
+                            <option value="Linear Algebra">Linear Algebra</option>
+                            <option value="Philosophy ">Philosophy</option>
+                            <option value="DISC">DISC</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="The business of business">The Business of Business</option>
+                            <option value="Information Security">Information Security</option>
                     </select>
 
                     {/*<select className="p-2 custom-select mb-3" onChange={e => this.setState({classTime: e.target.value})}>
@@ -100,7 +105,7 @@ export class CourseSearch extends React.Component{
                             <option value="11am">11:00 AM</option>
                             <option value="330pm">3:30 PM</option>
                     </select>
-                    */}
+                    
                     <select className="p-2 custom-select mb-3" onChange={e => this.setState({professor: e.target.value})}>
                         <option value="None" defaultValue>Search By Professor (required)</option>
                             <option value="Fontenot">Mark Fontenot</option>
@@ -108,7 +113,7 @@ export class CourseSearch extends React.Component{
                             <option value="captainMorgan">Captain Morgan</option>
                             <option value="tonyStark">Tony Stark</option>
                     </select>
-
+                    */}
                     </div>
                     <button type="button" className="btn btn-primary rounded" onClick={() => this.search()}>Search</button>
                 </form>

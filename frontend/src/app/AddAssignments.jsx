@@ -103,9 +103,11 @@ export class AssignmentAdder extends React.Component{
                     </div>
                 
                     <div className="footer">
+                        <div className ="p-3 btn-group" role="group">
+                            <button className="btn btn-primary btn-md btn-primary" onClick={() => this.props.history.push("/assignments")}>Cancel</button>
+                        </div>
                         <div className ="p-3 btn-group" role="group" >
-                          <button type="button" className="btn btn-primary btn-md btn-primary" onClick={e => this.createAssignment()}>Add</button>
-                 
+                            <button type="button" className="btn btn-primary btn-md btn-primary" onClick={e => this.createAssignment()}>Add</button>
                     </div>
                     </div>
                 </div>

@@ -71,7 +71,7 @@ this.ProductRepo = new AssignmentRepository();
         console.log(this.state.month);
 
         this.props.history.push({
-            pathname: `/Calendar/${date}/${this.state.month}/${this.state.year}`,
+            pathname: `/calendar/${date}/${this.state.month}/${this.state.year}`,
             state: {day: date, month: this.state.month, year:this.state.year }
         });
         
@@ -111,7 +111,7 @@ this.ProductRepo = new AssignmentRepository();
 
     nextMonth(){
         
-        if(this.state.month != 12){
+        if(this.state.month !== 12){
             this.setState({month: (this.state.month + 1)});
         }
         else{
@@ -126,7 +126,7 @@ this.ProductRepo = new AssignmentRepository();
 
     prevMonth(){
 
-        if(this.state.month != 1){
+        if(this.state.month !== 1){
             this.setState({month: (this.state.month - 1)});
         }
         else{

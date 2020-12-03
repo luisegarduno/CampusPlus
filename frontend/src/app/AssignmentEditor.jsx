@@ -67,8 +67,10 @@ export class AssignmentEditor extends React.Component{
             <Header />
             <nav className="navbar bg-white">
                 <span className="mb-0 h5 text-primary">Edit Assignment</span>
+                <button className="btn btn-primary btn-sm float-right rounded" onClick={() => this.props.history.push("/assignments")}>Return</button>
             </nav>
             <div className="p-5 container-fluid container-lg">
+                
                 <div className = "card text-center mb-1 w-75 mx-auto">
                     <div className = "jumbotron-fluid h-75 bg-primary text-white text-center">
                         <h4 className="p-4 card-title font-weight-bold">Edit Assignment</h4>

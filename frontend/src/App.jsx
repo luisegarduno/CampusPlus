@@ -13,7 +13,6 @@ import { AssignmentEditor } from './app/AssignmentEditor';
 import { CourseSearch } from './app/CourseSearch';
 import { ArchivedAssignments } from './app/ArchivedAssignments';
 import { ArchivedCourses } from './app/ArchivedCourses';
-import { CalendarWeekly } from './app/CalendarWeekly';
 import { CalendarDaily } from './app/CalendarDaily';
 import { ViewCourse } from './app/ViewCourse';
 import { GuestHome } from './app/GuestHome';
@@ -34,15 +33,14 @@ const App = props => {
           <Route exact path="/profile/edit" component={EditProfile} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/assignments" component={AssignmentDashboard} />
-          <Route exact path="/calendars" component={Calendar} />
+          <Route exact path="/calendar" component={Calendar} />
           <Route exact path="/courses" component={CourseDashboard}/>
           <Route exact path="/login" component={WelcomePage} />
           <Route exact path="/assignment/:assignmentID" component={AssignmentEditor} />
           <Route exact path="/courseOptions" component={CourseSearch} />
           <Route exact path="/finished_assignments" component={ArchivedAssignments} />
           <Route exact path="/completedCourses" component={ArchivedCourses} />
-          <Route exact path ="/weekly" component={CalendarWeekly} />
-          <Route exact path="/Calendar/:day/:month/:year" component={CalendarDaily} />
+          <Route exact path="/calendar/:day/:month/:year" component={CalendarDaily} />
           <Route exact path="/viewCourses" component={ViewCourse} />
           <Route exact path ="/guest" component={GuestHome} />
           <Route exact path ="/courselist" component={CourseList} />

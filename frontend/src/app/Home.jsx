@@ -41,7 +41,7 @@ export class Home extends React.Component {
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/rightCalendar.png" className="p-1 img-fluid card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-md-1 text-white btn-sm rounded" onClick={() => this.props.history.push("/calendars")}>View Calendar</button>
+                        <button className="btn btn-primary mx-md-1 text-white btn-sm rounded" onClick={() => this.props.history.push("/calendar")}>View Calendar</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/assignments.png" className="p-1 img-fluid card-img-top" alt="..."/>
