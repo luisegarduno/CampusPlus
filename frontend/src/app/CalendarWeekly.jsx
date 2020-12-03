@@ -31,10 +31,10 @@ export class CalendarWeekly extends React.Component{
          <table className="table table-bordered table-responsive-sm" id="calendar">
              <thead>
                  <tr>
-                     <div class="month">     
+                     <div className="month">     
                          <ul>
-                             <li class="prev">&#10094;</li>
-                             <li class="next">&#10095;</li>
+                             <li className="prev">&#10094;</li>
+                             <li className="next">&#10095;</li>
                              <li>
                            
                            November
@@ -55,7 +55,7 @@ export class CalendarWeekly extends React.Component{
                  </tr>
              </thead>
              <tbody id="calendarBody">
-                 <ul class="days"> 
+                 <ul className="days"> 
                      <li>math</li>
                      <li>science</li>
                      <li>english</li>
