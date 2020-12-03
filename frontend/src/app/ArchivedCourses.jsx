@@ -6,21 +6,16 @@ import { ClassesRepository } from '../Api/classesRepository';
 
 export class ArchivedCourses extends React.Component{
 
-
         constructor(props){
-            super(props);
-            this.username = localStorage['username'];
-            this.userID = localStorage['userID'];
-
-            this.state = {
-                courses: [],
-                sortDirection: 'asc',
-                userID: this.userID,
+        super(props);
+        this.state = {
+            courses: [],
+            sortDirection: 'asc',
+            userID: 1,
         };
         
         this.coursesRepo = new ClassesRepository();
         this.formatDate = this.formatDate.bind(this);
-        this.formatTime = this.formatTime.bind(this);
         this.formatSemester = this.formatSemester.bind(this);
 
     }//end state
@@ -50,24 +45,6 @@ export class ArchivedCourses extends React.Component{
             this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
             });
         }
-    }
-
-    formatTime(myTime){
-        var timeValue;
-        var time = String(myTime);
-        time = time.split(':');
-
-        var hours = Number(time[0]);
-        var minutes = Number(time[1]);
-
-        if (hours > 0 && hours <= 12) timeValue= "" + hours;
-        else if (hours > 12) timeValue= "" + (hours - 12);
-        else if (hours === 0) timeValue= "12";
-
-        timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes;
-        timeValue += (hours >= 12) ? " P.M." : " A.M.";
-
-        return timeValue;
     }
 
     formatSemester(semester, year){
@@ -115,12 +92,6 @@ export class ArchivedCourses extends React.Component{
                             <td>ASIM 1310</td>
                             <td>Creative Coding 1</td>
                             <td>January 2021</td>
-                            <button type="button" className="btn btn-primary btn-sm rounded">View Course</button>
-                        </tr>
-                        <tr>
-                            <td>ASPT 1300</td>
-                            <td>Introduction to Painting</td>
-                            <td>Spring 2021</td>
                             <button type="button" className="btn btn-primary btn-sm rounded">View Course</button>
                         </tr>
                     </tbody>

@@ -56,7 +56,7 @@ export class CourseSearch extends React.Component{
                     </select>
 
                     </div>
-                    <button className="btn btn-primary rounded">Search</button>
+                    <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/course_search_results")}>Search</button>
                 </form>
             </div>
           </>

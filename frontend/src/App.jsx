@@ -20,6 +20,8 @@ import { GuestHome } from './app/GuestHome';
 import { CourseList } from './app/CourseList';
 import { ForumDashboard } from './app/ForumDashboard';
 import { CourseAndComments } from './app/CourseAndComments';
+import {AssignmentAdder} from './app/AddAssignments';
+import { CourseSearchResults } from './app/CourseSearchResults';
 
 const App = props => {
   return(
@@ -32,20 +34,22 @@ const App = props => {
           <Route exact path="/profile/edit" component={EditProfile} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/assignments" component={AssignmentDashboard} />
-          <Route exact path="/calendar" component={Calendar} />
+          <Route exact path="/calendars" component={Calendar} />
           <Route exact path="/courses" component={CourseDashboard}/>
           <Route exact path="/login" component={WelcomePage} />
-          <Route exact path="/assignmentchanges" component={AssignmentEditor} />
+          <Route exact path="/assignment/:assignmentID" component={AssignmentEditor} />
           <Route exact path="/courseOptions" component={CourseSearch} />
           <Route exact path="/finished_assignments" component={ArchivedAssignments} />
           <Route exact path="/completedCourses" component={ArchivedCourses} />
           <Route exact path ="/weekly" component={CalendarWeekly} />
-          <Route exact path="/daily" component={CalendarDaily} />
+          <Route exact path="/Calendar/:day/:month/:year" component={CalendarDaily} />
           <Route exact path="/viewCourses" component={ViewCourse} />
           <Route exact path ="/guest" component={GuestHome} />
           <Route exact path ="/courselist" component={CourseList} />
           <Route exact path ="/forum" component={ForumDashboard} />
           <Route exact path ="/course_reviews/:classID" component={CourseAndComments} />
+          <Route exact path ="/add" component={AssignmentAdder} />
+          <Route exact path="/course_search_results" component={CourseSearchResults} />
         </Switch>
       </Router>
     </div>

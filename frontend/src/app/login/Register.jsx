@@ -122,7 +122,7 @@ export class Register extends React.Component{
             </nav>
             <div className="p-3 container-fluid container-sm">
                 <div className = "card text-center mb-1 w-75 mx-auto">
-                    <div className = "jumbotron-fluid h-75 bg-light text-white text-center">
+                    <div className = "jumbotron-fluid h-75 bg-primary text-white text-center">
                         <h4 className="p-4 card-title font-weight-bold">Register</h4>
                     </div>
                     <div className = "form-group">

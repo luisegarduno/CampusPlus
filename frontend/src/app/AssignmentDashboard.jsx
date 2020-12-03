@@ -97,12 +97,12 @@ export class AssignmentDashboard extends React.Component {
                                 <td>{x.assignmentType}</td>
                                 <td>{this.formatDate(x.dueDate)}</td>
                                 <td>{x.description}</td>
-                                <td><button type="button" className="btn-floating yellow darken-1 rounded"><i className="far fa-edit"></i></button></td>
+                                <td><button type="button" className="btn-floating yellow darken-1 rounded" onClick={() => this.props.history.push("/assignment/:assignmentID")}><i className="far fa-edit"></i></button></td>
                             </tr>
                         )}
                     </tbody>
                 </table>
-                <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/assignmentchanges")}>Add Assignment</button>
+                <button className="btn btn-primary rounded" onClick={() => this.props.history.push("/add")}>Add Assignment</button>
             </div>
             </div>
             </div>
