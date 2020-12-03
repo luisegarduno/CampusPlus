@@ -1,6 +1,15 @@
 import React from "react";
+//import {Comment} from '../models/Comment';
 
 export class ForumCommentForm extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+            userName: '',
+            comment: ''
+        }
+    }
   
     render() {
         return(<>
@@ -32,19 +41,29 @@ export class ForumCommentForm extends React.Component{
                         <button
                             type = "button"
                             className = "btn btn-primary"
-                            onClick = { () => this.onSubmit() } >
+                            /*onClick = { () => this.addReview() }*/ >
                             Submit
                         </button>
                     </div>
                 </div>
             </form>
-            <div class="col-md-12 mb-4">
-                <p>buttons for posted comments</p>
-                <button type="button" className="btn btn-primary px-3"><i className="far fa-thumbs-up" aria-hidden="true"></i></button>
-                <button type="button" className="btn btn-primary px-3"><i className="far fa-thumbs-down" aria-hidden="true"></i></button>
-                <button type="button" className="btn btn-primary px-3"><i className="fas fa-flag" aria-hidden="true"></i></button>
-            </div>
             </div>
         </>)
     }
+
+    /*
+    addReview = () => {
+        var prod = new Comment(
+            this.state.classID, 
+            this.state.description
+        )
+        this.props.onReviewAdded(prod);
+        this.setState({
+            classID: '',
+            description: ''
+        })
+    }
+    */
+    
 }
+export default ForumCommentForm;

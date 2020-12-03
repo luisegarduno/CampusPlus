@@ -19,6 +19,7 @@ import { ViewCourse } from './app/ViewCourse';
 import { GuestHome } from './app/GuestHome';
 import { CourseList } from './app/CourseList';
 import { ForumDashboard } from './app/ForumDashboard';
+import { CourseAndComments } from './app/CourseAndComments';
 
 const App = props => {
   return(
@@ -44,6 +45,7 @@ const App = props => {
           <Route exact path ="/guest" component={GuestHome} />
           <Route exact path ="/courselist" component={CourseList} />
           <Route exact path ="/forum" component={ForumDashboard} />
+          <Route exact path ="/course_reviews/:classID" component={CourseAndComments} />
         </Switch>
       </Router>
     </div>
