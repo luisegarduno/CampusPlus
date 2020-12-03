@@ -10,8 +10,8 @@ export class GuestHome extends React.Component {
          return(<>   
 
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-            <span className="mb-0 h3 text-white font-weight-bold">Campus</span>
-            <span className="mb-0 h3 text-primary font-weight-bold">Plus</span>
+            <a href="/guest" className="mb-0 h4 text-white font-weight-bold">Campus</a>
+            <a href="/guest" className="mb-0 h4 text-primary font-weight-bold">Plus</a>
             <div className="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                 <form className="form-inline ">
                     <button className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/login")}>LOG OUT</button>
@@ -28,13 +28,13 @@ export class GuestHome extends React.Component {
                  <h3 className = "text-center text-dark font-weight-bold">Welcome, Guest!</h3>
              </header>
             <div className = " p-3 card-deck row-cols-2 row align-items-center">
-                <div className="card">
-                    <img src="/schedule.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/courselist")}>Courses Offered</button>
+                <div className="p-1 card h-100 w-100">
+                    <img src="/schedule.png" className="p-2 img-fluid card-img-top" alt="..."/>
+                        <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/courselist")}>Courses Offered</button>
                 </div>
-                <div className="card">
-                    <img src="/forum.png" className="p-3 card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-auto my-auto text-white btn-sm rounded" onClick={() => this.props.history.push("/forum")}>Course Forum</button>
+                <div className="p-1 card h-100 w-100">
+                    <img src="/forum.png" className="p-2 img-fluid card-img-top" alt="..."/>
+                    <button className="btn btn-primary text-white btn-sm rounded" onClick={() => this.props.history.push("/forum")}>Course Forum</button>  
                 </div>
              </div>
              </form>

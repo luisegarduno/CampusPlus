@@ -51,7 +51,7 @@ export class Home extends React.Component {
             <div className = " p-2 card-deck row-cols-3 row align-items-center">
                 <div className="p-1 card h-100 w-100">
                     <img src="/archive.png" className="p-1 img-fluid card-img-top" alt="..."/>
-                        <button className="btn btn-primary mx-md-1 text-white btn-sm rounded" onClick={() => this.props.history.push("/finished_assignments")}>Archived Assignments</button>
+                        <button className="btn btn-primary mx-md-1 text-white btn-sm rounded overflow-hidden" onClick={() => this.props.history.push("/finished_assignments")}>Archived Assignments</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/schedule.png" className="p-1 img-fluid card-img-top" alt="..."/>
@@ -59,7 +59,7 @@ export class Home extends React.Component {
                 </div>
                 <div className="p-1 card h-100 w-100">
                     <img src="/forum.png" className="p-1 img-fluid card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white mx-md-1 btn-sm rounded" onClick={() => this.props.history.push("/forum")}>Review Forum</button>
+                        <button className="btn btn-primary text-white btn-sm rounded overflow-hidden" onClick={() => this.props.history.push("/forum")}>Review Forum</button>
                 </div>
              </div>
              </form>
