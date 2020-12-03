@@ -55,7 +55,7 @@ export class AssignmentAdder extends React.Component{
             </nav>
             <div className="p-5 container-fluid container-sm">
                 <div className = "card text-center w-50 mx-auto">
-                <div className = "jumbotron-fluid h-75 bg-dark text-white text-center">
+                <div className = "jumbotron-fluid h-75 bg-primary text-white text-center">
                         <h4 className="p-4 card-title font-weight-bold">Add Assignment</h4>
                     </div>
                     <div className = "form-group">

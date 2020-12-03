@@ -70,7 +70,7 @@ export class AssignmentEditor extends React.Component{
             </nav>
             <div className="p-5 container-fluid container-lg">
                 <div className = "card text-center mb-1 w-75 mx-auto">
-                    <div className = "jumbotron-fluid h-75 bg-dark text-white text-center">
+                    <div className = "jumbotron-fluid h-75 bg-primary text-white text-center">
                         <h4 className="p-4 card-title font-weight-bold">Edit Assignment</h4>
                     </div>
                     <div className = "form-group">
