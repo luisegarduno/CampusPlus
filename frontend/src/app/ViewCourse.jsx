@@ -40,7 +40,7 @@ export class ViewCourse extends React.Component{
             .then(res => {
             console.log(res)
             res.forEach(ele => {
-                this.setState({courseDetails:[...this.state.courseDetails, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd)]});
+                this.setState({courseDetails:[...this.state.courseDetails, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName, ele.reviews)]});
             });
             console.log(this.state);
 
@@ -138,27 +138,14 @@ export class ViewCourse extends React.Component{
                                 <td>{x.classID}</td>
                                 <td>{x.description}</td>
                                 <td>{x.classDaysID}</td>
-                                <td> ? </td>
+                                <td> {x.teacherName} </td>
                                 <td>{this.formatTime(x.classTimeStart)}</td>
                                 <td>{this.formatTime(x.classTimeEnd)}</td>
                                 <td>{this.formatSemester(x.seasonOffered, x.yearOffered)}</td>
-                                <td> ? </td>
+                                <td>{this.reviews}</td>
                                 <td><button type="button" className="btn-floating btn-danger darken-1 rounded"><i className="fas fa-trash-alt"></i></button></td>
                             </tr>)}
                         </tbody> 
-                    <tbody>
-                        <tr>
-                            <td>ASIM 1310</td>
-                            <td>Creative Coding 1</td>
-                            <td>MWF</td>
-                            <td>James Burns</td>
-                            <td>10:00 AM</td>
-                            <td>10:50 AM</td>
-                            <td>January 2021</td>
-                            <td>Explore the mystery of code in a creative way.</td>
-                            <td><button type="button" className="btn-floating btn-danger darken-1 rounded"><i className="fas fa-trash-alt"></i></button></td>
-                        </tr>
-                    </tbody>
                 </table>
                 <p>Note: List current assigments for current course</p>
             </div>
