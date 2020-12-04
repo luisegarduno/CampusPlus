@@ -89,9 +89,9 @@ export class ArchivedAssignments extends React.Component {
                         <thead className="thead-dark">
                             <tr>
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'name')}>Assignment</button></th>
-                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
-                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
-                            <th><button className="btn btn-primary btn-rounded active" aria-pressed="true" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
+                            <th><button className="btn btn-primary btn-rounded" aria-pressed="true" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
+                            <th><button className="btn btn-primary btn-rounded" aria-pressed="true" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
+                            <th><button className="btn btn-primary btn-rounded" aria-pressed="true" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'description')}>Description</button></th>
                             <th>Edit</th>
                             </tr>
