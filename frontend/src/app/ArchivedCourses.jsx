@@ -96,6 +96,7 @@ export class ArchivedCourses extends React.Component{
                         </tr>
                     </tbody>
                 </table>
+                <button type="button" className="btn btn-primary rounded" onClick={() => this.props.history.push("/courses")}>Return</button>
             </div>
             </div>
             </div>

@@ -39,9 +39,9 @@ const App = props => {
           <Route exact path="/courses" component={CourseDashboard}/>
           <Route exact path="/login" component={WelcomePage} />
           <Route exact path="/assignment/:assignmentID" component={AssignmentEditor} />
-          <Route exact path="/courseOptions" component={CourseSearch} />
+          <Route exact path="/courses/search" component={CourseSearch} />
           <Route exact path="/finished_assignments" component={ArchivedAssignments} />
-          <Route exact path="/completedCourses" component={ArchivedCourses} />
+          <Route exact path="/courses/completed" component={ArchivedCourses} />
           <Route exact path="/calendar/:day/:month/:year" component={CalendarDaily} />
           <Route exact path="/viewCourses" component={ViewCourse} />
           <Route exact path ="/guest" component={GuestHome} />
@@ -49,7 +49,7 @@ const App = props => {
           <Route exact path ="/forum" component={ForumDashboard} />
           <Route exact path ="/course_reviews/:classID" component={CourseAndComments} />
           <Route exact path ="/add" component={AssignmentAdder} />
-          <Route exact path="/course_search_results" component={CourseSearchResults} />
+          <Route exact path="/courses/search/results" component={CourseSearchResults} />
           <Route exact path="/guestAboutUs" component={GuestAboutUs} />
           <Route exact path="/aboutUs" component={AboutUs} />
         </Switch>

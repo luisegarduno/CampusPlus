@@ -120,6 +120,9 @@ export class CourseSearchResults extends React.Component{
                     */}
                     </tbody>
                 </table>
+                <div className ="p-3 btn-group" role="group">
+                    <button className="btn btn-primary btn-md btn-primary" onClick={() => this.props.history.push("/courses/search")}>Cancel</button>
+                </div>
             </div>
             </div>
             </div>

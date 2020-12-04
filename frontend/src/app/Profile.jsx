@@ -26,9 +26,10 @@ export class Profile extends React.Component {
         };
 
         this.userData = new UserRepository();
+        this.loadUser();
     };
 
-    componentDidMount(){
+    loadUser(){
         this.userData.userDetailsParam(this.userID)
         .then(res => {
             console.log(res)

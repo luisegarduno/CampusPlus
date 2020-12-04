@@ -27,13 +27,6 @@ export class EditProfile extends React.Component {
         };
 
         this.userData = new UserRepository();
-        this.getEmail = this.getEmail.bind(this)
-        this.getPassword = this.getPassword.bind(this)
-        this.getConfirmPassword = this.getConfirmPassword.bind(this)
-        this.getGrade = this.getGrade.bind(this)
-        this.getSchool = this.getSchool.bind(this)
-        this.getMajor = this.getMajor.bind(this)
-        this.getGradDate = this.getGradDate.bind(this)
     };
 
     componentDidMount(){
@@ -48,34 +41,6 @@ export class EditProfile extends React.Component {
         })
         .catch(res => console.log(res));
     };
-
-    getEmail(emailAddress){
-        this.setState({email : emailAddress.target.value })
-    };
-
-    getPassword(pass1){
-        this.setState({ password : pass1.target.value })
-    }
-
-    getConfirmPassword(pass2){
-        this.setState({ confirmPassword : pass2.target.value })
-    }
-
-    getSchool(school){
-        this.setState({ school : school.target.value })
-    }
-
-    getMajor(major){
-        this.setState({ major : major.target.value })
-    }
-    
-    getGrade(grade) {
-        this.setState({ grade: grade.target.value })
-    }
-
-    getGradDate(date){
-        this.setState({ gradDate : date.target.value })
-    }
 
     updateProf() {
         console.log("update");
@@ -94,6 +59,7 @@ export class EditProfile extends React.Component {
         }
         console.log({ grade: this.state.grade, school : this.state.school, major : this.state.major, gradDate : this.state.gradDate });
         this.userData.updateProfile(this.state.userID, { grade: this.state.grade, school: this.state.school, major: this.state.major, gradDate: this.state.gradYear });
+        this.props.history.push("/profile")
     }
 
 
@@ -116,33 +82,33 @@ export class EditProfile extends React.Component {
                         <div className="form-row">
                             <div className="form-group col-md-6">
                                 <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" id="password" onChange = {this.getPassword}/>
+                                <input type="password" className="form-control" id="password" onChange={e => this.setState({password: e.target.value})}/>
                             </div>
                             <div className="form-group col-md-6">
                                 <label htmlFor="confirmPassword">Password Confirmation</label>
-                                <input type="password" className="form-control" id="confirmPassword" onChange = {this.getConfirmPassword}/>
+                                <input type="password" className="form-control" id="confirmPassword" onChange={e => this.setState({confirmPassword: e.target.value})}/>
                             </div>
                         </div>
                          <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text" className="form-control" id="email" placeholder="" onChange = {this.getEmail}/>
+                            <input type="text" className="form-control" id="email" placeholder="" onChange={e => this.setState({email: e.target.value})}/>
                         </div>
                         <div className="form-row">
                             <label htmlFor="inputSchool">School</label>
-                            <input type="text" className="form-control" id="inputSchool" onChange = {this.getSchool}/>
+                            <input type="text" className="form-control" id="inputSchool" onChange={e => this.setState({school: e.target.value})}/>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-5">
                                 <label htmlFor="inputMajor">Major</label>
-                                <input type="text" className="form-control" id="inputMajor" onChange = {this.getMajor}/>
+                                <input type="text" className="form-control" id="inputMajor" onChange={e => this.setState({major: e.target.value})}/>
                             </div>
                             <div className="form-group col-md-4">
                                 <label htmlFor="inputGrade">Grade</label>
-                                <input type="text" className="form-control" id="inputGrade" onChange = {this.getGrade}/>
+                                <input type="text" className="form-control" id="inputGrade" onChange={e => this.setState({grade: e.target.value})}/>
                             </div>
                             <div className="form-group col-md-3">
                                 <label htmlFor="gradDate">Grad Date</label>
-                                <input type="date" id="gradDate" className="form-control" onChange={this.getGradDate} />
+                                <input type="date" id="gradDate" className="form-control" onChange={e => this.setState({gradDate: e.target.value})} />
                             </div> 
                         </div>
                         <div className = "text-center">

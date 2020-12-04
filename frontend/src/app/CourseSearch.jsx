@@ -49,7 +49,7 @@ export class CourseSearch extends React.Component{
     async showResults() {
         console.log(this.state.classes);
         this.props.history.push({
-            pathname: "/course_search_results",
+            pathname: "/courses/search/results",
             state: {classes: this.state.classes}
         })
     }
@@ -115,7 +115,8 @@ export class CourseSearch extends React.Component{
                     </select>
                     */}
                     </div>
-                    <button type="button" className="btn btn-primary rounded" onClick={() => this.search()}>Search</button>
+                        <button type="button" className="btn btn-primary rounded" onClick={() => this.props.history.push("/courses")}>Cancel</button>
+                        <button type="button" className="btn btn-primary rounded" onClick={() => this.search()}>Search</button>
                 </form>
             </div>
           </>

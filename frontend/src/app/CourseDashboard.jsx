@@ -127,8 +127,8 @@ export class CourseDashboard extends React.Component{
                                         </tbody>
                                     </table>
                                 <div className ="p-3 btn-group" role="group" >
-                                    <button type="button rounded" className="btn btn-primary" onClick={() => this.props.history.push("/courseOptions")}>Search Available Courses</button>
-                                    <button type="button rounded" className="btn btn-primary" onClick={() => this.props.history.push("/completedCourses")}>Archived Courses</button>
+                                    <button type="button rounded" className="btn btn-primary" onClick={() => this.props.history.push("/courses/search")}>Search Available Courses</button>
+                                    <button type="button rounded" className="btn btn-primary" onClick={() => this.props.history.push("/courses/completed")}>Archived Courses</button>
                                 </div>
                             </div>
                         </div>
