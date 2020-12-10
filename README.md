@@ -1,5 +1,8 @@
 # CampusPlus
 
+[comment]: <> (@todo Finish README.md)
+[comment]: <> (@body Complete the 'About', 'Prerequisites', 'Deployment', & 'Additional Config' sections)
+
 ## Table of Contents
 - [About](#about)
 - [Prerequisites](#prerequisites)
