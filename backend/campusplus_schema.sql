@@ -2,21 +2,19 @@
 -- Initial database rules (init.sql)
 -- -----------------------------------------------------
 -- create user called `admin` with password `Password`
-CREATE USER 'admin'@'%' IDENTIFIED BY 'Password';
+-- CREATE USER 'admin'@'%' IDENTIFIED BY 'Password';
 
 -- give access to admin on databases
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
-GRANT ALL PRIVILEGES ON `campusplus` TO 'admin'@'%';
-GRANT ALL PRIVILEGES ON `campusplus` TO 'admin'@'localhost';
+-- GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
+-- GRANT ALL PRIVILEGES ON `campusplus` TO 'admin'@'%';
+-- GRANT ALL PRIVILEGES ON `campusplus` TO 'admin'@'localhost';
 
 -- set password method to native password for mysql workbench access (mysql 8 issue)
-ALTER USER 'admin'@'%' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Password';
-ALTER USER 'admin'@'localhost' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Password';
+-- ALTER USER 'admin'@'%' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Password';
+-- ALTER USER 'admin'@'localhost' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Password';
 
 -- flush them privileges
-FLUSH PRIVILEGES;
-
-
+-- FLUSH PRIVILEGES;
 CREATE DATABASE IF NOT EXISTS `campusplus`;
 USE `campusplus`;
 
@@ -66,7 +64,7 @@ INSERT INTO `campusplus`.`courseDays` (`courseDaysID`, `monday`, `tuesday`, `wed
             (8, 1, 1, 1, 1, 1); -- Monday | Tuesday | Wednesday | Thursday | Friday
 
 -- -----------------------------------------------------
--- Table `campusplus`.`class`
+-- Table `campusplus`.`course`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`course` (
     `courseID`              INT     PRIMARY KEY NOT NULL,
