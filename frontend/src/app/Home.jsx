@@ -58,8 +58,10 @@ export class Home extends React.Component {
                         <button className="btn btn-primary mx-md-1 text-white btn-sm rounded" onClick={() => this.props.history.push("/courses")}>View Courses</button>
                 </div>
                 <div className="p-1 card h-100 w-100">
-                    <img src="/people.jpg" className="p-1 img-fluid card-img-top" alt="..."/>
-                        <button className="btn btn-primary text-white btn-sm rounded overflow-hidden" onClick={() => this.props.history.push("/aboutUs")}>About Us</button>
+                    <img src="/forum.png" className="p-1 img-fluid card-img-top" alt="..."/>
+                    <button className="btn btn-primary text-white btn-sm rounded overflow-hidden" onClick={() => this.props.history.push("/forum")}>Review Forum</button>
+                    {/* <img src="/people.jpg" className="p-1 img-fluid card-img-top" alt="..."/>
+                    <button className="btn btn-primary text-white btn-sm rounded overflow-hidden" onClick={() => this.props.history.push("/aboutUs")}>About Us</button> */}
                 </div>
              </div>
              </form>
