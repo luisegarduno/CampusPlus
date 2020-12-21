@@ -2,16 +2,21 @@
 -- Initial database rules (init.sql)
 -- -----------------------------------------------------
 -- create user called `admin` with password `Password`
--- CREATE USER 'admin'@'%' IDENTIFIED BY 'Password';
+CREATE USER 'admin'@'%' IDENTIFIED BY 'Password';
 
 -- give access to admin on databases
--- GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%';
+GRANT ALL PRIVILEGES ON `campusplus` TO 'admin'@'%';
+GRANT ALL PRIVILEGES ON `campusplus` TO 'admin'@'localhost';
 
 -- set password method to native password for mysql workbench access (mysql 8 issue)
--- ALTER USER 'admin'@'%' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Password';
+ALTER USER 'admin'@'%' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Password';
+ALTER USER 'admin'@'localhost' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'Password';
 
 -- flush them privileges
--- FLUSH PRIVILEGES;
+FLUSH PRIVILEGES;
+
+
 CREATE DATABASE IF NOT EXISTS `campusplus`;
 USE `campusplus`;
 
@@ -19,21 +24,21 @@ USE `campusplus`;
 -- Table `campusplus`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`user` (
-  `userID`      INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
-  `email`       VARCHAR(45)                         NULL,
-  `isAdmin`     TINYINT DEFAULT 0                   NULL,
-  `password`    VARCHAR(64) COLLATE utf8_bin        NULL,
-  `username`    VARCHAR(45)                         NULL,
-  `grade`       INT                                 NULL,
-  `school`      VARCHAR(45)                         NULL,
-  `major`       VARCHAR(45)                         NULL,
-  `gradDate`    DATE                                NULL,
+    `userID`          INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
+    `email`           VARCHAR(45)                                                 NULL,
+    `isAdmin`      TINYINT DEFAULT 0                                        NULL,
+    `password`     VARCHAR(64) COLLATE utf8_bin                   NULL,
+    `username`     VARCHAR(45)                                                NULL,
+    `grade`           INT                                                                NULL,
+    `school`          VARCHAR(45)                                                NULL,
+    `major`           VARCHAR(45)                                                NULL,
+    `gradDate`      DATE                                                             NULL,
   UNIQUE INDEX `userID_UNIQUE` (`userID` ASC) VISIBLE);
 
 INSERT INTO `campusplus`.`user` (`userID`, `email`, `isAdmin`, `password`, `username`, `grade`, `school`, `major`, `gradDate`) VALUES
             (1, 'user@uni.edu', 0, 'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1', 'user', 0, '', '', null),
             (2, 'eSmith@uni.edu', 0, 'ae91809961c202dcefb1d44638b70c13685dbb9b47a5e7a72de4bf8b24f859e7', 'teachersPet', 2, 'Education', 'Developmental Psych', '2024-05-23'),
-            (8, 'JDoe@uni.edu', 0, '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e', 'JDoe', 10, 'Engineering', 'Computer Science', '0000-00-00'),
+            (8, 'JDoe@uni.edu', 0, '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e', 'JDoe', 10, 'Engineering', 'Computer Science', null),
             (9, 'joey@uni.edu', 0, '8b2c86ea9cf2ea4eb517fd1e06b74f399e7fec0fef92e3b482a6cf2e2b092023', 'JoeyB', null, '', '', null),
             (20, 'nwesley@uni.edu', 0, '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'nathanwes', null, 'Business', 'Finance', null),
             (21, 'mitchm@uni.edu', 1, '5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b', 'mmor2', 0, '', '', null);
@@ -43,14 +48,14 @@ INSERT INTO `campusplus`.`user` (`userID`, `email`, `isAdmin`, `password`, `user
 -- Table `campusplus`.`classDays`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`courseDays` (
-  `courseDaysID` INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
-  `monday`     TINYINT                             NULL,
-  `tuesday`    TINYINT                             NULL,
-  `wednesday`  TINYINT                             NULL,
-  `thursday`   TINYINT                             NULL,
-  `friday`     TINYINT                             NULL);
+    `courseDaysID` INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
+    `monday`          TINYINT                                                         NULL,
+    `tuesday`          TINYINT                                                          NULL,
+    `wednesday`     TINYINT                                                         NULL,
+    `thursday`         TINYINT                                                         NULL,
+    `friday`              TINYINT                                                         NULL);
 
-INSERT INTO `campusplus`.`classDays` (`courseDaysID`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`)  VALUES
+INSERT INTO `campusplus`.`courseDays` (`courseDaysID`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`)  VALUES
             (1, 1, 0, 1, 0, 1), -- Monday | Wednesday | Friday
             (2, 1, 0, 0, 0, 0), -- Monday
             (3, 0, 1, 0, 1, 0), -- Tuesday | Thursday
@@ -64,23 +69,23 @@ INSERT INTO `campusplus`.`classDays` (`courseDaysID`, `monday`, `tuesday`, `wedn
 -- Table `campusplus`.`class`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`course` (
-  `courseID`         INT     PRIMARY KEY NOT NULL,
-  `courseDaysID`     INT                 NOT NULL,
-  `description`     VARCHAR(255)            NULL,
-  `yearOffered`     YEAR                    NULL,
-  `seasonOffered`   INT                     NULL,
-  `courseTimeStart`  TIME                    NULL,
-  `courseTimeEnd`    TIME                    NULL,
-  `instructor`     VARCHAR(100)            NULL,
-  UNIQUE INDEX `courseID_UNIQUE`(`courseID` ASC) VISIBLE,
-  INDEX `courseDaysID_idx`(`courseDaysID` ASC) VISIBLE,
-  CONSTRAINT `toCourseDays`
-        FOREIGN KEY (`courseDaysID`)
+    `courseID`              INT     PRIMARY KEY NOT NULL,
+    `courseDaysID`      INT                            NOT NULL,
+    `description`          VARCHAR(255)                  NULL,
+    `yearOffered`         YEAR                                 NULL,
+    `seasonOffered`     INT                                    NULL,
+    `courseTimeStart`  TIME                                  NULL,
+    `courseTimeEnd`    TIME                                 NULL,
+    `instructor`            VARCHAR(100)                  NULL,
+    UNIQUE INDEX `courseID_UNIQUE`(`courseID` ASC) VISIBLE,
+    INDEX `courseDaysID_idx`(`courseDaysID` ASC) VISIBLE,
+    CONSTRAINT `toCourseDays`
+    FOREIGN KEY (`courseDaysID`)
         REFERENCES `campusplus`.`courseDays`(`courseDaysID`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION);
 
-INSERT INTO `campusplus`.`class` (`courseID`, `courseDaysID`, `description`, `yearOffered`, `seasonOffered`, `courseTimeStart`, `courseTimeEnd`, `instructor`) VALUES
+INSERT INTO `campusplus`.`course` (`courseID`, `courseDaysID`, `description`, `yearOffered`, `seasonOffered`, `courseTimeStart`, `courseTimeEnd`, `instructor`) VALUES
             (121, 7, 'Swimming', 2020, 1, '13:00:00', '16:00:00', 'Davenport'),
             (192, 7, 'Bowling', 2020, 1, '08:00:00', '09:00:00', 'Thomsen'),
             (201, 6, 'Databases ', 2020, 1, '12:00:00', '13:00:00', 'Dillingham'),
@@ -98,28 +103,28 @@ INSERT INTO `campusplus`.`class` (`courseID`, `courseDaysID`, `description`, `ye
 -- Table `canvasplus`.`assignment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`assignment` (
-    `assignmentID`     INT AUTO_INCREMENT   NOT NULL,
-    `courseID`          INT                      NULL,
-    `userID`           INT                  NOT NULL,
-    `name`             VARCHAR(45)              NULL,
-    `description`      VARCHAR(255)             NULL,
-    `dueDate`          DATETIME                 NULL,
-    `assignmentType`   VARCHAR(100)         NOT NULL,
-    `completionStatus` TINYINT DEFAULT 0        NULL,
+    `assignmentID`       INT AUTO_INCREMENT   NOT NULL,
+    `courseID`               INT                                           NULL,
+    `userID`                   INT                                   NOT NULL,
+    `name`                    VARCHAR(45)                           NULL,
+    `description`           VARCHAR(255)                         NULL,
+    `dueDate`               DATETIME                                 NULL,
+    `assignmentType`   VARCHAR(100)                 NOT NULL,
+    `completionStatus` TINYINT DEFAULT 0                  NULL,
     PRIMARY KEY (`assignmentID`),
     UNIQUE INDEX `assignmentID_UNIQUE`(`assignmentID`ASC) VISIBLE,
     INDEX `courseID_idx` (`courseID`ASC) VISIBLE,
     INDEX `userID_idx`  (`userID` ASC) VISIBLE,
     CONSTRAINT `assignmentToCourse`
         FOREIGN KEY (`courseID`)
-            REFERENCES `campusplus`.`course`(`courseID`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION,
+        REFERENCES `campusplus`.`course`(`courseID`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
     CONSTRAINT `assignmentToUser`
         FOREIGN KEY(`userID`)
-            REFERENCES `campusplus`.`user`(`userID`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION);
+        REFERENCES `campusplus`.`user`(`userID`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION);
 
 INSERT INTO `campusplus`.`assignment` (`assignmentID`, `courseID`, `userID`, `name`, `description`, `dueDate`, `assignmentType`, `completionStatus`) VALUES
             (2, 217, 1, 'Programming Languages', 'create a react script', '2020-12-11 11:59:00', 'Homework', 0),
@@ -136,14 +141,14 @@ INSERT INTO `campusplus`.`assignment` (`assignmentID`, `courseID`, `userID`, `na
 -- Table `campusplus`.`schedule`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`schedule` (
-    `userID`    INT                     NOT NULL,
+    `userID`       INT                     NOT NULL,
     `courseID`   INT                     NOT NULL,
     INDEX `classID_idx` (`courseID` ASC) VISIBLE,
     INDEX `userID_idx`  (`userID` ASC)  VISIBLE,
     PRIMARY KEY (`userID`, `courseID`),
     CONSTRAINT `scheduleClass`
         FOREIGN KEY (`courseID`)
-        REFERENCES `campusplus`.`class` (`courseID`)
+        REFERENCES `campusplus`.`course` (`courseID`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION,
     CONSTRAINT `scheduleUser`
@@ -159,12 +164,12 @@ INSERT INTO `campusplus`.`schedule` (`userID`, `courseID`) VALUES
 -- Table `campusplus`.`comment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`comment` (
-    `commentID`     INT AUTO_INCREMENT      NOT NULL,
-    `userID`        INT                     NOT NULL,
-    `courseID`       INT                     NOT NULL,
-    `title`         VARCHAR(45)                 NULL,
-    `body`          VARCHAR(255)                NULL,
-    `postTime`      DATETIME                    NULL,
+    `commentID` INT AUTO_INCREMENT      NOT NULL,
+    `userID`          INT                                     NOT NULL,
+    `courseID`      INT                                      NOT NULL,
+    `title`             VARCHAR(45)                               NULL,
+    `body`           VARCHAR(255)                             NULL,
+    `postTime`    DATETIME                                     NULL,
     PRIMARY KEY(`commentID`),
     INDEX `userID_idx` (`userID` ASC) VISIBLE,
     CONSTRAINT `commentUser`
@@ -174,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `campusplus`.`comment` (
         ON UPDATE NO ACTION,
     CONSTRAINT `commentClass`
         FOREIGN KEY (`courseID`)
-        REFERENCES `campusplus`.`class`(`courseID`)
+        REFERENCES `campusplus`.`course`(`courseID`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION);
 

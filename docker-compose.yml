@@ -1,6 +1,16 @@
 version: "3.3"
 
 services:
+  #backend-db:
+  #  build: ./backend/mysql
+  #  restart: always
+  #  volumes:
+  #    - ./backend/mysql/db:/var/lib/mysqlp
+  #  ports:
+  #    - 3306:3306
+  #  networks:
+  #    - api
+
   backend-api:
     build: ./backend
     restart: always

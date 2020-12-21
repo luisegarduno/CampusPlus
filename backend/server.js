@@ -1,23 +1,25 @@
 require('dotenv').config()
-const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysqlConnect = require('./connection');
 const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 
-// set up some configs for express.
+// Set up some configs for express.
 const config = {
   name: 'sample-express-app',
   port: 8000,
   host: '0.0.0.0',
 };
 
-// create the express.js object
+// Create the express.js object
 const app = express();
 
-// create a logger object.  Using logger is preferable to simply writing to the console.
+// Create a logger object.  Using logger is preferable to simply writing to the console.
 const logger = log({ console: true, file: false, label: config.name });
 
+// Specify middleware to use
 app.use(bodyParser.json());
 app.use(cors({
   origin: '*'
@@ -25,14 +27,14 @@ app.use(cors({
 app.use(ExpressAPILogMiddleware(logger, { request: true }));
 
 const user = require('./routes/user')
-const assignment = require('./routes/assignment')
 const classes = require('./routes/classes')
 const comment = require('./routes/comment')
+const assignment = require('./routes/assignment')
 
 user(app, logger);
-assignment(app, logger);
 classes(app, logger);
-comment(app,comment);
+comment(app, logger);
+assignment(app, logger);
 
 app.get('/', (req, res) => {
   res.status(200).send('Go to 0.0.0.0:3000.');
