@@ -1,27 +1,32 @@
 version: "3.3"
 
 services:
-  #backend-db:
-  #  build: ./backend/mysql
-  #  restart: always
-  #  volumes:
-  #    - ./backend/mysql/db:/var/lib/mysqlp
-  #  ports:
-  #    - 3306:3306
-  #  networks:
-  #    - api
+  backend-db:
+    env_file:
+      - "./backend/node/.env"
+    build: ./backend/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./backend/mysql/db:/var/lib/mysql
+    networks:
+      - backend
 
   backend-api:
-    build: ./backend
+    build: ./backend/node
     restart: always
     working_dir: /usr/src/app
     command: bash -c "yarn && yarn run dev"
     volumes:
-      - ./backend:/usr/src/app
+      - ./backend/node:/usr/src/app
+    depends_on:
+      - backend-db
     ports:
       - 8000:8000
     networks:
-      - api
+      - backend
+      - frontend
 
   frontend-app:
     stdin_open: true
@@ -36,7 +41,8 @@ services:
     ports:
       - 3000:3000
     networks:
-      - api
+      - frontend
 
 networks:
-  api:
+  backend:
+  frontend:
