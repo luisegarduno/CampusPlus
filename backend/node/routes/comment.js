@@ -12,7 +12,7 @@ module.exports = function comment(app, logger) {
         res.status(400).send('Problem obtaining MySQL connection'); 
       } else {
         // if there is no issue obtaining a connection, execute query and release connection
-        connection.query('SELECT * FROM `canvasplus`.`comment`', function (err, rows, fields) {
+        connection.query('SELECT * FROM `campusplus`.`comment`', function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -43,7 +43,7 @@ module.exports = function comment(app, logger) {
       } else {
         var commentID = req.params.commentID
         // if there is no issue obtaining a connection, execute query and release connection
-        connection.query('SELECT * FROM `canvasplus`.`comment` c where c.commentID = ?', [commentID], function (err, rows, fields) {
+        connection.query('SELECT * FROM `campusplus`.`comment` c where c.commentID = ?', [commentID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -74,7 +74,7 @@ module.exports = function comment(app, logger) {
       } else {
         var userID = req.params.userID
         // if there is no issue obtaining a connection, execute query and release connection
-        connection.query('SELECT * FROM `canvasplus`.`comment` c where c.userID = ?', [userID], function (err, rows, fields) {
+        connection.query('SELECT * FROM `campusplus`.`comment` c where c.userID = ?', [userID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -105,7 +105,7 @@ module.exports = function comment(app, logger) {
       } else {
         var classID = req.params.classID
         // if there is no issue obtaining a connection, execute query and release connection
-        connection.query('SELECT * FROM `canvasplus`.`comment` c where c.classID = ?', [classID], function (err, rows, fields) {
+        connection.query('SELECT * FROM `campusplus`.`comment` c where c.classID = ?', [classID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -139,7 +139,7 @@ module.exports = function comment(app, logger) {
         var classID = req.params.classID
         var title = req.body.title
         var body = req.body.body
-        connection.query('INSERT INTO `canvasplus`.`comment` (userID, classID, title, body, postTime) VALUES (?, ?, ?, ?, NOW())', [userID, classID, title, body], function (err, rows, fields) {
+        connection.query('INSERT INTO `campusplus`.`comment` (userID, classID, title, body, postTime) VALUES (?, ?, ?, ?, NOW())', [userID, classID, title, body], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -171,7 +171,7 @@ module.exports = function comment(app, logger) {
         // if there is no issue obtaining a connection, execute query and release connection
         var commentID = req.params.commentID
         var title = req.body.title
-        connection.query('UPDATE `canvasplus`.`comment` c SET c.title = ? WHERE c.commentID = ?', [title, commentID], function (err, rows, fields) {
+        connection.query('UPDATE `campusplus`.`comment` c SET c.title = ? WHERE c.commentID = ?', [title, commentID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -203,7 +203,7 @@ module.exports = function comment(app, logger) {
         // if there is no issue obtaining a connection, execute query and release connection
         var commentID = req.params.commentID
         var body = req.body.body
-        connection.query('UPDATE `canvasplus`.`comment` c SET c.body = ? WHERE c.commentID = ?', [body, commentID], function (err, rows, fields) {
+        connection.query('UPDATE `campusplus`.`comment` c SET c.body = ? WHERE c.commentID = ?', [body, commentID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -234,7 +234,7 @@ module.exports = function comment(app, logger) {
       } else {
         // if there is no issue obtaining a connection, execute query and release connection
         var commentID = req.params.commentID
-        connection.query('DELETE FROM `canvasplus`.`comment` c WHERE c.commentID = ?', [commentID], function (err, rows, fields) {
+        connection.query('DELETE FROM `campusplus`.`comment` c WHERE c.commentID = ?', [commentID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {

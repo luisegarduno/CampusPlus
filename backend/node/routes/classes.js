@@ -13,7 +13,7 @@ module.exports = function classes(app, logger) {
         res.status(400).send('Problem obtaining MySQL connection'); 
       } else {
           // if there is no issue obtaining a connection, execute query and release connection
-          connection.query('SELECT * FROM `canvasplus`.`class` c', (err, rows) => {
+          connection.query('SELECT * FROM `campusplus`.`class` c', (err, rows) => {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
             if (err) {
@@ -41,7 +41,7 @@ module.exports = function classes(app, logger) {
       } else {
           var cID = req.params.classID
 
-          connection.query('SELECT * FROM `canvasplus`.`class` c WHERE c.classID = ?', [cID], (err, rows) => {
+          connection.query('SELECT * FROM `campusplus`.`class` c WHERE c.classID = ?', [cID], (err, rows) => {
             connection.release();
             if (err) {
               logger.error("Error while executing Query: \n", err);
@@ -69,7 +69,7 @@ module.exports = function classes(app, logger) {
           // if there is no issue obtaining a connection, execute query and release connection
           var uID = req.params.userID
 
-          connection.query('SELECT c.classID, c.classDaysID, c.description,c.yearOffered, c.seasonOffered, c.classTimeStart, c.classTimeEnd FROM `canvasplus`.`class` c JOIN `canvasplus`.`schedule` s ON c.classID = s.classID WHERE s.userID = ?;', [uID], (err, rows) => {
+          connection.query('SELECT c.classID, c.classDaysID, c.description,c.yearOffered, c.seasonOffered, c.classTimeStart, c.classTimeEnd FROM `campusplus`.`class` c JOIN `campusplus`.`schedule` s ON c.classID = s.classID WHERE s.userID = ?;', [uID], (err, rows) => {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
             if (err) {

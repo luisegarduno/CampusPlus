@@ -14,7 +14,7 @@ module.exports = function user(app, logger) {
             } else {
                 var username = req.query.username
                 // if there is no issue obtaining a connection, execute query and release connection
-                connection.query("SELECT * FROM `canvasplus`.`user` u WHERE u.username = ?", [username], (err, rows) => {
+                connection.query("SELECT * FROM `campusplus`.`user` u WHERE u.username = ?", [username], (err, rows) => {
                     connection.release();
                     if (err) {
                         logger.error("Error while fetching values: \n", err);
@@ -48,7 +48,7 @@ module.exports = function user(app, logger) {
                 var major = req.body.major
                 var gradDate = req.body.gradDate
                 // if there is no issue obtaining a connection, execute query
-                connection.query('INSERT INTO `canvasplus`.`user` (username, password, email, grade, school, major, gradDate) VALUES(?, ?, ?, ?, ?, ?, ?)',[username, password, email, grade, school, major, gradDate], function (err, rows, fields) {
+                connection.query('INSERT INTO `campusplus`.`user` (username, password, email, grade, school, major, gradDate) VALUES(?, ?, ?, ?, ?, ?, ?)',[username, password, email, grade, school, major, gradDate], function (err, rows, fields) {
                     if (err) { 
                         // if there is an error with the query, release the connection instance and log the error
                         connection.release()
@@ -80,7 +80,7 @@ module.exports = function user(app, logger) {
                 // if there is no issue obtaining a connection, execute query and release connection
                 const username = req.body.username
                 const password = req.body.password
-                connection.query('SELECT IF(EXISTS(SELECT * FROM `canvasplus`.`user` u WHERE u.username = ? AND u.password = ?), (SELECT u.username AS result FROM `canvasplus`.`user` u WHERE u.password = ?), 0) AS result', [username, password, password], function (err, rows, fields) {
+                connection.query('SELECT IF(EXISTS(SELECT * FROM `campusplus`.`user` u WHERE u.username = ? AND u.password = ?), (SELECT u.username AS result FROM `campusplus`.`user` u WHERE u.password = ?), 0) AS result', [username, password, password], function (err, rows, fields) {
                     // if there is an error with the query, release the connection instance and log the error
                     connection.release()
                     if (err) {
@@ -109,7 +109,7 @@ module.exports = function user(app, logger) {
             } else {
                 var userID = req.params.userID
                 // if there is no issue obtaining a connection, execute query and release connection
-                connection.query('SELECT * FROM `canvasplus`.`user` u WHERE u.userID = ?', [userID], function (err, rows, fields) {
+                connection.query('SELECT * FROM `campusplus`.`user` u WHERE u.userID = ?', [userID], function (err, rows, fields) {
                     // if there is an error with the query, release the connection instance and log the error
                     connection.release()
                     if (err) {
@@ -141,7 +141,7 @@ module.exports = function user(app, logger) {
                 // if there is no issue obtaining a connection, execute query and release connection
                 let password = req.body.password
                 let username = req.body.username
-                connection.query('UPDATE `canvasplus`.`user` u SET u.password = ? WHERE u.username = ?', [password, username], function(err, result, fields) {
+                connection.query('UPDATE `campusplus`.`user` u SET u.password = ? WHERE u.username = ?', [password, username], function(err, result, fields) {
                     // if there is an error with the query, release the connection instance and log the error
                     connection.release()
                     if (err) throw err
@@ -198,7 +198,7 @@ module.exports = function user(app, logger) {
                 // if there is no issue obtaining a connection, execute query and release connection
                 var userID = req.params.userID
                 var email = req.body.email
-                connection.query("UPDATE `canvasplus`.`user` u SET u.email = ? WHERE u.userID = ?", [email, userID], (err, rows) => {
+                connection.query("UPDATE `campusplus`.`user` u SET u.email = ? WHERE u.userID = ?", [email, userID], (err, rows) => {
                     // if there is an error with the query, release the connection instance and log the error
                     connection.release()
                     if (err) {

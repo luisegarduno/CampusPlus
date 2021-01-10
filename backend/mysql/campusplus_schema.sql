@@ -81,7 +81,7 @@ INSERT INTO `campusplus`.`course` (`courseID`, `courseDaysID`, `description`, `y
             (391, 5, 'Information Security', 2019, 0, '13:00:00', '13:50:00', 'Alford');
 
 -- -----------------------------------------------------
--- Table `canvasplus`.`assignment`
+-- Table `campusplus`.`assignment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`assignment` (
     `assignmentID`       INT AUTO_INCREMENT   NOT NULL,
