@@ -5,15 +5,18 @@ export class ForumCommentForm extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = { 
-            userName: '',
-            comment: ''
+        this.userID = localStorage['userID'];
+        this.username = localStorage['username'];
+
+        this.state = {
+            userID: this.userID,
+            title: '',
+            body: ''
         }
     }
   
     render() {
         return(<>
-
             <div className = "p-4 container-fluid container-sm">
             <form className = "card">
                 <div className = "card-header bg-dark text-light">
@@ -22,26 +25,21 @@ export class ForumCommentForm extends React.Component{
                 <div className = "p-4 cardBody">  
                     <div className ="form-row">
                         <div className = "form-group col-md-7">
-                            <label htmlFor = "username">Username</label>
-                            <input type = "text" className = "form-control" name = "rating" id = "enterNameInput"/>
+                            <label htmlFor="username">Username</label>
+                            <input type="text" className="form-control" name="rating" id="username" value={this.username} readOnly/>
                         </div>
                         <div className = "form-group col-md-7">
-                            <label htmlFor = "username">Comment Title</label>
-                            <input type = "text" 
-                                className = "form-control" 
-                                name = "rating" 
-                                id = "enterNameInput"/>
+                            <label htmlFor="inputTitle">Title</label>
+                            <input type="text" className="form-control" name="title" id="title" onChange={e => this.setState({title: e.target.value})}/>
                         </div>
                     </div>
                     <div className = "form-group">
-                        <label htmlFor = "comment">Comment</label>
-                        <textarea name = "comment" id = "comment" className = "form-control"></textarea>
+                        <label htmlFor="inputComment">Comment</label>
+                        <textarea name="comment" id="comment" className="form-control" onChange={e => this.setState({body: e.target.value})}></textarea>
                     </div>
                     <div className = "form-group">
-                        <button
-                            type = "button"
-                            className = "btn btn-primary"
-                            /*onClick = { () => this.addReview() }*/ >
+                        <button type = "button" className = "btn btn-primary"
+                            onClick = { () => this.addReview() } >
                             Submit
                         </button>
                     </div>
@@ -51,19 +49,21 @@ export class ForumCommentForm extends React.Component{
         </>)
     }
 
-    /*
     addReview = () => {
         var prod = new Comment(
-            this.state.classID, 
-            this.state.description
+            this.state.userID,
+            this.courseID,
+            this.state.title,
+            this.state.body
         )
         this.props.onReviewAdded(prod);
         this.setState({
-            classID: '',
-            description: ''
+            userID: this.state.userID,
+            courseID: this.courseID,
+            title: '',
+            body: ''
         })
     }
-    */
     
 }
 export default ForumCommentForm;

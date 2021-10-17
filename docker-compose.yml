@@ -17,7 +17,8 @@ services:
     build: ./backend/node
     restart: always
     working_dir: /usr/src/app
-    command: bash -c "yarn && yarn run dev"
+    command: bash -c "yarn run dev"
+    # command: ["bash", "./wait-for-it.sh", "backend-db:3306", "--", "yarn", "dev"]
     volumes:
       - ./backend/node:/usr/src/app
     depends_on:

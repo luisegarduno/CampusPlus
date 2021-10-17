@@ -45,7 +45,7 @@ export class CalendarDaily extends React.Component{
          
          if((this.state.day === newDate.getDate()+1)&&(this.state.month === newDate.getMonth()+1)&&(this.state.year === newDate.getFullYear())){
 
-             this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
+             this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.courseID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
                       
 
          }

@@ -10,11 +10,11 @@ export class CourseList extends React.Component{
         super(props);
 
         this.state = {
-            classes: [],
+            courses: [],
             sortDirection: 'asc',
         };
 
-        this.classRepo = new ClassesRepository();
+        this.courseRepo = new ClassesRepository();
         this.formatDate = this.formatDate.bind(this);
         this.formatTime = this.formatTime.bind(this);
         this.formatSemester = this.formatSemester.bind(this);
@@ -23,11 +23,11 @@ export class CourseList extends React.Component{
 
 
     componentDidMount(){
-        //need to return full list of classes, userID not needed
-        this.classRepo.getCourseList()
+        //need to return full list of courses, userID not needed
+        this.courseRepo.getCourseList()
         .then(res => {
-            res.forEach(ele => {
-                this.setState({classes:[...this.state.classes, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName)]});
+            res.data.forEach(ele => {
+                this.setState({courses:[...this.state.courses, new Course(ele.courseID, ele.courseDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.courseTimeStart, ele.courseTimeEnd, ele.instructor)]});
             });
         })
         
@@ -37,12 +37,12 @@ export class CourseList extends React.Component{
     sortBy(field) {
         if (this.state.sortDirection === 'asc') {
             this.setState({sortDirection: 'desc'})
-            this.setState({classes: _.orderBy(this.state.classes, field, this.state.sortDirection)
+            this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
             });
         }
         if (this.state.sortDirection === 'desc') {
             this.setState({sortDirection: 'asc'})
-            this.setState({classes: _.orderBy(this.state.classes, field, this.state.sortDirection)
+            this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
             });
         }
     }
@@ -120,14 +120,14 @@ export class CourseList extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                    { this.state.classes.map((x) =>
-                        <tr key = {x.classID}>
-                            <td>{x.classID}</td>
+                    { this.state.courses.map((x) =>
+                        <tr key = {x.courseID}>
+                            <td>{x.courseID}</td>
                             <td>{x.description}</td>
                             <td>{this.formatSemester(x.seasonOffered,x.yearOffered)}</td>
-                            <td>{x.teacherName}</td>
-                            <td>{this.formatTime(x.classTimeStart)}</td>
-                            <td>{this.formatTime(x.classTimeEnd)}</td>
+                            <td>{x.instructor}</td>
+                            <td>{this.formatTime(x.courseTimeStart)}</td>
+                            <td>{this.formatTime(x.courseTimeEnd)}</td>
                         </tr>
                     )}
                     {/*

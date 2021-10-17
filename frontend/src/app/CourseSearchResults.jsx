@@ -10,11 +10,11 @@ export class CourseSearchResults extends React.Component{
         super(props);
 
         this.state = {
-            classes: this.props.location.state.classes,
+            courses: this.props.location.state.courses,
             sortDirection: 'asc',
         };
 
-        this.classRepo = new ClassesRepository();
+        this.courseRepo = new ClassesRepository();
         this.formatDate = this.formatDate.bind(this);
         this.formatTime = this.formatTime.bind(this);
         this.formatSemester = this.formatSemester.bind(this);
@@ -24,12 +24,12 @@ export class CourseSearchResults extends React.Component{
     sortBy(field) {
         if (this.state.sortDirection === 'asc') {
             this.setState({sortDirection: 'desc'})
-            this.setState({classes: _.orderBy(this.state.classes, field, this.state.sortDirection)
+            this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
             });
         }
         if (this.state.sortDirection === 'desc') {
             this.setState({sortDirection: 'asc'})
-            this.setState({classes: _.orderBy(this.state.classes, field, this.state.sortDirection)
+            this.setState({courses: _.orderBy(this.state.courses, field, this.state.sortDirection)
             });
         }
     }
@@ -98,14 +98,14 @@ export class CourseSearchResults extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                    { this.state.classes.map((x) =>
-                        <tr key = {x.classID}>
-                            <td>{x.classID}</td>
+                    { this.state.courses.map((x) =>
+                        <tr key = {x.courseID}>
+                            <td>{x.courseID}</td>
                             <td>{x.description}</td>
                             <td>{this.formatSemester(x.seasonOffered,x.yearOffered)}</td>
-                            <td>{x.teacherName}</td>
-                            <td>{this.formatTime(x.classTimeStart)}</td>
-                            <td>{this.formatTime(x.classTimeEnd)}</td>
+                            <td>{x.instructor}</td>
+                            <td>{this.formatTime(x.courseTimeStart)}</td>
+                            <td>{this.formatTime(x.courseTimeEnd)}</td>
                         </tr>
                     )}
                     {/*

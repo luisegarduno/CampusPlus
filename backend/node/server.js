@@ -2,7 +2,7 @@ require('dotenv').config()
 const cors = require('cors');
 const mysql = require('mysql');
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const mysqlConnect = require('./connection');
 const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 
@@ -20,14 +20,14 @@ const app = express();
 const logger = log({ console: true, file: false, label: config.name });
 
 // Specify middleware to use
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors({
   origin: '*'
 }));
 app.use(ExpressAPILogMiddleware(logger, { request: true }));
 
 const user = require('./routes/user')
-const classes = require('./routes/classes')
+const classes = require('./routes/courses')
 const comment = require('./routes/comment')
 const assignment = require('./routes/assignment')
 

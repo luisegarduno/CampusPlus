@@ -19,8 +19,8 @@ export class ViewCourse extends React.Component{
             sortDirection : 'asc',
             userID: this.userID,
             username: this.username,
-            classID: 1,
-            classes: [],
+            courseID: 1,
+            courses: [],
             descriptions: [],
             backup: [],
         };
@@ -40,15 +40,15 @@ export class ViewCourse extends React.Component{
             .then(res => {
             console.log(res)
             res.forEach(ele => {
-                this.setState({courseDetails:[...this.state.courseDetails, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName, ele.reviews)]});
+                this.setState({courseDetails:[...this.state.courseDetails, new Course(ele.courseID, ele.courseDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.courseTimeStart, ele.courseTimeEnd, ele.instructor)]});
             });
             console.log(this.state);
 
         })
         .catch(res => console.log(res));
 
-        this.assignmentRepo.getAssignmentsClass(this.state.userID, this.state.classID).then(x => this.setState({classes : x.data}));
-        this.assignmentRepo.getAssignmentsClass(this.state.userID, this.state.classID).then(y => this.setState({description : y.data}));
+        this.assignmentRepo.getAssignmentsClass(this.state.userID, this.state.courseID).then(x => this.setState({courses : x.data}));
+        this.assignmentRepo.getAssignmentsClass(this.state.userID, this.state.courseID).then(y => this.setState({description : y.data}));
     }
 
     sortBy(field) {
@@ -127,22 +127,20 @@ export class ViewCourse extends React.Component{
                             <th scope="col">Start Time</th>
                             <th scope="col">End Time</th>
                             <th scope="col">Semester Offered</th>
-                            <th scope="col">Description</th>
                             <th scope="col">Remove</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         { this.state.courseDetails.map((x) =>
-                            <tr key = {x.classID}>
-                                <td>{x.classID}</td>
+                            <tr key = {x.courseID}>
+                                <td>{x.courseID}</td>
                                 <td>{x.description}</td>
-                                <td>{x.classDaysID}</td>
-                                <td> {x.teacherName} </td>
-                                <td>{this.formatTime(x.classTimeStart)}</td>
-                                <td>{this.formatTime(x.classTimeEnd)}</td>
+                                <td>{x.courseDaysID}</td>
+                                <td>{x.instructor}</td>
+                                <td>{this.formatTime(x.courseTimeStart)}</td>
+                                <td>{this.formatTime(x.courseTimeEnd)}</td>
                                 <td>{this.formatSemester(x.seasonOffered, x.yearOffered)}</td>
-                                <td>{this.reviews}</td>
                                 <td><button type="button" className="btn-floating btn-danger darken-1 rounded"><i className="fas fa-trash-alt"></i></button></td>
                             </tr>)}
                         </tbody> 

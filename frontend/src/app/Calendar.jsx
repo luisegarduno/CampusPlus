@@ -147,7 +147,7 @@ this.ProductRepo = new AssignmentRepository();
         </nav>
 
         <div className="p-5 card">
-            <h3 className="card-header" id="mandyr"></h3>
+            {/*<h3 className="card-header" id="mandyr"></h3>*/}
             <table className="table table-bordered table-responsive-sm" id="calendar">
                 <thead>
                     <tr>

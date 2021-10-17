@@ -7,7 +7,7 @@ export class ClassesRepository {
 
     getCourseList(){
         return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/classes`, this.config)
+            axios.get(`${this.url}/courses`, this.config)
                 .then(x => resolve(x.data))
             .catch(x => {
                 alert(x);
@@ -17,9 +17,9 @@ export class ClassesRepository {
    }
 
 
-    getCourses(classID){
+    getCourses(courseID){
         return new Promise((resolve, reject) => {
-            axios.get(`${this.url}/classes/user/${classID}`, this.config)
+            axios.get(`${this.url}/courses/user/${courseID}`, this.config)
                 .then(x => resolve(x.data))
             .catch(x => {
                 alert(x);
@@ -28,10 +28,10 @@ export class ClassesRepository {
         })
    }
 
-    // GET all of the classes on a students schedule : http://localhost:8000/classes/user/:userID
+    // GET all of the classes on a students schedule : http://localhost:8000/courses/user/:userID
     getStudentSchedule(userID) {
         return new Promise((resolve,reject) => {
-            axios.get(`${this.url}/classes/user/${userID}`)
+            axios.get(`${this.url}/courses/user/${userID}`)
                 .then(x => {
                 resolve(x.data);
             })
@@ -43,10 +43,10 @@ export class ClassesRepository {
     }
 
     // DO NOT CONNECT YET
-    // POST Adds a class to the users schedule (don't need to pass in classID) : http://localhost:8000/classes/:userID/
+    // POST Adds a class to the users schedule (don't need to pass in courseID) : http://localhost:8000/courses/:userID/
     appendClassToUser(userID){
         return new Promise((resolve,reject) =>{
-            axios.post(`${this.url}/classes/${userID}`)
+            axios.post(`${this.url}/courses/${userID}`)
                 .then(x => {
                     resolve(x.data);
                 })
@@ -57,10 +57,10 @@ export class ClassesRepository {
         });
     }
 
-    // DELETE deletes a course from a students schedule according to the class ID : http://localhost:8000/classes/:userID/:classID
-    deleteUserClass(userID, classID) {
+    // DELETE deletes a course from a students schedule according to the class ID : http://localhost:8000/courses/:userID/:courseID
+    deleteUserClass(userID, courseID) {
             return new Promise((resolve, reject) => {
-                axios.delete(`${this.url}/classes/${userID}/${classID}`)
+                axios.delete(`${this.url}/courses/${userID}/${courseID}`)
                     .then(x => resolve(x.data))
                         alert("Class has been deleted from student's schedule")
             });

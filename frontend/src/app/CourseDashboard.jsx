@@ -30,7 +30,7 @@ export class CourseDashboard extends React.Component{
         .then(res => {
             console.log(res)
             res.forEach(ele => {
-                this.setState({courses:[...this.state.courses, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd)]});
+                this.setState({courses:[...this.state.courses, new Course(ele.courseID, ele.courseDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.courseTimeStart, ele.courseTimeEnd)]});
             });
             console.log(this.state);
 
@@ -116,12 +116,12 @@ export class CourseDashboard extends React.Component{
                                     </thead>
                                     <tbody>
                                         { this.state.courses.map((x) =>
-                                            <tr key = {x.classID}>
-                                                <td>{x.classDaysID}</td>
+                                            <tr key = {x.courseID}>
+                                                <td>{x.courseDaysID}</td>
                                                 <td>{x.description}</td>
                                                 <td>{this.formatSemester(x.seasonOffered, x.yearOffered)}</td>
-                                                <td>{this.formatTime(x.classTimeStart)}</td>
-                                                <td>{this.formatTime(x.classTimeEnd)}</td>
+                                                <td>{this.formatTime(x.courseTimeStart)}</td>
+                                                <td>{this.formatTime(x.courseTimeEnd)}</td>
                                                 <button type="button" className="btn btn-primary btn-sm rounded" onClick={() => this.props.history.push("/viewCourses")}>View Course</button>
                                             </tr>)}
                                         </tbody>

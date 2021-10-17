@@ -47,7 +47,7 @@ const App = props => {
           <Route exact path ="/guest" component={GuestHome} />
           <Route exact path ="/courselist" component={CourseList} />
           <Route exact path ="/forum" component={ForumDashboard} />
-          <Route exact path ="/course_reviews/:classID" component={CourseAndComments} />
+          <Route exact path ="/course_reviews/:courseID" component={CourseAndComments} />
           <Route exact path ="/add" component={AssignmentAdder} />
           <Route exact path="/courses/search/results" component={CourseSearchResults} />
           <Route exact path="/guestAboutUs" component={GuestAboutUs} />

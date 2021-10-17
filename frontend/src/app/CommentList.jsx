@@ -19,27 +19,27 @@ const CommentList = (props) => {
         return ( 
             <>
             <div className = "p-2 container-fluid container-md">
-                <h3>Course Reviews <span className="text-muted">({props.reviews.length})</span></h3>
+                <h3>Course Reviews <span className="text-muted">({props.reviews.data.length})</span></h3>
             </div>
             <div className="card">
             {
-                props.reviews.map(review => {
+                props.reviews.data.map(x => {
                     return (
-                        <div className = "p-2 container-fluid container-md" key={review.classID}>
-                        <div className="row">"{review.classID}"</div>
-                        <div className="card-body row">
-                            <div className="col-9">
-                                <p>"{review.comment}"</p>
+                        <div className = "p-2 container-fluid container-md" key={x.commentID}>
+                            <div className="row">- "{x.title}"</div>
+                            <div className="card-body row">
+                                <div className="col-9">
+                                    <p>"{x.body}"</p>
+                                </div>
+                                <div className="col-3">
+                                    <p className="float-right text-muted"></p>
+                                </div>  
+                                <div className="col-md-12 mb-4">
+                                    <button type="button" className="btn btn-primary px-3"><i className="far fa-thumbs-up" aria-hidden="true"></i></button>
+                                    <button type="button" className="btn btn-primary px-3"><i className="far fa-thumbs-down" aria-hidden="true"></i></button>
+                                    <button type="button" className="btn btn-primary px-3"><i className="fas fa-flag" aria-hidden="true"></i></button>
+                                </div>
                             </div>
-                            <div className="col-3">
-                                <p className="float-right text-muted"></p>
-                            </div>  
-                            <div class="col-md-12 mb-4">
-                                <button type="button" className="btn btn-primary px-3"><i className="far fa-thumbs-up" aria-hidden="true"></i></button>
-                                <button type="button" className="btn btn-primary px-3"><i className="far fa-thumbs-down" aria-hidden="true"></i></button>
-                                <button type="button" className="btn btn-primary px-3"><i className="fas fa-flag" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
                         </div>
                     );
                 })

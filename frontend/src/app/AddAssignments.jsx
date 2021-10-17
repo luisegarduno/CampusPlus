@@ -13,17 +13,16 @@ export class AssignmentAdder extends React.Component{
     constructor(){
         super();
         this.userID = localStorage['userID'];
-        this.state ={
-            
-            classID: ' ',
+        this.state = {
+
+            courseID: ' ',
             description: '',
+            courseDescription: '',
+            assignmentDescription: '',
             dueDate: '',
             name: '',
-           userID: this.userID,
-           
-          
-            
-
+            assignmentType: '',
+            userID: this.userID
         }
             
         }
@@ -34,7 +33,7 @@ export class AssignmentAdder extends React.Component{
                 //completionStatus: 0,
                 name: this.state.name,
                 description: this.state.assignmentDescription,
-                classDescription: this.state.classDescription,
+                courseDescription: this.state.courseDescription,
                 dueDate: this.state.dueDate,
                 assignmentType: this.state.assignmentType}
                 this.api.createAssignment(this.state.userID, data);
@@ -70,7 +69,7 @@ export class AssignmentAdder extends React.Component{
                             <div className="form-row">
                                 <div className="form-group col text-left">
                                     <label htmlFor="courseInput">Course</label>
-                                    <input type="text" className="form-control" placeholder="Current Course Name" onChange={e => this.setState({classDescription: e.target.value})}/>
+                                    <input type="text" className="form-control" placeholder="Current Course Name" onChange={e => this.setState({courseDescription: e.target.value})}/>
                                 </div>
                             </div>
                             <div className="form-row">

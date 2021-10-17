@@ -94,8 +94,8 @@ module.exports = function comment(app, logger) {
   });
 
   // GET /comment/:commentID
-  app.get('/comment/class/:classID', function (req, res) {
-    console.log(req.params.classID)
+  app.get('/comment/class/:courseID', function (req, res) {
+    console.log(req.params.courseID)
     // obtain a connection from our pool of connections
     pool.getConnection(function (err, connection){
       if(err){
@@ -103,9 +103,9 @@ module.exports = function comment(app, logger) {
         logger.error('Problem obtaining MySQL connection',err)
         res.status(400).send('Problem obtaining MySQL connection'); 
       } else {
-        var classID = req.params.classID
+        var courseID = req.params.courseID
         // if there is no issue obtaining a connection, execute query and release connection
-        connection.query('SELECT * FROM `campusplus`.`comment` c where c.classID = ?', [classID], function (err, rows, fields) {
+        connection.query('SELECT * FROM `campusplus`.`comment` c where c.courseID = ?', [courseID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {
@@ -124,9 +124,9 @@ module.exports = function comment(app, logger) {
     });
   });
 
-  // POST /comment/:userID/:classID
-  app.post('/comment/:userID/:classID', function (req, res) {
-    console.log(req.params.userID, req.params.classID, req.body.title, req.body.body);
+  // POST /comment/:userID/:courseID
+  app.post('/comment/:userID/:courseID', function (req, res) {
+    console.log(req.params.userID, req.params.courseID, req.body.title, req.body.body);
     // obtain a connection from our pool of connections
     pool.getConnection(function (err, connection){
       if(err){
@@ -136,10 +136,10 @@ module.exports = function comment(app, logger) {
       } else {
         // if there is no issue obtaining a connection, execute query and release connection
         var userID = req.params.userID
-        var classID = req.params.classID
+        var courseID = req.params.courseID
         var title = req.body.title
         var body = req.body.body
-        connection.query('INSERT INTO `campusplus`.`comment` (userID, classID, title, body, postTime) VALUES (?, ?, ?, ?, NOW())', [userID, classID, title, body], function (err, rows, fields) {
+        connection.query('INSERT INTO `campusplus`.`comment` (userID, courseID, title, body, postTime) VALUES (?, ?, ?, ?, NOW())', [userID, courseID, title, body], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {

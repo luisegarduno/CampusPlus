@@ -1,7 +1,7 @@
 export class Assignment {
-    constructor(assignmentID, classID, description, dueDate, assignmentType, completionStatus, name, userID) {
+    constructor(assignmentID, courseID, description, dueDate, assignmentType, completionStatus, name, userID) {
         this.assignmentID = assignmentID;
-        this.classID = classID;
+        this.courseID = courseID;
         this.description = description;
         this.dueDate = dueDate;
         this.assignmentType = assignmentType;

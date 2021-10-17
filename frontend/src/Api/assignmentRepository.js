@@ -33,10 +33,10 @@ export class AssignmentRepository {
         });
     }
 
-    // GET all of a user's assignments for a given class : http://localhost:8000/assignment/:userID/class/:classID
-    getAssignmentsClass(userID,classID) {
+    // GET all of a user's assignments for a given class : http://localhost:8000/assignment/:userID/class/:courseID
+    getAssignmentsClass(userID,courseID) {
         return new Promise((resolve,reject) => {
-            axios.get(`${this.url}/assignment/${userID}/class/${classID}`)
+            axios.get(`${this.url}/assignment/${userID}/class/${courseID}`)
                 .then(x => {
                 resolve(x.data);
             })
@@ -76,7 +76,7 @@ export class AssignmentRepository {
     }
 
 
-    // POST Create new assignment : http://localhost:8000/assignment/:userID/:classID
+    // POST Create new assignment : http://localhost:8000/assignment/:userID/:courseID
     createAssignment(userID, assignmentData){
         return new Promise((resolve,reject) =>{
             axios.post(`${this.url}/assignment/${userID}`, assignmentData)

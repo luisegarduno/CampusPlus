@@ -63,8 +63,8 @@ module.exports = function assignment(app, logger) {
     });
   });
 
-  app.get('/assignment/:userID/class/:classID', function (req, res) {
-    console.log(req.params.userID,req.params.classID);
+  app.get('/assignment/:userID/class/:courseID', function (req, res) {
+    console.log(req.params.userID,req.params.courseID);
     // obtain a connection from our pool of connections
     pool.getConnection(function (err, connection){
       if(err){
@@ -74,8 +74,8 @@ module.exports = function assignment(app, logger) {
       } else {
           // if there is no issue obtaining a connection, execute query and release connection
           var userID = req.params.userID
-          var classID = req.params.classID
-          connection.query('SELECT * FROM `campusplus`.`assignment` a WHERE a.userID = ? AND a.classID = ? order by a.dueDate', [userID, classID], function (err, rows, fields) {
+          var courseID = req.params.courseID
+          connection.query('SELECT * FROM `campusplus`.`assignment` a WHERE a.userID = ? AND a.courseID = ? order by a.dueDate', [userID, courseID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
             if (err) {
@@ -159,7 +159,7 @@ module.exports = function assignment(app, logger) {
 
 
   app.post('/assignment/:userID', async (req, res) => {
-    console.log(req.params.userID, req.params.classID, req.body.name, req.body.description, req.body.dueDate, req.body.assignmentType);
+    console.log(req.params.userID, req.params.courseID, req.body.name, req.body.description, req.body.dueDate, req.body.assignmentType);
     // obtain a connection from our pool of connections
     pool.getConnection(function (err, connection){
       if(err){
@@ -169,17 +169,17 @@ module.exports = function assignment(app, logger) {
       } else {
           // if there is no issue obtaining a connection, execute query and release connection
           var userID = req.params.userID
-          var classDescription = req.body.classDescription
+          var courseDescription = req.body.courseDescription
           var name = req.body.name
           var description = req.body.description
           var dueDate = req.body.dueDate
           var assignmentType = req.body.assignmentType
 
-          query = 'SELECT @class := `classID` from campusplus.class WHERE description = ?;' + 
-                  'INSERT INTO campusplus.assignment (classID, userID, name, description, dueDate, assignmentType, completionStatus)' + 
+          query = 'SELECT @class := `courseID` from campusplus.course WHERE description = ?;' + 
+                  'INSERT INTO campusplus.assignment (courseID, userID, name, description, dueDate, assignmentType, completionStatus)' + 
                   'VALUES (@class,?,?,?,?,?,0)'
           connection.query(query,
-          [classDescription, userID, name, description, dueDate, assignmentType], function (err, rows, fields) {
+          [courseDescription, userID, name, description, dueDate, assignmentType], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
             if (err) {

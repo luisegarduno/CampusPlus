@@ -1,19 +1,19 @@
 import React from 'react';
-//import { CommentRepository } from '../Api/commentRepository';
+// import { CommentRepository } from '../Api/commentRepository';
 import { ClassesRepository } from '../Api/classesRepository';
 import { Course } from '../models/Course';
 import { Header } from './Header';
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export class ForumDashboard extends React.Component {
 
     constructor(props){
         super(props);
         this.username = localStorage['username'];
-        this.classID = localStorage['classID'];
+        this.courseID = localStorage['courseID'];
 
         this.state = {
-            classes: [],
+            courses: [],
         };
 
         this.courseRepo = new ClassesRepository();
@@ -24,7 +24,7 @@ export class ForumDashboard extends React.Component {
         this.courseRepo.getCourseList()
         .then(res => {
             res.forEach(ele => {
-                this.setState({classes:[...this.state.classes, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName)]});
+                this.setState({courses:[...this.state.courses, new Course(ele.courseID, ele.courseDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.courseTimeStart, ele.courseTimeEnd, ele.instructor)]});
             });
         })
         .catch(res => console.log(res));
@@ -45,17 +45,17 @@ export class ForumDashboard extends React.Component {
                     </div>
                 </div>
                 <div className="p-3 list-group">
-                    <a className="list-group-item list-group-item-action active">
+                    <a href="/" className="list-group-item list-group-item-action active">
                         <div className="d-flex w-100 justify-content-between">
                             <h5 className="mb-1 text-white">Active Threads</h5>
                         </div>
                     </a>
 
-                    { this.state.classes.map((x) =>
+                    { this.state.courses.map((x) =>
                     
-                    <Link key ={x.classID} className="list-group-item list-group-item-action" to = {`/course_reviews/${x.classID}`}>
+                    <Link key ={x.courseID} className="list-group-item list-group-item-action" to = {`/course_reviews/${x.courseID}`}>
                         <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1 font-weight-bold">{x.classID}</h5>
+                            <h5 className="mb-1 font-weight-bold">{x.courseID}</h5>
                             <small className="text-muted align-items-right">3 days ago</small>
                         </div>
                         <p className="mb-1 ">{x.description}</p>
@@ -66,13 +66,13 @@ export class ForumDashboard extends React.Component {
                 </div>
 
                 <div className="p-3 list-group">
-                    <a className="list-group-item list-group-item-action active">
+                    <a href="/" className="list-group-item list-group-item-action active">
                         <div className="d-flex w-100 justify-content-between">
                             <h5 className="mb-1">Archived Threads</h5>
                         </div>
                     </a>
                     
-                    <a className="list-group-item list-group-item-action">
+                    <a href="/" className="list-group-item list-group-item-action">
                         <div className="d-flex w-100 justify-content-between">
                             <h5 className="mb-1 font-weight-bold">KNW 2300</h5>
                             <small className="text-muted align-items-right">15 days ago</small>

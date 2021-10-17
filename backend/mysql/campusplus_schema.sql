@@ -26,7 +26,7 @@ INSERT INTO `campusplus`.`user` (`userID`, `email`, `isAdmin`, `password`, `user
 
 
 -- -----------------------------------------------------
--- Table `campusplus`.`classDays`
+-- Table `campusplus`.`courseDays`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`courseDays` (
     `courseDaysID` INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
@@ -47,7 +47,7 @@ INSERT INTO `campusplus`.`courseDays` (`courseDaysID`, `monday`, `tuesday`, `wed
             (8, 1, 1, 1, 1, 1); -- Monday | Tuesday | Wednesday | Thursday | Friday
 
 -- -----------------------------------------------------
--- Table `campusplus`.`class`
+-- Table `campusplus`.`course`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`course` (
     `courseID`              INT     PRIMARY KEY NOT NULL,
@@ -124,7 +124,7 @@ INSERT INTO `campusplus`.`assignment` (`assignmentID`, `courseID`, `userID`, `na
 CREATE TABLE IF NOT EXISTS `campusplus`.`schedule` (
     `userID`       INT                     NOT NULL,
     `courseID`   INT                     NOT NULL,
-    INDEX `classID_idx` (`courseID` ASC) VISIBLE,
+    INDEX `courseID_idx` (`courseID` ASC) VISIBLE,
     INDEX `userID_idx`  (`userID` ASC)  VISIBLE,
     PRIMARY KEY (`userID`, `courseID`),
     CONSTRAINT `scheduleClass`

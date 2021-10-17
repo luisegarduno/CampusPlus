@@ -43,7 +43,7 @@ export class AssignmentDashboard extends React.Component {
             console.log(res)
             res.data.forEach(ele => {
                 if(ele.completionStatus === 0){
-                this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
+                this.setState({assignments:[...this.state.assignments, new Assignment(ele.assignmentID, ele.courseID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
                 
           }
         });
@@ -103,7 +103,7 @@ export class AssignmentDashboard extends React.Component {
                         <tr>
                         
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'name')}>Assignment</button></th>
-                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
+                            <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'courseID')}>Course</button></th>
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'description')}>Description</button></th>
@@ -115,7 +115,7 @@ export class AssignmentDashboard extends React.Component {
                         { this.state.assignments.map((x) =>
                         <tr key = {x.assignmentID}>
                             <td>{x.name}</td>
-                            <td>{x.classID}</td>
+                            <td>{x.courseID}</td>
                             <td>{x.assignmentType}</td>
                             <td>{this.formatDate(x.dueDate)}</td>
                             <td>{x.description}</td>

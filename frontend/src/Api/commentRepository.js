@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export class CommentRepository {
 
-    // Leave this here
+    // Leave this here 
     url = false ? 'http://44.233.149.216:8000' : 'http://localhost:8000';
     
     // GET returns all comments : http://localhost:8000/comment
@@ -20,18 +20,18 @@ export class CommentRepository {
     }
 
     // GET a comment by commentID : http://localhost:8000/comment/:commentID
-    getComments(commentID){
-        return new Promise((resolve,reject) =>{
-            axios.get(`${this.url}/comment/${commentID}`)
-                .then(x => {
-                    resolve(x.data);
-                })
-            .catch(x => {
-                alert(x);
-                reject(x);
-            })
-        })
-    }
+    //getComments(commentID){
+    //    return new Promise((resolve,reject) =>{
+    //        axios.get(`${this.url}/comment/${commentID}`)
+    //            .then(x => {
+    //                resolve(x.data);
+    //            })
+    //        .catch(x => {
+    //            alert(x);
+    //            reject(x);
+    //        })
+    //    })
+    //}
 
     // GET all of the comments associated w/ a user : http://localhost:8000/comment/user/:userID
     getUserComments(userID){
@@ -47,10 +47,10 @@ export class CommentRepository {
         })
     }
 
-    // GET all of the comments associated w/ a class : http://localhost:8000/comment/class/:classID
-    getClassComments(classID){
+    // GET all of the comments associated w/ a class : http://localhost:8000/comment/class/:courseID
+    getClassComments(courseID){
         return new Promise((resolve,reject) =>{
-            axios.get(`${this.url}/comment/class/${classID}`)
+            axios.get(`${this.url}/comment/class/${courseID}`)
                 .then(x => {
                     resolve(x.data);
                 })
@@ -61,10 +61,10 @@ export class CommentRepository {
         })
     }
 
-    // POST Adds a comment to a class : http://localhost:8000/comment/:userID/:classID
-    addClassComment(userID, classID, title, body){
+    // POST Adds a comment to a class : http://localhost:8000/comment/:userID/:courseID
+    addClassComment(userID, courseID, title, body){
         return new Promise((resolve,reject) =>{
-            axios.post(`${this.url}/comment/${userID}/${classID}`, title, body)
+            axios.post(`${this.url}/comment/${userID}/${courseID}`, title, body)
                 .then(x => {
                     resolve(x.data);
                 })

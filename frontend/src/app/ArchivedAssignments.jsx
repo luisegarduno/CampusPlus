@@ -31,7 +31,7 @@ export class ArchivedAssignments extends React.Component {
             console.log(res)
             res.data.forEach(ele => {
                 if(ele.completionStatus === 1){
-                    this.setState({archieve:[...this.state.archieve, new Assignment(ele.assignmentID, ele.classID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
+                    this.setState({archieve:[...this.state.archieve, new Assignment(ele.assignmentID, ele.courseID, ele.description, ele.dueDate, ele.assignmentType, ele.completionStatus, ele.name, ele.userID)]});
                 }
             });
             console.log(this.state);
@@ -89,7 +89,7 @@ export class ArchivedAssignments extends React.Component {
                         <thead className="thead-dark">
                             <tr>
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'name')}>Assignment</button></th>
-                            <th><button className="btn btn-primary btn-rounded" aria-pressed="true" onClick={this.sortBy.bind(this, 'classID')}>Course</button></th>
+                            <th><button className="btn btn-primary btn-rounded" aria-pressed="true" onClick={this.sortBy.bind(this, 'courseID')}>Course</button></th>
                             <th><button className="btn btn-primary btn-rounded" aria-pressed="true" onClick={this.sortBy.bind(this, 'assignmentType')}>Assignment Type</button></th>
                             <th><button className="btn btn-primary btn-rounded" aria-pressed="true" onClick={this.sortBy.bind(this, 'dueDate')}>Due Date</button></th>
                             <th><button className="btn btn-primary btn-rounded" type="button" id="Assign" onClick={this.sortBy.bind(this, 'description')}>Description</button></th>
@@ -101,7 +101,7 @@ export class ArchivedAssignments extends React.Component {
                             { this.state.archieve.map((x) =>
                                 <tr key = {x.assignmentID}>
                                     <td>{x.name}</td>
-                                    <td>{x.classID}</td>
+                                    <td>{x.courseID}</td>
                                     <td>{x.assignmentType}</td>
                                     <td>{this.formatDate(x.dueDate)}</td>
                                     <td>{x.description}</td>

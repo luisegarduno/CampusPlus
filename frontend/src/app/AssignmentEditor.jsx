@@ -17,7 +17,7 @@ export class AssignmentEditor extends React.Component{
             // assignmentID: '',
             // this.userID = userID;
             // this.completionStatus = completionStatus;
-            classID: ' ',
+            courseID: ' ',
             description: '',
             dueDate: '',
             name: '',
@@ -42,7 +42,7 @@ export class AssignmentEditor extends React.Component{
                 
                 name: this.state.name,
                 description: this.state.assignmentDescription,
-                classDescription: this.state.classDescription,
+                courseDescription: this.state.courseDescription,
                 dueDate: this.state.dueDate,
                 assignmentType: this.state.assignmentType,
                 completionStatus: 0}
@@ -87,7 +87,7 @@ export class AssignmentEditor extends React.Component{
                             <div className="form-row">
                                 <div className="form-group col text-left">
                                     <label htmlFor="courseInput">Course</label>
-                                    <input type="text" className="form-control" placeholder="" onChange={e => this.setState({classDescription: e.target.value})}/>
+                                    <input type="text" className="form-control" placeholder="" onChange={e => this.setState({courseDescription: e.target.value})}/>
                                 </div>
                             </div>
                             <div className="form-row">

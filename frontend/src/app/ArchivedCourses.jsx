@@ -25,7 +25,7 @@ export class ArchivedCourses extends React.Component{
         .then(res => {
             console.log(res)
             res.forEach(ele => {
-                this.setState({courses:[...this.state.courses, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd)]});
+                this.setState({courses:[...this.state.courses, new Course(ele.courseID, ele.courseDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.courseTimeStart, ele.courseTimeEnd)]});
             });
             console.log(this.state);
 

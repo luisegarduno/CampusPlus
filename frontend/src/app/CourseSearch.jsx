@@ -10,22 +10,22 @@ export class CourseSearch extends React.Component{
         this.userID = localStorage['userID'];
 
         this.state = {
-            classes: [],
+            courses: [],
             semester: -1,
             courseID: -1,
             courseName: "None",
-            classTime: '',
-            professor: "None"
+            courseTime: '',
+            instructor: "None"
 
         };
 
-        this.classRepo = new ClassesRepository();
+        this.courseRepo = new ClassesRepository();
     }
 
     async search() {
-        console.log(this.classRepo.getCourseList());
+        console.log(this.courseRepo.getCourseList());
 
-        this.classRepo.getCourseList()
+        this.courseRepo.getCourseList()
         .then(res => {
             console.log(res);
             res.forEach(ele => {
@@ -33,12 +33,12 @@ export class CourseSearch extends React.Component{
                 // var val = parseInt(this.state.semester);
                 if (
                    /*   ((ele.seasonOffered === val) || (val === -1)) && 
-                    ((ele.classID === parseInt(this.state.courseID)) || (parseInt(this.state.courseID) === 0)) && */
+                    ((ele.courseID === parseInt(this.state.courseID)) || (parseInt(this.state.courseID) === 0)) && */
                     ((ele.description === this.state.courseName) || (this.state.courseName === "None"))
-                   //((ele.teacherName === this.state.professor) || (this.state.professor === "None"))
+                   //((ele.instructor === this.state.instructor) || (this.state.instructor === "None"))
                 ) 
                 {
-                    this.setState({classes:[...this.state.classes, new Course(ele.classID, ele.classDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.classTimeStart, ele.classTimeEnd, ele.teacherName)]}); 
+                    this.setState({courses:[...this.state.courses, new Course(ele.courseID, ele.courseDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.courseTimeStart, ele.courseTimeEnd, ele.instructor)]}); 
                 }
             });
             this.showResults();
@@ -47,10 +47,10 @@ export class CourseSearch extends React.Component{
     }
 
     async showResults() {
-        console.log(this.state.classes);
+        console.log(this.state.courses);
         this.props.history.push({
             pathname: "/courses/search/results",
-            state: {classes: this.state.classes}
+            state: {courses: this.state.courses}
         })
     }
 
@@ -98,7 +98,7 @@ export class CourseSearch extends React.Component{
                             <option value="Information Security">Information Security</option>
                     </select>
 
-                    {/*<select className="p-2 custom-select mb-3" onChange={e => this.setState({classTime: e.target.value})}>
+                    {/*<select className="p-2 custom-select mb-3" onChange={e => this.setState({courseTime: e.target.value})}>
                         <option selected>Search By Class Time (optional)</option>
                             <option value="8am">8:00 AM</option>
                             <option value="9am">9:00 AM</option>
@@ -106,7 +106,7 @@ export class CourseSearch extends React.Component{
                             <option value="330pm">3:30 PM</option>
                     </select>
                     
-                    <select className="p-2 custom-select mb-3" onChange={e => this.setState({professor: e.target.value})}>
+                    <select className="p-2 custom-select mb-3" onChange={e => this.setState({instructor: e.target.value})}>
                         <option value="None" defaultValue>Search By Professor (required)</option>
                             <option value="Fontenot">Mark Fontenot</option>
                             <option value="jimmydean">Jimmy Dean</option>
