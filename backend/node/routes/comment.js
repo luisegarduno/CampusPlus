@@ -105,7 +105,7 @@ module.exports = function comment(app, logger) {
       } else {
         var courseID = req.params.courseID
         // if there is no issue obtaining a connection, execute query and release connection
-        connection.query('SELECT * FROM `campusplus`.`comment` c where c.courseID = ?', [courseID], function (err, rows, fields) {
+        connection.query('SELECT c.commentID, u.username, c.courseID, c.title, c.body, c.postTime FROM `campusplus`.`comment` c JOIN `campusplus`.`user` u ON u.userID = c.userID where c.courseID = ?', [courseID], function (err, rows, fields) {
             // if there is an error with the query, release the connection instance and log the error
             connection.release();
           if (err) {

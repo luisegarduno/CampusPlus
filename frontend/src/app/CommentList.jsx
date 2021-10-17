@@ -26,10 +26,10 @@ const CommentList = (props) => {
                 props.reviews.data.map(x => {
                     return (
                         <div className = "p-2 container-fluid container-md" key={x.commentID}>
-                            <div className="row">- "{x.title}"</div>
+                            <div className="row">Title: {x.title}</div>
                             <div className="card-body row">
                                 <div className="col-9">
-                                    <p>"{x.body}"</p>
+                                    <p>"{x.body}" - {x.username}</p>
                                 </div>
                                 <div className="col-3">
                                     <p className="float-right text-muted"></p>

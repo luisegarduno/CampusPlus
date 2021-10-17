@@ -38,6 +38,7 @@ export class ForumCommentForm extends React.Component{
                         <textarea name="comment" id="comment" className="form-control" onChange={e => this.setState({body: e.target.value})}></textarea>
                     </div>
                     <div className = "form-group">
+                        <h1>{this.state.title} + {this.state.body}</h1>
                         <button type = "button" className = "btn btn-primary"
                             onClick = { () => this.addReview() } >
                             Submit

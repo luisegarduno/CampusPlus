@@ -16,9 +16,7 @@ export class CourseAndComments extends Component {
         this.state = {
             userID: this.userID,
             reviews: [],
-            course: {
-                reviews: []
-            }
+            
             //class: {
             //    courseID: this.props.match.params.courseID,
             //    description: '',
@@ -34,8 +32,8 @@ export class CourseAndComments extends Component {
         //this.courseRepo.getCourses(this.courseID)
         this.commentRepo.getClassComments(this.courseID)
         .then(res => {
-            this.setState({reviews: res})
             console.log(res)
+            this.setState({reviews: res})
             //res.data.forEach((ele) => {
                 ////this.setState({class:[...this.state.class, new Course(ele.courseID, ele.courseDaysID, ele.description, ele.yearOffered, ele.seasonOffered, ele.courseTimeStart, ele.courseTimeEnd, ele.instructor)]});
                 //this.setState({reviews:[...this.state.reviews, new Comment(ele.commentID, ele.userID, ele.courseID, ele.title, ele.body, ele.postTime)]});
@@ -56,25 +54,31 @@ export class CourseAndComments extends Component {
                     <span className="mb-0 h5 text-primary">Course Review</span>
                 </nav>
                     <div className="row text-dark" key={this.courseID}>
-                        <h1 className="text-dark">.</h1>
+                        {/*<h1 className="text-dark"></h1>*/}
                         {/*<h4>- {this.courseID}</h4>*/}
                         <div className="col-6">
                             <br/>
-                            <h6 className="text-muted">Course #: {this.courseID}</h6>
+                            {/*<h6 className="text-muted">Course #: {this.courseID}</h6>*/}
                         </div>
                     </div>
 
                 {
-                        this.state.course.reviews && ( <>
+                        this.state.reviews && ( <>
                             <CommentList reviews={this.state.reviews} />
                             <br/>
                             <ForumCommentForm onReviewAdded={reviews => {
-                                this.setState(prevState => {
-                                    prevState.course.reviews.push(reviews);
-                                    return prevState;
+                                this.setState(x => {
+                                    //this.setState({reviews: x.reviews})
+                                    x.reviews.data.push(reviews.data[reviews.length - 1]);
+                                    console.log(x.reviews)
+                                    return x.reviews;
                                 });
+
+                                console.log('hi')
+                                console.log(reviews.data[0,0])
+
                                 //addClassComment(userID, courseID, title, body){
-                                this.commentRepo.addClassComment(this.state.userID, this.courseID, this.state.course.reviews.title, this.state.course.reviews.body);
+                                this.commentRepo.addClassComment(this.state.userID, this.courseID, reviews.data[0], this.state.reviews.body);
                                     }}/>
                                 </>)
                             }
