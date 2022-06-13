@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/CampusPlus/static/css/main.479e7b17.chunk.css",
+    "main.js": "/CampusPlus/static/js/main.bb90b65b.chunk.js",
+    "main.js.map": "/CampusPlus/static/js/main.bb90b65b.chunk.js.map",
+    "runtime-main.js": "/CampusPlus/static/js/runtime-main.205240d5.js",
+    "runtime-main.js.map": "/CampusPlus/static/js/runtime-main.205240d5.js.map",
+    "static/css/2.87954681.chunk.css": "/CampusPlus/static/css/2.87954681.chunk.css",
+    "static/js/2.0de2b1f2.chunk.js": "/CampusPlus/static/js/2.0de2b1f2.chunk.js",
+    "static/js/2.0de2b1f2.chunk.js.map": "/CampusPlus/static/js/2.0de2b1f2.chunk.js.map",
+    "index.html": "/CampusPlus/index.html",
+    "static/css/2.87954681.chunk.css.map": "/CampusPlus/static/css/2.87954681.chunk.css.map",
+    "static/css/main.479e7b17.chunk.css.map": "/CampusPlus/static/css/main.479e7b17.chunk.css.map",
+    "static/js/2.0de2b1f2.chunk.js.LICENSE.txt": "/CampusPlus/static/js/2.0de2b1f2.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/CampusPlus/static/media/arrow_right.f7c6ac6d.svg",
+    "static/media/all.min.css": "/CampusPlus/static/media/fa-solid-900.eeccf4f6.woff",
+    "static/media/logo2.6d09a66f.png": "/CampusPlus/static/media/logo2.6d09a66f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.205240d5.js",
+    "static/css/2.87954681.chunk.css",
+    "static/js/2.0de2b1f2.chunk.js",
+    "static/css/main.479e7b17.chunk.css",
+    "static/js/main.bb90b65b.chunk.js"
+  ]
+}
