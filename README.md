@@ -16,7 +16,7 @@ What is CampusPlus?
 ## Prerequisites
 - `Docker` v19.03.13 or higher
 - `Docker-compose` v1.27.4 or higher 
-- `Node.js` v14.15.0 or higher
+- `Node.js` v16.15.1 or higher
 - `npm` v6.14.9 or higher
 - `yarn` v1.22.5 or higher
 
@@ -24,8 +24,8 @@ What is CampusPlus?
 
 #### Option 1: Deploying local database + _API_ to docker containers (<ins>_local_<ins>)
 1. Deploy Frontend & Backend (Using Docker) ➡ `$ docker-compose up`
-- or Backend ONLY ➡ `$ cd FrontAndBackEnd/backend; yarn run dev`
-- or Frontend ONLY ➡ `$ cd FrontAndBackEnd/frontend; yarn start`
+- or Backend ONLY ➡ `$ cd CampusPlus/backend; yarn run dev`
+- or Frontend ONLY ➡ `$ cd CampusPlus/frontend; yarn start`
 
 #### Option 2: Deploying <ins>`RDS cloud database`<ins> + _API_ to docker containers (<ins>_`EC2 Linux Instance`_<ins>)
 1. AWS Management Console
@@ -44,7 +44,7 @@ What is CampusPlus?
   MYSQL_CLOUD_HOST=
 
 7. Deploy Frontend & Backend (Using Docker) ➡ `$ docker-compose up`
-- or Backend ONLY ➡ `$ cd FrontAndBackEnd/backend; yarn run dev`
-- or Frontend ONLY ➡ `$ cd FrontAndBackEnd/frontend; yarn start`
+- or Backend ONLY ➡ `$ cd CampusPlus/backend; yarn run dev`
+- or Frontend ONLY ➡ `$ cd CampusPlus/frontend; yarn start`
 
 ## Additional configuration
