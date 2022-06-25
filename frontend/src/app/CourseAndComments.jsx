@@ -75,7 +75,7 @@ export class CourseAndComments extends Component {
                                 });
 
                                 console.log('hi')
-                                console.log(reviews.data[0,0])
+                                console.log(reviews.data[0])
 
                                 //addClassComment(userID, courseID, title, body){
                                 this.commentRepo.addClassComment(this.state.userID, this.courseID, reviews.data[0], this.state.reviews.body);

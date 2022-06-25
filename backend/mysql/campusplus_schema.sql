@@ -29,12 +29,12 @@ INSERT INTO `campusplus`.`user` (`userID`, `email`, `isAdmin`, `password`, `user
 -- Table `campusplus`.`courseDays`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`courseDays` (
-    `courseDaysID` INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
-    `monday`          TINYINT                                                         NULL,
-    `tuesday`          TINYINT                                                          NULL,
-    `wednesday`     TINYINT                                                         NULL,
-    `thursday`         TINYINT                                                         NULL,
-    `friday`              TINYINT                                                         NULL);
+    `courseDaysID`  INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
+    `monday`        INYINT                              NULL,
+    `tuesday`       TINYINT                             NULL,
+    `wednesday`     TINYINT                             NULL,
+    `thursday`      TINYINT                             NULL,
+    `friday`        TINYINT                             NULL);
 
 INSERT INTO `campusplus`.`courseDays` (`courseDaysID`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`)  VALUES
             (1, 1, 0, 1, 0, 1), -- Monday | Wednesday | Friday
@@ -50,14 +50,14 @@ INSERT INTO `campusplus`.`courseDays` (`courseDaysID`, `monday`, `tuesday`, `wed
 -- Table `campusplus`.`course`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`course` (
-    `courseID`              INT     PRIMARY KEY NOT NULL,
-    `courseDaysID`      INT                            NOT NULL,
-    `description`          VARCHAR(255)                  NULL,
-    `yearOffered`         YEAR                                 NULL,
-    `seasonOffered`     INT                                    NULL,
-    `courseTimeStart`  TIME                                  NULL,
-    `courseTimeEnd`    TIME                                 NULL,
-    `instructor`            VARCHAR(100)                  NULL,
+    `courseID`          INT PRIMARY KEY NOT NULL,
+    `courseDaysID`      INT             NOT NULL,
+    `description`       VARCHAR(255)        NULL,
+    `yearOffered`       YEAR                NULL,
+    `seasonOffered`     INT                 NULL,
+    `courseTimeStart`   TIME                NULL,
+    `courseTimeEnd`     TIME                NULL,
+    `instructor`        VARCHAR(100)        NULL,
     UNIQUE INDEX `courseID_UNIQUE`(`courseID` ASC) VISIBLE,
     INDEX `courseDaysID_idx`(`courseDaysID` ASC) VISIBLE,
     CONSTRAINT `toCourseDays`
@@ -67,31 +67,31 @@ CREATE TABLE IF NOT EXISTS `campusplus`.`course` (
         ON UPDATE NO ACTION);
 
 INSERT INTO `campusplus`.`course` (`courseID`, `courseDaysID`, `description`, `yearOffered`, `seasonOffered`, `courseTimeStart`, `courseTimeEnd`, `instructor`) VALUES
-            (121, 7, 'Swimming', 2020, 1, '13:00:00', '16:00:00', 'Davenport'),
-            (192, 7, 'Bowling', 2020, 1, '08:00:00', '09:00:00', 'Thomsen'),
-            (201, 6, 'Databases ', 2020, 1, '12:00:00', '13:00:00', 'Dillingham'),
-            (210, 3, 'Linear Algebra', 2020, 1, '16:00:00', '17:00:00', 'Gambarin'),
-            (217, 1, 'Programming Languages', 2020, 1, '12:00:00', '13:00:00', 'Fontenot'),
-            (219, 2, 'Calculus 2 ', 2020, 1, '13:30:00', '14:50:00', 'Lawrimore'),
-            (222, 4, 'Philosophy ', 2019, 1, '08:00:00', '09:30:00', 'Garduno'),
-            (223, 1, 'DISC', 2020, 1, '16:00:00', '17:00:00', 'Wesley'),
-            (258, 1, 'Chemistry', 2020, 1, '12:45:00', '01:50:00', 'Bongar'),
-            (291, 8, 'The business of business', 2020, 0, '11:30:00', '12:45:00', 'Mathers'),
-            (312, 3, 'GUI', 2020, 1, '18:00:00', '19:00:00', 'Cannon'),
-            (391, 5, 'Information Security', 2019, 0, '13:00:00', '13:50:00', 'Alford');
+            (121, 7, 'Swimming',        2022, 1, '13:00:00', '16:00:00', 'Davenport'),
+            (192, 7, 'Bowling',         2022, 1, '08:00:00', '09:00:00', 'Thomsen'),
+            (201, 6, 'Databases ',      2022, 1, '12:00:00', '13:00:00', 'Dillingham'),
+            (210, 3, 'Linear Algebra',  2022, 1, '16:00:00', '17:00:00', 'Gambarin'),
+            (217, 1, 'Programming Languages',   2023, 1, '12:00:00', '13:00:00', 'Fontenot'),
+            (219, 2, 'Calculus 2 ',     2021, 1, '13:30:00', '14:50:00', 'Lawrimore'),
+            (222, 4, 'Philosophy ',     2022, 1, '08:00:00', '09:30:00', 'Garduno'),
+            (223, 1, 'DISC',            2023, 1, '16:00:00', '17:00:00', 'Wesley'),
+            (258, 1, 'Chemistry',       2022, 1, '12:45:00', '01:50:00', 'Bongar'),
+            (291, 8, 'The business of business', 2023, '11:30:00', '12:45:00', 'Mathers'),
+            (312, 3, 'GUI', 2022, 1, '18:00:00', '19:00:00', 'Cannon'),
+            (391, 5, 'Information Security', 2023, 0, '13:00:00', '13:50:00', 'Alford');
 
 -- -----------------------------------------------------
 -- Table `campusplus`.`assignment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`assignment` (
-    `assignmentID`       INT AUTO_INCREMENT   NOT NULL,
-    `courseID`               INT                                           NULL,
-    `userID`                   INT                                   NOT NULL,
-    `name`                    VARCHAR(45)                           NULL,
-    `description`           VARCHAR(255)                         NULL,
-    `dueDate`               DATETIME                                 NULL,
-    `assignmentType`   VARCHAR(100)                 NOT NULL,
-    `completionStatus` TINYINT DEFAULT 0                  NULL,
+    `assignmentID`      INT AUTO_INCREMENT  NOT NULL,
+    `courseID`          INT                     NULL,
+    `userID`            INT                 NOT NULL,
+    `name`              VARCHAR(45)             NULL,
+    `description`       VARCHAR(255)            NULL,
+    `dueDate`           DATETIME                NULL,
+    `assignmentType`    VARCHAR(100)        NOT NULL,
+    `completionStatus`  TINYINT DEFAULT 0       NULL,
     PRIMARY KEY (`assignmentID`),
     UNIQUE INDEX `assignmentID_UNIQUE`(`assignmentID`ASC) VISIBLE,
     INDEX `courseID_idx` (`courseID`ASC) VISIBLE,
@@ -108,22 +108,22 @@ CREATE TABLE IF NOT EXISTS `campusplus`.`assignment` (
         ON UPDATE NO ACTION);
 
 INSERT INTO `campusplus`.`assignment` (`assignmentID`, `courseID`, `userID`, `name`, `description`, `dueDate`, `assignmentType`, `completionStatus`) VALUES
-            (2, 217, 1, 'Programming Languages', 'create a react script', '2020-12-11 11:59:00', 'Homework', 0),
-            (4, 391, 1, 'Quiz 7', 'python quiz', '2020-12-15 11:30:00', 'Quiz', 1),
-            (5, 312, 1, 'Quiz 2', 'GUI quiz', '2020-12-15 23:59:00', 'Quiz', 0),
-            (21, 312, 1, 'GUI quiz review', 'A quiz review for gui', '2020-12-10 12:00:00', 'Quiz', 1),
-            (31, 201, 8, 'dillogy', 'programming', '2020-12-18 10:00:00', 'Homework', 0),
-            (40, 312, 1, 'Final Project', 'Do well', '2020-12-03 08:00:00', 'Project', 0),
-            (41, 121, 1, 'Math HW', 'I will do calc in water', '2020-12-17 08:00:00', 'Homework', 0),
-            (43, 121, 21, 'Swim 100m', 'go to the pool', '2020-12-04 09:00:00', 'Project', 1),
-            (44, 312, 21, 'React hw', 'Learn', '2020-12-05 15:00:00', 'Homework', 1);
+            ( 2, 217,  1, 'Programming Languages', 'create a react script', '2022-12-11 11:59:00', 'Homework', 0),
+            ( 4, 391,  1, 'Quiz 7', 'python quiz', '2022-12-15 11:30:00', 'Quiz', 1),
+            ( 5, 312,  1, 'Quiz 2', 'GUI quiz', '2022-12-15 23:59:00', 'Quiz', 0),
+            (21, 312,  1, 'GUI quiz review', 'A quiz review for gui', '2022-12-10 12:00:00', 'Quiz', 1),
+            (31, 201,  8, 'dillogy', 'programming', '2022-12-18 10:00:00', 'Homework', 0),
+            (40, 312,  1, 'Final Project', 'Do well', '2022-12-03 08:00:00', 'Project', 0),
+            (41, 121,  1, 'Math HW', 'I will do calc in water', '2022-12-17 08:00:00', 'Homework', 0),
+            (43, 121, 21, 'Swim 100m', 'go to the pool', '2022-12-04 09:00:00', 'Project', 1),
+            (44, 312, 21, 'React hw', 'Learn', '2022-12-05 15:00:00', 'Homework', 1);
 
 -- -----------------------------------------------------
 -- Table `campusplus`.`schedule`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`schedule` (
-    `userID`       INT                     NOT NULL,
-    `courseID`   INT                     NOT NULL,
+    `userID`    INT                     NOT NULL,
+    `courseID`  INT                     NOT NULL,
     INDEX `courseID_idx` (`courseID` ASC) VISIBLE,
     INDEX `userID_idx`  (`userID` ASC)  VISIBLE,
     PRIMARY KEY (`userID`, `courseID`),
@@ -145,12 +145,12 @@ INSERT INTO `campusplus`.`schedule` (`userID`, `courseID`) VALUES
 -- Table `campusplus`.`comment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`comment` (
-    `commentID` INT AUTO_INCREMENT      NOT NULL,
-    `userID`          INT                                     NOT NULL,
-    `courseID`      INT                                      NOT NULL,
-    `title`             VARCHAR(45)                               NULL,
-    `body`           VARCHAR(255)                             NULL,
-    `postTime`    DATETIME                                     NULL,
+    `commentID` INT AUTO_INCREMENT  NOT NULL,
+    `userID`    INT                 NOT NULL,
+    `courseID`  INT                 NOT NULL,
+    `title`     VARCHAR(45)             NULL,
+    `body`      VARCHAR(255)            NULL,
+    `postTime`  DATETIME                NULL,
     PRIMARY KEY(`commentID`),
     INDEX `userID_idx` (`userID` ASC) VISIBLE,
     CONSTRAINT `commentUser`
@@ -165,5 +165,5 @@ CREATE TABLE IF NOT EXISTS `campusplus`.`comment` (
         ON UPDATE NO ACTION);
 
 INSERT INTO `campusplus`.`comment` (`commentID`, `userID`, `courseID`, `title`, `body`, `postTime`) VALUES
-            (1, 2, 223, 'Bad', 'This is an awful class', '2020-11-22 21:50:08'),
-            (2, 21, 219, 'Math', 'Math class', '2020-11-23 18:50:59');
+            (1,  2, 223,  'Bad', 'This is an awful class', '2022-11-22 21:50:08'),
+            (2, 21, 219, 'Math', 'Math class', '2022-11-23 18:50:59');

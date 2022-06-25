@@ -8,7 +8,7 @@ const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 
 // Set up some configs for express.
 const config = {
-  name: 'sample-express-app',
+  name: 'campusplus-express-app',
   port: 8000,
   host: '0.0.0.0',
 };
