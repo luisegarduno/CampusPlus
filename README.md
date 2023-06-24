@@ -12,6 +12,7 @@
 
 ## About
 What is CampusPlus?
+- Similar to Canvas/eCampus, CampusPlus is a education website that enables students to stay up to date w/ assignments, managing courses, reviewing forums, & more! **Can be deployed locally or via an AWS server!
 
 ## Prerequisites
 - `Docker` v19.03.13 or higher
