@@ -5,15 +5,15 @@ USE `campusplus`;
 -- Table `campusplus`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`user` (
-    `userID`          INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
-    `email`           VARCHAR(45)                                                 NULL,
-    `isAdmin`      TINYINT DEFAULT 0                                        NULL,
-    `password`     VARCHAR(64) COLLATE utf8_bin                   NULL,
-    `username`     VARCHAR(45)                                                NULL,
-    `grade`           INT                                                                NULL,
-    `school`          VARCHAR(45)                                                NULL,
-    `major`           VARCHAR(45)                                                NULL,
-    `gradDate`      DATE                                                             NULL,
+  `userID`      INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
+  `email`       VARCHAR(45)                         NULL,
+  `isAdmin`     TINYINT DEFAULT 0                   NULL,
+  `password`    VARCHAR(64) COLLATE utf8_bin        NULL,
+  `username`    VARCHAR(45)                         NULL,
+  `grade`       INT                                 NULL,
+  `school`      VARCHAR(45)                         NULL,
+  `major`       VARCHAR(45)                         NULL,
+  `gradDate`    DATE                                NULL,
   UNIQUE INDEX `userID_UNIQUE` (`userID` ASC) VISIBLE);
 
 INSERT INTO `campusplus`.`user` (`userID`, `email`, `isAdmin`, `password`, `username`, `grade`, `school`, `major`, `gradDate`) VALUES
@@ -30,7 +30,7 @@ INSERT INTO `campusplus`.`user` (`userID`, `email`, `isAdmin`, `password`, `user
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `campusplus`.`courseDays` (
     `courseDaysID`  INT AUTO_INCREMENT  PRIMARY KEY NOT NULL,
-    `monday`        INYINT                              NULL,
+    `monday`        TINYINT                             NULL,
     `tuesday`       TINYINT                             NULL,
     `wednesday`     TINYINT                             NULL,
     `thursday`      TINYINT                             NULL,
@@ -76,7 +76,7 @@ INSERT INTO `campusplus`.`course` (`courseID`, `courseDaysID`, `description`, `y
             (222, 4, 'Philosophy ',     2022, 1, '08:00:00', '09:30:00', 'Garduno'),
             (223, 1, 'DISC',            2023, 1, '16:00:00', '17:00:00', 'Wesley'),
             (258, 1, 'Chemistry',       2022, 1, '12:45:00', '01:50:00', 'Bongar'),
-            (291, 8, 'The business of business', 2023, '11:30:00', '12:45:00', 'Mathers'),
+            (291, 8, 'The business of business', 2023, 1,'11:30:00', '12:45:00', 'Mathers'),
             (312, 3, 'GUI', 2022, 1, '18:00:00', '19:00:00', 'Cannon'),
             (391, 5, 'Information Security', 2023, 0, '13:00:00', '13:50:00', 'Alford');
 
