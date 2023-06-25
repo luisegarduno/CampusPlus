@@ -17,5 +17,5 @@ echo "---> Packages Installed."
 
 echo "---> Building docker-compose images..."
 cd ..
-docker-compose build
+docker compose build
 echo "-------> Done! To deploy project, run $ ./Run_CampusPlus.sh"
