@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios'
-//import { sha256 } from 'js-sha256';
 import logo from "../images/logo2.png"
 //import { Profile } from './Profile';
 import { Redirect, Link } from "react-router-dom";
@@ -29,11 +28,6 @@ export class WelcomePage extends React.Component {
     }
     
     onLogin() {
-        //let password = this.state.password
-        //password = sha256(this.state.password);
-
-        console.log("Verified:", this.login.verifyUser({username: this.state.username, password : this.state.password}))
-        
         axios.post(`${this.login.url}/user/login`, {username: this.state.username, password : this.state.password})
             .then(response => {
                 if(response.data === 0) {
@@ -44,18 +38,6 @@ export class WelcomePage extends React.Component {
                     this.validLogin(response.data)
                 }
         })
-
-        /*
-        this.login.verifyUser({username: this.state.username, password : this.state.password})
-            .then(res => {
-                if(res.data === 0) {
-                    this.invalidLogin()
-                }
-                else {
-                    console.log(res.data)
-                    this.validLogin(res.data)
-                }
-        })*/
     }
     
     getUsername(user) {

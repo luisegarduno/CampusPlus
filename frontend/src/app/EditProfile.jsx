@@ -1,5 +1,4 @@
 import React from 'react';
-//import { sha256 } from 'js-sha256'
 import { Header } from './Header';
 import { User } from '../models/User'
 import { UserRepository } from '../Api/userRepository'
@@ -35,7 +34,6 @@ export class EditProfile extends React.Component {
             console.log(res)
             res.data.forEach(ele => {
                 this.setState({userInfo:[...this.state.userInfo, new User(ele.userID, ele.username, ele.password, ele.email, ele.school, ele.major, ele.name, ele.grade, ele.isAdmin)]});
-                
             });
             console.log(this.state);
         })
@@ -47,7 +45,7 @@ export class EditProfile extends React.Component {
         if ((this.state.password !== "") && (this.state.password === this.state.confirmPassword)) {
             this.userData.updateCreds({ username: this.state.username, password: this.state.password });
         } else if (this.state.password !== this.state.confirmPassword) {
-             alert("Passwords do not match");
+            alert("Passwords do not match");
         }
         if ((this.state.email !== "")) {
             console.log(this.state.email);
@@ -85,7 +83,7 @@ export class EditProfile extends React.Component {
                                 <input type="password" className="form-control" id="confirmPassword" onChange={e => this.setState({confirmPassword: e.target.value})}/>
                             </div>
                         </div>
-                         <div className="form-group">
+                        <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input type="text" className="form-control" id="email" placeholder="" onChange={e => this.setState({email: e.target.value})}/>
                         </div>

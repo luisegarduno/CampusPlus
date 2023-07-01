@@ -68,8 +68,6 @@ export class Register extends React.Component{
         else{
             this.setState({ status : true })
 
-            //let password = this.state.password;
-            //password = sha256(password);
             var loginData = {email : this.state.email, password: this.state.password, username : this.state.username, school : this.state.school, major: this.state.major }
             //console.log(this.login.registerUser(loginData))
         
