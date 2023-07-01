@@ -1,5 +1,5 @@
 import React from 'react';
-import { sha256 } from 'js-sha256'
+//import { sha256 } from 'js-sha256'
 import { Header } from './Header';
 import { User } from '../models/User'
 import { UserRepository } from '../Api/userRepository'
@@ -43,13 +43,9 @@ export class EditProfile extends React.Component {
     };
 
     updateProf() {
-        console.log("update");
-        console.log(this.state.username);
-        console.log(this.state.password);
+        console.log("Update:", this.state.username, this.state.password);
         if ((this.state.password !== "") && (this.state.password === this.state.confirmPassword)) {
-            let password = this.state.password;
-            password = sha256(password);
-            this.userData.updateCreds({ username: this.state.username, password: password });
+            this.userData.updateCreds({ username: this.state.username, password: this.state.password });
         } else if (this.state.password !== this.state.confirmPassword) {
              alert("Passwords do not match");
         }

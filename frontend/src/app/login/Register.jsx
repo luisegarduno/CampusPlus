@@ -1,6 +1,5 @@
 import React from "react";
 import axios from 'axios';
-import { sha256 } from 'js-sha256'
 import { UserRepository } from '../../Api/userRepository'
 import { Redirect } from "react-router-dom";
 
@@ -69,9 +68,9 @@ export class Register extends React.Component{
         else{
             this.setState({ status : true })
 
-            let password = this.state.password;
-            password = sha256(password);
-            var loginData = {email : this.state.email, password: password, username : this.state.username, school : this.state.school, major: this.state.major }
+            //let password = this.state.password;
+            //password = sha256(password);
+            var loginData = {email : this.state.email, password: this.state.password, username : this.state.username, school : this.state.school, major: this.state.major }
             //console.log(this.login.registerUser(loginData))
         
             //axios.post(`${this.url}/user/create`, loginData)

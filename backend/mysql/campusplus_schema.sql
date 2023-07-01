@@ -17,13 +17,12 @@ CREATE TABLE IF NOT EXISTS `campusplus`.`user` (
   UNIQUE INDEX `userID_UNIQUE` (`userID` ASC) VISIBLE);
 
 INSERT INTO `campusplus`.`user` (`userID`, `email`, `isAdmin`, `password`, `username`, `grade`, `school`, `major`, `gradDate`) VALUES
-            (1, 'user@uni.edu', 0, 'd74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1', 'user', 0, '', '', null),
-            (2, 'eSmith@uni.edu', 0, 'ae91809961c202dcefb1d44638b70c13685dbb9b47a5e7a72de4bf8b24f859e7', 'teachersPet', 2, 'Education', 'Developmental Psych', '2024-05-23'),
-            (8, 'JDoe@uni.edu', 0, '0b14d501a594442a01c6859541bcb3e8164d183d32937b851835442f69d5c94e', 'JDoe', 10, 'Engineering', 'Computer Science', null),
-            (9, 'joey@uni.edu', 0, '8b2c86ea9cf2ea4eb517fd1e06b74f399e7fec0fef92e3b482a6cf2e2b092023', 'JoeyB', null, '', '', null),
-            (20, 'nwesley@uni.edu', 0, '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4', 'nathanwes', null, 'Business', 'Finance', null),
-            (21, 'mitchm@uni.edu', 1, '5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b', 'mmor2', 0, '', '', null);
-
+            (1, 'user@uni.edu', 0, '$2b$10$CmrDR3YvdkT7Xpd7XYc/F.eD2MH8NU.mJewWsu7bLXxh1WX4JCXtW', 'user', 0, '', '', null),
+            (2, 'eSmith@uni.edu', 0, '$2b$10$eN.9Oz3nCnVNB9enqfKgmeZ8KkHAziCZIwFPUKSxBsG8Ye5q5Q9o2', 'teachersPet', 2, 'Education', 'Developmental Psych', '2024-05-23'),
+            (8, 'JDoe@uni.edu', 0, '$2b$10$Xx7ODAIIQjMJVGCURK295eeehZX18pTeZz4Up2L9FTsvo6ivgD9Bu', 'JDoe', 10, 'Engineering', 'Computer Science', null),
+            (9, 'joey@uni.edu', 0, '$2b$10$IplV67.58Eg7LHDoO6.jBOsIQw5ZkEWylEDzF1jgCM3hpwmh88gj.', 'JoeyB', null, '', '', null),
+            (20, 'nwesley@uni.edu', 0, '$2b$10$O4pyMK4HhF61dY4IVqhqiO0wFWR6L4l513K1p40.uw8Ima4GS/Mr6', 'nathanwes', null, 'Business', 'Finance', null),
+            (21, 'mitchm@uni.edu', 1, '$2b$10$0zrtNGOGJav4gc7ASaEAMO8HZRAL0jwjkgOqZ82ouZhHaJFsWYYaC', 'mmor2', 0, '', '', null);
 
 -- -----------------------------------------------------
 -- Table `campusplus`.`courseDays`
