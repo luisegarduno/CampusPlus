@@ -51,7 +51,7 @@ module.exports = function user(app, logger) {
                 // Hash the password
                 const saltRounds = 10;
                 bcrypt.hash(hashpass, saltRounds, function(err, hash) {
-                    connection.query('INSERT INTO `campusplus`.`user` (username, password, email, grade, school, major, gradDate) VALUES(?, ?, ?, ?, ?, ?, ?)',[username, hashpass, email, grade, school, major, gradDate], function (err, rows, fields) {
+                    connection.query('INSERT INTO `campusplus`.`user` (username, password, email, grade, school, major, gradDate) VALUES(?, ?, ?, ?, ?, ?, ?)',[username, hash, email, grade, school, major, gradDate], function (err, rows, fields) {
                         if (err) { 
                             // if there's an error w/ the query, release the connection instance & log the error
                             connection.release()
